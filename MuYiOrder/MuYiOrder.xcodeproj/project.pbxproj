@@ -106,7 +106,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Ugood;
+				ORGANIZATIONNAME = "Clay Zhu";
 				TargetAttributes = {
 					B7D754AA1EA504EF0089A8CD = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -273,8 +273,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ugoodtech.MuYiOrder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clayzhu.MuYiOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -284,8 +285,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ugoodtech.MuYiOrder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clayzhu.MuYiOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
