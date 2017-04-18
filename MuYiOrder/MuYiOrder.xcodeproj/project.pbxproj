@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38ECE2177C610F46E09584D5 /* libPods-MuYiOrder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CFC397B4566F0FC775DCA97 /* Pods-MuYiOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuYiOrder.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder.release.xcconfig"; sourceTree = "<group>"; };
+		8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuYiOrder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF84856A4E1A2E18D92F372A /* Pods-MuYiOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuYiOrder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder.debug.xcconfig"; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B7D754B11EA504EF0089A8CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38ECE2177C610F46E09584D5 /* libPods-MuYiOrder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AD5FE8F26788F5C717C561E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B7D754A21EA504EF0089A8CD = {
 			isa = PBXGroup;
 			children = (
 				B7D754AD1EA504EF0089A8CD /* MuYiOrder */,
 				B7D754AC1EA504EF0089A8CD /* Products */,
+				C3D518FBABC07BE46F27FC5E /* Pods */,
+				4AD5FE8F26788F5C717C561E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +94,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C3D518FBABC07BE46F27FC5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF84856A4E1A2E18D92F372A /* Pods-MuYiOrder.debug.xcconfig */,
+				2CFC397B4566F0FC775DCA97 /* Pods-MuYiOrder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7D754C21EA504EF0089A8CD /* Build configuration list for PBXNativeTarget "MuYiOrder" */;
 			buildPhases = (
+				026B195374E84539AA850CB8 /* [CP] Check Pods Manifest.lock */,
 				B7D754A71EA504EF0089A8CD /* Sources */,
 				B7D754A81EA504EF0089A8CD /* Frameworks */,
 				B7D754A91EA504EF0089A8CD /* Resources */,
+				548A2989C5FD86DA151608AA /* [CP] Embed Pods Frameworks */,
+				CF39F581C76D69D73DC5F62D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		026B195374E84539AA850CB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		548A2989C5FD86DA151608AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF39F581C76D69D73DC5F62D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B7D754A71EA504EF0089A8CD /* Sources */ = {
@@ -270,6 +345,7 @@
 		};
 		B7D754C31EA504EF0089A8CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF84856A4E1A2E18D92F372A /* Pods-MuYiOrder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
@@ -282,6 +358,7 @@
 		};
 		B7D754C41EA504EF0089A8CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CFC397B4566F0FC775DCA97 /* Pods-MuYiOrder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
