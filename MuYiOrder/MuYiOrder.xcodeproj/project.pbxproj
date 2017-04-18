@@ -388,6 +388,7 @@
 				B7D754C41EA504EF0089A8CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
