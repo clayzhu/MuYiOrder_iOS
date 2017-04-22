@@ -137,7 +137,8 @@
 				TargetAttributes = {
 					B7D754AA1EA504EF0089A8CD = {
 						CreatedOnToolsVersion = 8.3.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = VZ3SABADFU;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -348,11 +349,14 @@
 			baseConfigurationReference = AF84856A4E1A2E18D92F372A /* Pods-MuYiOrder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VZ3SABADFU;
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clayzhu.MuYiOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0ebdf445-c6e2-4de0-b061-2c9e02c20355";
+				PROVISIONING_PROFILE_SPECIFIER = ForAll_Development;
 			};
 			name = Debug;
 		};
@@ -361,11 +365,13 @@
 			baseConfigurationReference = 2CFC397B4566F0FC775DCA97 /* Pods-MuYiOrder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MuYiOrder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clayzhu.MuYiOrder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
