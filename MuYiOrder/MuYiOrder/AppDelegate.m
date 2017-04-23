@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    [self setupRootVC];
+    
     return YES;
 }
 
@@ -47,8 +53,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Root ViewController
 - (void)setupRootVC {
-    
+    UIViewController *vc = [[UIStoryboard storyboardWithName:@"User" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginVC"];
+    BaseNavigationController *nc = [[BaseNavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = nc;
 }
 
 @end
