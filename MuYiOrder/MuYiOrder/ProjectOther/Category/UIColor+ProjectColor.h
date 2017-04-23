@@ -13,6 +13,8 @@
 
 /** 主题绿色，导航栏、提交按钮 */
 + (UIColor *)hex_33bc99;
+/** 主题绿色点击色 */
++ (UIColor *)hex_00bb8c;
 /** 字体黑色，输入内容、文本 */
 + (UIColor *)hex_444A5A;
 /** 字体灰色，placeholder */

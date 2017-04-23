@@ -14,6 +14,10 @@
     return [UIColor colorWithHexString:@"33bc99"];
 }
 
++ (UIColor *)hex_00bb8c {
+    return [UIColor colorWithHexString:@"00BB8C"];
+}
+
 + (UIColor *)hex_444A5A {
     return [UIColor colorWithHexString:@"444A5A"];
 }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-bw-IK7">
-                                <rect key="frame" x="15" y="285.5" width="345" height="48"/>
+                                <rect key="frame" x="15" y="246.5" width="345" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="久仰阁下大名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBr-6R-4CL" customClass="ProjectTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
@@ -42,7 +41,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NH0-By-X2G">
-                                <rect key="frame" x="15" y="348.5" width="345" height="48"/>
+                                <rect key="frame" x="15" y="309.5" width="345" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="打死也不能说的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnM-av-elD" customClass="ProjectTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
@@ -59,21 +58,48 @@
                                     <constraint firstAttribute="trailing" secondItem="HnM-av-elD" secondAttribute="trailing" id="snI-AO-vXc"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nG-oE-gNr">
+                                <rect key="frame" x="15" y="397.5" width="345" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-SS-zOh" customClass="ProjectButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="芝麻开门"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Mdq-SS-zOh" secondAttribute="trailing" id="FKV-6C-YCx"/>
+                                    <constraint firstItem="Mdq-SS-zOh" firstAttribute="top" secondItem="7nG-oE-gNr" secondAttribute="top" id="OZX-iS-Gm3"/>
+                                    <constraint firstItem="Mdq-SS-zOh" firstAttribute="leading" secondItem="7nG-oE-gNr" secondAttribute="leading" id="Wwm-L9-JTN"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mdq-SS-zOh" secondAttribute="bottom" id="XK1-Lm-ah2"/>
+                                    <constraint firstAttribute="height" constant="50" id="sas-ac-qkD"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MuYiYang" translatesAutoresizingMaskIntoConstraints="NO" id="lYe-RJ-hnq">
+                                <rect key="frame" x="116.5" y="146.5" width="141" height="80"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7nG-oE-gNr" firstAttribute="top" secondItem="NH0-By-X2G" secondAttribute="bottom" constant="40" id="4aI-dc-mjD"/>
+                            <constraint firstItem="7nG-oE-gNr" firstAttribute="leading" secondItem="NH0-By-X2G" secondAttribute="leading" id="D6v-vv-PFR"/>
                             <constraint firstItem="ozE-bw-IK7" firstAttribute="centerX" secondItem="dqb-Iv-meB" secondAttribute="centerX" id="DgJ-fp-VdN"/>
+                            <constraint firstItem="lYe-RJ-hnq" firstAttribute="centerX" secondItem="dqb-Iv-meB" secondAttribute="centerX" id="EjB-qD-X4E"/>
                             <constraint firstItem="NH0-By-X2G" firstAttribute="height" secondItem="ozE-bw-IK7" secondAttribute="height" id="Ogq-CL-67T"/>
                             <constraint firstItem="ozE-bw-IK7" firstAttribute="leading" secondItem="dqb-Iv-meB" secondAttribute="leading" constant="15" id="Vq7-1X-Blo"/>
                             <constraint firstItem="NH0-By-X2G" firstAttribute="leading" secondItem="ozE-bw-IK7" secondAttribute="leading" id="YQ2-FW-VQq"/>
                             <constraint firstItem="NH0-By-X2G" firstAttribute="width" secondItem="ozE-bw-IK7" secondAttribute="width" id="dZc-8H-2kC"/>
-                            <constraint firstItem="ozE-bw-IK7" firstAttribute="bottom" secondItem="dqb-Iv-meB" secondAttribute="centerY" id="gqL-TP-6RS"/>
                             <constraint firstItem="NH0-By-X2G" firstAttribute="top" secondItem="ozE-bw-IK7" secondAttribute="bottom" constant="15" id="ixL-2a-uoW"/>
+                            <constraint firstItem="NH0-By-X2G" firstAttribute="centerY" secondItem="dqb-Iv-meB" secondAttribute="centerY" id="nFs-EZ-rDs"/>
+                            <constraint firstItem="7nG-oE-gNr" firstAttribute="width" secondItem="NH0-By-X2G" secondAttribute="width" id="qZO-7M-wdx"/>
+                            <constraint firstItem="ozE-bw-IK7" firstAttribute="top" secondItem="lYe-RJ-hnq" secondAttribute="bottom" constant="20" id="uR4-bX-QR1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="pwdTF" destination="HnM-av-elD" id="DZQ-k7-9lq"/>
                         <outlet property="pwdView" destination="NH0-By-X2G" id="xNH-Kd-7ol"/>
+                        <outlet property="submitView" destination="7nG-oE-gNr" id="EVA-my-MVj"/>
                         <outlet property="usernameTF" destination="DBr-6R-4CL" id="Aqe-kc-gZK"/>
                         <outlet property="usernameView" destination="ozE-bw-IK7" id="G16-mI-ymn"/>
                     </connections>
@@ -83,4 +109,7 @@
             <point key="canvasLocation" x="109.59999999999999" y="178.56071964017991"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MuYiYang" width="141" height="80"/>
+    </resources>
 </document>

@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIView *pwdView;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTF;
 
+@property (weak, nonatomic) IBOutlet UIView *submitView;
+
 @end
 
 @implementation LoginVC
@@ -45,6 +47,7 @@
 - (void)setupViewStyle {
     [self.usernameView setupTFViewStyle];
     [self.pwdView setupTFViewStyle];
+    [self.submitView setupTFViewStyle];
 }
 
 @end

@@ -33,6 +33,9 @@
 		B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B767789B1EACE99B00B76EDF /* CZInspectableTextField.m */; };
 		B76778A31EACE99B00B76EDF /* CZInspectableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B767789D1EACE99B00B76EDF /* CZInspectableView.m */; };
 		B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778A51EACEB1100B76EDF /* UIView+Style.m */; };
+		B76778AA1EACF27900B76EDF /* CZBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778A91EACF27900B76EDF /* CZBlockButton.m */; };
+		B76778AD1EACF28E00B76EDF /* ProjectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778AC1EACF28E00B76EDF /* ProjectButton.m */; };
+		B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778B01EACF2E000B76EDF /* UIImage+Custom.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -92,6 +95,12 @@
 		B767789D1EACE99B00B76EDF /* CZInspectableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZInspectableView.m; sourceTree = "<group>"; };
 		B76778A41EACEB1100B76EDF /* UIView+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Style.h"; sourceTree = "<group>"; };
 		B76778A51EACEB1100B76EDF /* UIView+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Style.m"; sourceTree = "<group>"; };
+		B76778A81EACF27900B76EDF /* CZBlockButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZBlockButton.h; sourceTree = "<group>"; };
+		B76778A91EACF27900B76EDF /* CZBlockButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZBlockButton.m; sourceTree = "<group>"; };
+		B76778AB1EACF28E00B76EDF /* ProjectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectButton.h; sourceTree = "<group>"; };
+		B76778AC1EACF28E00B76EDF /* ProjectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectButton.m; sourceTree = "<group>"; };
+		B76778AF1EACF2E000B76EDF /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
+		B76778B01EACF2E000B76EDF /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
 		B78FFC141EABB3990095A554 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -246,6 +255,7 @@
 		B767785B1EACB8D900B76EDF /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B76778AE1EACF2E000B76EDF /* CZImage */,
 				B76778611EACB97500B76EDF /* CZTableViewCellRadius */,
 				B767785D1EACB92700B76EDF /* CZColor */,
 			);
@@ -286,6 +296,8 @@
 		B76778751EACE8E000B76EDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B76778AB1EACF28E00B76EDF /* ProjectButton.h */,
+				B76778AC1EACF28E00B76EDF /* ProjectButton.m */,
 				B76778761EACE8F600B76EDF /* ProjectTextField.h */,
 				B76778771EACE8F600B76EDF /* ProjectTextField.m */,
 			);
@@ -295,6 +307,7 @@
 		B767788E1EACE99B00B76EDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B76778A71EACF27900B76EDF /* CZBlockButton */,
 				B767788F1EACE99B00B76EDF /* CZInspectableView */,
 			);
 			path = View;
@@ -333,6 +346,24 @@
 				B767789D1EACE99B00B76EDF /* CZInspectableView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B76778A71EACF27900B76EDF /* CZBlockButton */ = {
+			isa = PBXGroup;
+			children = (
+				B76778A81EACF27900B76EDF /* CZBlockButton.h */,
+				B76778A91EACF27900B76EDF /* CZBlockButton.m */,
+			);
+			path = CZBlockButton;
+			sourceTree = "<group>";
+		};
+		B76778AE1EACF2E000B76EDF /* CZImage */ = {
+			isa = PBXGroup;
+			children = (
+				B76778AF1EACF2E000B76EDF /* UIImage+Custom.h */,
+				B76778B01EACF2E000B76EDF /* UIImage+Custom.m */,
+			);
+			path = CZImage;
 			sourceTree = "<group>";
 		};
 		B7D754A21EA504EF0089A8CD = {
@@ -518,11 +549,13 @@
 				B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */,
 				B767784C1EAC7F1B00B76EDF /* CZString.m in Sources */,
 				B76778431EAC7E2C00B76EDF /* BaseViewController.m in Sources */,
+				B76778AA1EACF27900B76EDF /* CZBlockButton.m in Sources */,
 				B76778421EAC7E2C00B76EDF /* BaseTableViewController.m in Sources */,
 				B76778A11EACE99B00B76EDF /* CZInspectableButton.m in Sources */,
 				B76778A31EACE99B00B76EDF /* CZInspectableView.m in Sources */,
 				B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */,
 				B767789E1EACE99B00B76EDF /* UIButton+CZInspectableButton.m in Sources */,
+				B76778AD1EACF28E00B76EDF /* ProjectButton.m in Sources */,
 				B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */,
 				B76778A01EACE99B00B76EDF /* UIView+CZInspectableView.m in Sources */,
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
@@ -541,6 +574,7 @@
 				B76778381EAC7D2500B76EDF /* UIScrollView+MLInputDodger.m in Sources */,
 				B76778581EAC800700B76EDF /* LoginVC.m in Sources */,
 				B7D754B01EA504EF0089A8CD /* main.m in Sources */,
+				B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
