@@ -44,8 +44,8 @@
     vc.cannotPopByGestureRecognizer = YES;
     vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:[[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 //    vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);//图片位置偏移
-	[vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor hex_b3b3b3]} forState:UIControlStateNormal];    // 未点中时字体灰色
-	[vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor hex_0d0d0d]} forState:UIControlStateSelected];  // 点中时字体黑色
+	[vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];    // 未点中时字体灰色
+	[vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blueColor]} forState:UIControlStateSelected];  // 点中时字体黑色
     return vc;
 }
 
