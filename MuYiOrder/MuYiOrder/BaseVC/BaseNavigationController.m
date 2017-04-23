@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.navigationBar.tintColor = [UIColor blackColor];
-	[self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
-	[self.navigationBar setBackgroundImage:[UIImage imageWithColorForNavigationController:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+	self.navigationBar.tintColor = [UIColor whiteColor];
+	[self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+	[self.navigationBar setBackgroundImage:[UIImage imageWithColorForNavigationController:[UIColor hex_33bc99]] forBarMetrics:UIBarMetricsDefault];
 	// 设置底部阴影（分割线）
 	[self.navigationBar setShadowImage:[UIImage imageWithColorForNavigationController:[UIColor clearColor]]];
 }
@@ -43,6 +43,7 @@
 	return self.visibleViewController;	// 如果 childVC 设置了 statusBarStyle，则使用 childVC 的设置；另外使用 BaseViewController 和 BaseTableViewController 中 -preferredStatusBarStyle 的设置
 }
 
+/*
 // 支持在子类中设置单独的选择
 - (BOOL)shouldAutorotate {
 	return self.visibleViewController.shouldAutorotate;
@@ -51,6 +52,7 @@
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 	return self.visibleViewController.supportedInterfaceOrientations;
 }
+*/
 
 @end
 

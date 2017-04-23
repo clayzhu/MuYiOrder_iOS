@@ -194,7 +194,7 @@
 	if (!_titleLbl) {
 		UILabel *titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 0, 44)];
 		titleLabel.backgroundColor = [UIColor clearColor];
-		titleLabel.textColor = [UIColor blackColor];
+		titleLabel.textColor = [UIColor whiteColor];
 		titleLabel.textAlignment = NSTextAlignmentCenter;
 		[titleLabel setFont:[UIFont systemFontOfSize:17.0]];
 		_titleLbl = titleLabel;
