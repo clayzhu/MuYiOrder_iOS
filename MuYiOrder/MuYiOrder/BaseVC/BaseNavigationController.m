@@ -21,7 +21,7 @@
 	[self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 	[self.navigationBar setBackgroundImage:[UIImage imageWithColorForNavigationController:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 	// 设置底部阴影（分割线）
-	[self.navigationBar setShadowImage:[UIImage imageWithColorForNavigationController:[UIColor blackColor] imageSize:CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), 0.5)]];
+	[self.navigationBar setShadowImage:[UIImage imageWithColorForNavigationController:[UIColor clearColor]]];
 }
 
 - (void)didReceiveMemoryWarning {
