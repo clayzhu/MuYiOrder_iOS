@@ -60,7 +60,7 @@
 //}
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-	return UIStatusBarStyleDefault;	// 默认 statusBarStyle 为黑色
+	return UIStatusBarStyleLightContent;	// 默认 statusBarStyle 为白色
 }
 
 - (void)dealloc {
