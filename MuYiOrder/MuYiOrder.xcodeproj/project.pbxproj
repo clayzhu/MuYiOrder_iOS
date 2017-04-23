@@ -25,6 +25,14 @@
 		B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778631EACB97D00B76EDF /* UITableView+CellRadius.m */; };
 		B76778691EACB99B00B76EDF /* UIColor+ProjectColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778661EACB99B00B76EDF /* UIColor+ProjectColor.m */; };
 		B767786A1EACB99B00B76EDF /* UITableView+ProjectCellRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778681EACB99B00B76EDF /* UITableView+ProjectCellRadius.m */; };
+		B76778781EACE8F600B76EDF /* ProjectTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778771EACE8F600B76EDF /* ProjectTextField.m */; };
+		B767789E1EACE99B00B76EDF /* UIButton+CZInspectableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778921EACE99B00B76EDF /* UIButton+CZInspectableButton.m */; };
+		B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778941EACE99B00B76EDF /* UITextField+CZInspectableTextField.m */; };
+		B76778A01EACE99B00B76EDF /* UIView+CZInspectableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778961EACE99B00B76EDF /* UIView+CZInspectableView.m */; };
+		B76778A11EACE99B00B76EDF /* CZInspectableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778991EACE99B00B76EDF /* CZInspectableButton.m */; };
+		B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B767789B1EACE99B00B76EDF /* CZInspectableTextField.m */; };
+		B76778A31EACE99B00B76EDF /* CZInspectableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B767789D1EACE99B00B76EDF /* CZInspectableView.m */; };
+		B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778A51EACEB1100B76EDF /* UIView+Style.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -68,6 +76,22 @@
 		B76778661EACB99B00B76EDF /* UIColor+ProjectColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ProjectColor.m"; sourceTree = "<group>"; };
 		B76778671EACB99B00B76EDF /* UITableView+ProjectCellRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ProjectCellRadius.h"; sourceTree = "<group>"; };
 		B76778681EACB99B00B76EDF /* UITableView+ProjectCellRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ProjectCellRadius.m"; sourceTree = "<group>"; };
+		B76778761EACE8F600B76EDF /* ProjectTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTextField.h; sourceTree = "<group>"; };
+		B76778771EACE8F600B76EDF /* ProjectTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTextField.m; sourceTree = "<group>"; };
+		B76778911EACE99B00B76EDF /* UIButton+CZInspectableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZInspectableButton.h"; sourceTree = "<group>"; };
+		B76778921EACE99B00B76EDF /* UIButton+CZInspectableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZInspectableButton.m"; sourceTree = "<group>"; };
+		B76778931EACE99B00B76EDF /* UITextField+CZInspectableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CZInspectableTextField.h"; sourceTree = "<group>"; };
+		B76778941EACE99B00B76EDF /* UITextField+CZInspectableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CZInspectableTextField.m"; sourceTree = "<group>"; };
+		B76778951EACE99B00B76EDF /* UIView+CZInspectableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CZInspectableView.h"; sourceTree = "<group>"; };
+		B76778961EACE99B00B76EDF /* UIView+CZInspectableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CZInspectableView.m"; sourceTree = "<group>"; };
+		B76778981EACE99B00B76EDF /* CZInspectableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZInspectableButton.h; sourceTree = "<group>"; };
+		B76778991EACE99B00B76EDF /* CZInspectableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZInspectableButton.m; sourceTree = "<group>"; };
+		B767789A1EACE99B00B76EDF /* CZInspectableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZInspectableTextField.h; sourceTree = "<group>"; };
+		B767789B1EACE99B00B76EDF /* CZInspectableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZInspectableTextField.m; sourceTree = "<group>"; };
+		B767789C1EACE99B00B76EDF /* CZInspectableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZInspectableView.h; sourceTree = "<group>"; };
+		B767789D1EACE99B00B76EDF /* CZInspectableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZInspectableView.m; sourceTree = "<group>"; };
+		B76778A41EACEB1100B76EDF /* UIView+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Style.h"; sourceTree = "<group>"; };
+		B76778A51EACEB1100B76EDF /* UIView+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Style.m"; sourceTree = "<group>"; };
 		B78FFC141EABB3990095A554 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -142,6 +166,7 @@
 		B76778471EAC7F1B00B76EDF /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B767788E1EACE99B00B76EDF /* View */,
 				B767785B1EACB8D900B76EDF /* Category */,
 				B76778481EAC7F1B00B76EDF /* Utility */,
 			);
@@ -168,6 +193,7 @@
 		B767784D1EAC7F7900B76EDF /* ProjectOther */ = {
 			isa = PBXGroup;
 			children = (
+				B76778751EACE8E000B76EDF /* View */,
 				B767785C1EACB8E200B76EDF /* Category */,
 				B767784E1EAC7F7900B76EDF /* Utility */,
 			);
@@ -233,6 +259,8 @@
 				B76778661EACB99B00B76EDF /* UIColor+ProjectColor.m */,
 				B76778671EACB99B00B76EDF /* UITableView+ProjectCellRadius.h */,
 				B76778681EACB99B00B76EDF /* UITableView+ProjectCellRadius.m */,
+				B76778A41EACEB1100B76EDF /* UIView+Style.h */,
+				B76778A51EACEB1100B76EDF /* UIView+Style.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -253,6 +281,58 @@
 				B76778631EACB97D00B76EDF /* UITableView+CellRadius.m */,
 			);
 			path = CZTableViewCellRadius;
+			sourceTree = "<group>";
+		};
+		B76778751EACE8E000B76EDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B76778761EACE8F600B76EDF /* ProjectTextField.h */,
+				B76778771EACE8F600B76EDF /* ProjectTextField.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B767788E1EACE99B00B76EDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B767788F1EACE99B00B76EDF /* CZInspectableView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B767788F1EACE99B00B76EDF /* CZInspectableView */ = {
+			isa = PBXGroup;
+			children = (
+				B76778901EACE99B00B76EDF /* Category */,
+				B76778971EACE99B00B76EDF /* View */,
+			);
+			path = CZInspectableView;
+			sourceTree = "<group>";
+		};
+		B76778901EACE99B00B76EDF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B76778911EACE99B00B76EDF /* UIButton+CZInspectableButton.h */,
+				B76778921EACE99B00B76EDF /* UIButton+CZInspectableButton.m */,
+				B76778931EACE99B00B76EDF /* UITextField+CZInspectableTextField.h */,
+				B76778941EACE99B00B76EDF /* UITextField+CZInspectableTextField.m */,
+				B76778951EACE99B00B76EDF /* UIView+CZInspectableView.h */,
+				B76778961EACE99B00B76EDF /* UIView+CZInspectableView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B76778971EACE99B00B76EDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B76778981EACE99B00B76EDF /* CZInspectableButton.h */,
+				B76778991EACE99B00B76EDF /* CZInspectableButton.m */,
+				B767789A1EACE99B00B76EDF /* CZInspectableTextField.h */,
+				B767789B1EACE99B00B76EDF /* CZInspectableTextField.m */,
+				B767789C1EACE99B00B76EDF /* CZInspectableView.h */,
+				B767789D1EACE99B00B76EDF /* CZInspectableView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B7D754A21EA504EF0089A8CD = {
@@ -439,16 +519,24 @@
 				B767784C1EAC7F1B00B76EDF /* CZString.m in Sources */,
 				B76778431EAC7E2C00B76EDF /* BaseViewController.m in Sources */,
 				B76778421EAC7E2C00B76EDF /* BaseTableViewController.m in Sources */,
+				B76778A11EACE99B00B76EDF /* CZInspectableButton.m in Sources */,
+				B76778A31EACE99B00B76EDF /* CZInspectableView.m in Sources */,
 				B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */,
+				B767789E1EACE99B00B76EDF /* UIButton+CZInspectableButton.m in Sources */,
 				B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */,
+				B76778A01EACE99B00B76EDF /* UIView+CZInspectableView.m in Sources */,
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
+				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
+				B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */,
 				B76778411EAC7E2C00B76EDF /* BaseNavigationController.m in Sources */,
 				B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */,
 				B767786A1EACB99B00B76EDF /* UITableView+ProjectCellRadius.m in Sources */,
 				B76778691EACB99B00B76EDF /* UIColor+ProjectColor.m in Sources */,
 				B76778511EAC7F7900B76EDF /* AppConstant.m in Sources */,
+				B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */,
+				B76778781EACE8F600B76EDF /* ProjectTextField.m in Sources */,
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,
 				B76778381EAC7D2500B76EDF /* UIScrollView+MLInputDodger.m in Sources */,
 				B76778581EAC800700B76EDF /* LoginVC.m in Sources */,

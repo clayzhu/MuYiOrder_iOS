@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +21,67 @@
                     <view key="view" contentMode="scaleToFill" id="dqb-Iv-meB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-bw-IK7">
+                                <rect key="frame" x="15" y="285.5" width="345" height="48"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="久仰阁下大名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBr-6R-4CL" customClass="ProjectTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DBr-6R-4CL" firstAttribute="top" secondItem="ozE-bw-IK7" secondAttribute="top" id="1Jk-pE-FE0"/>
+                                    <constraint firstAttribute="bottom" secondItem="DBr-6R-4CL" secondAttribute="bottom" id="EAY-fa-lcx"/>
+                                    <constraint firstAttribute="height" constant="48" id="FQM-Ml-PVC"/>
+                                    <constraint firstItem="DBr-6R-4CL" firstAttribute="leading" secondItem="ozE-bw-IK7" secondAttribute="leading" id="NnY-wt-FU1"/>
+                                    <constraint firstAttribute="trailing" secondItem="DBr-6R-4CL" secondAttribute="trailing" id="Sfu-XF-YCv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NH0-By-X2G">
+                                <rect key="frame" x="15" y="348.5" width="345" height="48"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="打死也不能说的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnM-av-elD" customClass="ProjectTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="HnM-av-elD" firstAttribute="top" secondItem="NH0-By-X2G" secondAttribute="top" id="Qsl-3f-7rS"/>
+                                    <constraint firstItem="HnM-av-elD" firstAttribute="leading" secondItem="NH0-By-X2G" secondAttribute="leading" id="V17-bp-3cH"/>
+                                    <constraint firstAttribute="bottom" secondItem="HnM-av-elD" secondAttribute="bottom" id="W9K-48-Cr4"/>
+                                    <constraint firstAttribute="trailing" secondItem="HnM-av-elD" secondAttribute="trailing" id="snI-AO-vXc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ozE-bw-IK7" firstAttribute="centerX" secondItem="dqb-Iv-meB" secondAttribute="centerX" id="DgJ-fp-VdN"/>
+                            <constraint firstItem="NH0-By-X2G" firstAttribute="height" secondItem="ozE-bw-IK7" secondAttribute="height" id="Ogq-CL-67T"/>
+                            <constraint firstItem="ozE-bw-IK7" firstAttribute="leading" secondItem="dqb-Iv-meB" secondAttribute="leading" constant="15" id="Vq7-1X-Blo"/>
+                            <constraint firstItem="NH0-By-X2G" firstAttribute="leading" secondItem="ozE-bw-IK7" secondAttribute="leading" id="YQ2-FW-VQq"/>
+                            <constraint firstItem="NH0-By-X2G" firstAttribute="width" secondItem="ozE-bw-IK7" secondAttribute="width" id="dZc-8H-2kC"/>
+                            <constraint firstItem="ozE-bw-IK7" firstAttribute="bottom" secondItem="dqb-Iv-meB" secondAttribute="centerY" id="gqL-TP-6RS"/>
+                            <constraint firstItem="NH0-By-X2G" firstAttribute="top" secondItem="ozE-bw-IK7" secondAttribute="bottom" constant="15" id="ixL-2a-uoW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pwdTF" destination="HnM-av-elD" id="DZQ-k7-9lq"/>
+                        <outlet property="pwdView" destination="NH0-By-X2G" id="xNH-Kd-7ol"/>
+                        <outlet property="usernameTF" destination="DBr-6R-4CL" id="Aqe-kc-gZK"/>
+                        <outlet property="usernameView" destination="ozE-bw-IK7" id="G16-mI-ymn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ww-ST-Cb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111" y="179"/>
+            <point key="canvasLocation" x="109.59999999999999" y="178.56071964017991"/>
         </scene>
     </scenes>
 </document>

@@ -16,5 +16,6 @@
 #import "BaseViewController.h"
 #import "BaseTableViewController.h"
 #import "UIColor+ProjectColor.h"
+#import "UIView+Style.h"
 
 #endif /* PrefixHeader_pch */

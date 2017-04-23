@@ -9,6 +9,11 @@
 #import "LoginVC.h"
 
 @interface LoginVC ()
+@property (weak, nonatomic) IBOutlet UIView *usernameView;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTF;
+
+@property (weak, nonatomic) IBOutlet UIView *pwdView;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTF;
 
 @end
 
@@ -18,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"MuYi楊";
+    [self setupViewStyle];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +40,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Setup
+- (void)setupViewStyle {
+    [self.usernameView setupTFViewStyle];
+    [self.pwdView setupTFViewStyle];
+}
 
 @end
