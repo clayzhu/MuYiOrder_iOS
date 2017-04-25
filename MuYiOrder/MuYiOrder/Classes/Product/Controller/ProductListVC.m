@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"百宝箱";
+    [self setupNavItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +35,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Setup
+/** 设置导航栏上按钮 */
+- (void)setupNavItem {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProduct)];
+}
+
+#pragma mark - Action
+/** 添加新产品 */
+- (void)addNewProduct {
+    
+}
 
 @end

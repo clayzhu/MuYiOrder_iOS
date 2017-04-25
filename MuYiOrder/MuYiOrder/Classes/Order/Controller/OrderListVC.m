@@ -37,11 +37,13 @@
 */
 
 #pragma mark - Setup
+/** 设置导航栏上按钮 */
 - (void)setupNavItem {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewOrder)];
 }
 
 #pragma mark - Action
+/** 添加新订单 */
 - (void)addNewOrder {
     
 }
