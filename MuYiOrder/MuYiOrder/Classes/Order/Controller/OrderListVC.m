@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"都是钱";
+    [self setupNavItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +35,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Setup
+- (void)setupNavItem {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewOrder)];
+}
+
+#pragma mark - Action
+- (void)addNewOrder {
+    
+}
 
 @end
