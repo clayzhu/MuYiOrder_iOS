@@ -39,7 +39,7 @@
 #pragma mark - Setup
 /** 设置导航栏上按钮 */
 - (void)setupNavItem {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProduct)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProduct)];
 }
 
 #pragma mark - Action
