@@ -40,10 +40,10 @@
 /** 设置 tabBar 的子 vc */
 - (void)setupViewControllers {
     // 订单
-    UIViewController *vc = [self setWithStoryboardName:@"Order" viewControllerId:@"OrderListVC" title:@"订单" image:@"" selectedImage:@""];
+    UIViewController *vc = [self setWithStoryboardName:@"Order" viewControllerId:@"OrderListVC" title:@"订单" image:@"MuYiYang" selectedImage:@"MuYiYang"];
     BaseNavigationController *nc = [[BaseNavigationController alloc] initWithRootViewController:vc];
     // 产品
-    UIViewController *vc2 = [self setWithStoryboardName:@"Product" viewControllerId:@"ProductListVC" title:@"产品" image:@"" selectedImage:@""];
+    UIViewController *vc2 = [self setWithStoryboardName:@"Product" viewControllerId:@"ProductListVC" title:@"产品" image:@"MuYiYang" selectedImage:@"MuYiYang"];
     BaseNavigationController *nc2 = [[BaseNavigationController alloc] initWithRootViewController:vc2];
     
     self.viewControllers = @[nc, nc2];
