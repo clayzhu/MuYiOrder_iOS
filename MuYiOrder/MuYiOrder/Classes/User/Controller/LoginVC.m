@@ -7,6 +7,7 @@
 //
 
 #import "LoginVC.h"
+#import "MuYiTBC.h"
 
 @interface LoginVC ()
 @property (weak, nonatomic) IBOutlet UIView *usernameView;
@@ -52,6 +53,12 @@
     [self.usernameView setupTFViewStyle];
     [self.pwdView setupTFViewStyle];
     [self.submitView setupTFViewStyle];
+}
+
+#pragma mark - Action
+- (IBAction)submitAction:(UIButton *)sender {
+    MuYiTBC *tbc = [[MuYiTBC alloc] init];
+    [self presentViewController:tbc animated:YES completion:nil];
 }
 
 @end

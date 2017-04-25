@@ -65,6 +65,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="芝麻开门"/>
+                                        <connections>
+                                            <action selector="submitAction:" destination="IYs-aH-pdZ" eventType="touchUpInside" id="Wvj-32-LWs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
