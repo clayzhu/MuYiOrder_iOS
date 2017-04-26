@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AE77B1EB08A480039F11A /* UserCenterVC.m */; };
 		18D6723D1EAEE5690011706C /* MuYiTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723C1EAEE5690011706C /* MuYiTBC.m */; };
 		18D672401EAEE5950011706C /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723F1EAEE5950011706C /* OrderListVC.m */; };
 		18D672421EAEE5B00011706C /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D672411EAEE5B00011706C /* Order.storyboard */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188AE77A1EB08A480039F11A /* UserCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterVC.h; sourceTree = "<group>"; };
+		188AE77B1EB08A480039F11A /* UserCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterVC.m; sourceTree = "<group>"; };
 		18D6723B1EAEE5690011706C /* MuYiTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuYiTBC.h; sourceTree = "<group>"; };
 		18D6723C1EAEE5690011706C /* MuYiTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuYiTBC.m; sourceTree = "<group>"; };
 		18D6723E1EAEE5950011706C /* OrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListVC.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 			children = (
 				B76778561EAC800700B76EDF /* LoginVC.h */,
 				B76778571EAC800700B76EDF /* LoginVC.m */,
+				188AE77A1EB08A480039F11A /* UserCenterVC.h */,
+				188AE77B1EB08A480039F11A /* UserCenterVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
+				188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */,
 				B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */,
 				B76778411EAC7E2C00B76EDF /* BaseNavigationController.m in Sources */,
 				B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */,

@@ -45,8 +45,11 @@
     // 产品
     UIViewController *vc2 = [self setWithStoryboardName:@"Product" viewControllerId:@"ProductListVC" title:@"产品" image:@"needle" selectedImage:@"needle_pressed"];
     BaseNavigationController *nc2 = [[BaseNavigationController alloc] initWithRootViewController:vc2];
+    // 我的
+    UIViewController *vc3 = [self setWithStoryboardName:@"User" viewControllerId:@"UserCenterVC" title:@"我的" image:@"sheep" selectedImage:@"sheep_pressed"];
+    BaseNavigationController *nc3 = [[BaseNavigationController alloc] initWithRootViewController:vc3];
     
-    self.viewControllers = @[nc, nc2];
+    self.viewControllers = @[nc, nc2, nc3];
 }
 
 @end
