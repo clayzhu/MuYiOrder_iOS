@@ -42,6 +42,7 @@
 		B76778AA1EACF27900B76EDF /* CZBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778A91EACF27900B76EDF /* CZBlockButton.m */; };
 		B76778AD1EACF28E00B76EDF /* ProjectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778AC1EACF28E00B76EDF /* ProjectButton.m */; };
 		B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778B01EACF2E000B76EDF /* UIImage+Custom.m */; };
+		B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -118,6 +119,8 @@
 		B76778AF1EACF2E000B76EDF /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
 		B76778B01EACF2E000B76EDF /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
 		B78FFC141EABB3990095A554 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B79C31A11EB24711002D1A4D /* OrderDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTVC.h; sourceTree = "<group>"; };
+		B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTVC.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B7D754B11EA504EF0089A8CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				18D6723C1EAEE5690011706C /* MuYiTBC.m */,
 				18D6723E1EAEE5950011706C /* OrderListVC.h */,
 				18D6723F1EAEE5950011706C /* OrderListVC.m */,
+				B79C31A11EB24711002D1A4D /* OrderDetailTVC.h */,
+				B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D6724B1EAEE67D0011706C /* ProductListVC.m in Sources */,
+				B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */,
 				B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */,
 				B767784C1EAC7F1B00B76EDF /* CZString.m in Sources */,
 				B76778431EAC7E2C00B76EDF /* BaseViewController.m in Sources */,
