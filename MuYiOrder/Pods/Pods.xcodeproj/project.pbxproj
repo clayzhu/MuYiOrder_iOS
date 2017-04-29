@@ -13,11 +13,13 @@
 
 /* Begin PBXFileReference section */
 		00BF82626203961EF0B9FBB88C87572A /* libPods-MuYiOrder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MuYiOrder.a"; path = "libPods-MuYiOrder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		021B256A3E55CE9408EAD79F4B9190F1 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevealServer.framework; path = "RevealServer-4/iOS/RevealServer.framework"; sourceTree = "<group>"; };
 		1A713001BCC2D9BEB0C7548EA40710BC /* Pods-MuYiOrder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MuYiOrder-dummy.m"; sourceTree = "<group>"; };
+		1F0214B6127C72DAFDE64C609EDE29A9 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevealServer.framework; path = "RevealServer-4/iOS/RevealServer.framework"; sourceTree = "<group>"; };
 		34E1355887DA447786A87FC035D2D576 /* Pods-MuYiOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MuYiOrder.debug.xcconfig"; sourceTree = "<group>"; };
 		5FD0343E3428B8448E5C18F95F23B59D /* Pods-MuYiOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MuYiOrder.release.xcconfig"; sourceTree = "<group>"; };
+		71EBB137EA06887957BC8F5AF75B8FCD /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		91C2D14B04A6A2867C1A234389128549 /* Pods-MuYiOrder-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MuYiOrder-acknowledgements.plist"; sourceTree = "<group>"; };
+		931ABE42345558321D2F11060A56B468 /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D13A3C3FF372ADEDF7B62D65815245FB /* Pods-MuYiOrder-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MuYiOrder-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -37,6 +39,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EDDE70722C265FB9A16949CAFF489A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F0214B6127C72DAFDE64C609EDE29A9 /* RevealServer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28399656CD08413D2B78F6C948A84333 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				820C6BF96654E0AAC6540721DE7DB2A9 /* BmobSDK */,
+				DAE60D6CA66D3F028E3372B32D876DE8 /* Reveal-SDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		50C9853CFB974D3925BA324604AF43AE /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,18 +77,28 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9B6766349D399265AA26ED6C7E8D5333 /* Pods */,
+				28399656CD08413D2B78F6C948A84333 /* Pods */,
 				9E0359E816CB008454B31DBE60515162 /* Products */,
 				50C9853CFB974D3925BA324604AF43AE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9B6766349D399265AA26ED6C7E8D5333 /* Pods */ = {
+		80F3A28F7542421A4362B98C67AF1917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E853FEE7349B6E1788A524CC074AEEB0 /* Reveal-SDK */,
+				931ABE42345558321D2F11060A56B468 /* BmobSDK.framework */,
+				71EBB137EA06887957BC8F5AF75B8FCD /* libWeChatSDK.a */,
 			);
-			name = Pods;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		820C6BF96654E0AAC6540721DE7DB2A9 /* BmobSDK */ = {
+			isa = PBXGroup;
+			children = (
+				80F3A28F7542421A4362B98C67AF1917 /* Frameworks */,
+			);
+			name = BmobSDK;
+			path = BmobSDK;
 			sourceTree = "<group>";
 		};
 		9E0359E816CB008454B31DBE60515162 /* Products */ = {
@@ -103,18 +132,10 @@
 			path = "Target Support Files/Pods-MuYiOrder";
 			sourceTree = "<group>";
 		};
-		DFA5B0801DB6039B016AF9C5D67304C6 /* Frameworks */ = {
+		DAE60D6CA66D3F028E3372B32D876DE8 /* Reveal-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				021B256A3E55CE9408EAD79F4B9190F1 /* RevealServer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E853FEE7349B6E1788A524CC074AEEB0 /* Reveal-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				DFA5B0801DB6039B016AF9C5D67304C6 /* Frameworks */,
+				1EDDE70722C265FB9A16949CAFF489A0 /* Frameworks */,
 			);
 			name = "Reveal-SDK";
 			path = "Reveal-SDK";
