@@ -23,6 +23,9 @@
     
     [self setupRootVC];
     
+    // 设置应用的 BmobKey
+    [Bmob registerWithAppKey:kBmobApplicationID];
+    
     return YES;
 }
 

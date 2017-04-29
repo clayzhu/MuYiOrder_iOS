@@ -8,20 +8,11 @@
 
 #import "AppConstant.h"
 
-NSString *const kUmengAppKey = @"";
-NSString *const kWXAppId = @"";
-NSString *const kWXAppSecret = @"";
+NSString *const kBmobApplicationID = @"b577d17f603be1baca49f7ed6c67d95c";
 
 NSString *const kLoginNotification = @"LoginNotification";
 
 NSString *const kLogined = @"LoginedKey";
 NSString *const kUserModel = @"UserModelKey";
-NSString *const kAccessToken = @"AccessTokenKey";
-NSString *const kPhontTextFieldContent = @"PhontTextFieldContentKey";
-NSString *const kDeviceToken = @"DeviceTokenKey";
-NSString *const kNotFirstOpenApp = @"NotFirstOpenAppKey";
 
-/** 一页数据的数量 */
 NSInteger const countPerPage = 15;
-
-CGFloat const pickerViewHeight = 200.f;

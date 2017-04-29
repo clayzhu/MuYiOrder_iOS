@@ -17,5 +17,7 @@
 #import "BaseTableViewController.h"
 #import "UIColor+ProjectColor.h"
 #import "UIView+Style.h"
+#import <BmobSDK/Bmob.h>
+#import "AppConstant.h"
 
 #endif /* PrefixHeader_pch */
