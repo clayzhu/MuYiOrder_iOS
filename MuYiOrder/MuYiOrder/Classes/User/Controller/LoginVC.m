@@ -57,8 +57,15 @@
 
 #pragma mark - Action
 - (IBAction)submitAction:(UIButton *)sender {
-    MuYiTBC *tbc = [[MuYiTBC alloc] init];
-    [self presentViewController:tbc animated:YES completion:nil];
+//    MuYiTBC *tbc = [[MuYiTBC alloc] init];
+//    [self presentViewController:tbc animated:YES completion:nil];
+    
+    BmobObject *user = [BmobObject objectWithClassName:@"_User"];
+    [user saveAllWithDictionary:@{@"username":@"Clay", @"password":@"qqqqqq"}];
+    [user saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        NSLog(@"");
+    }];
+    NSLog(@"");
 }
 
 @end
