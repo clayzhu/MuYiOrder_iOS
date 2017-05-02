@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AE77B1EB08A480039F11A /* UserCenterVC.m */; };
+		18A11A441EB87E93009437E0 /* MBProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A411EB87E93009437E0 /* MBProgressHelper.m */; };
+		18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A431EB87E93009437E0 /* UIImage+GIF.m */; };
 		18D6723D1EAEE5690011706C /* MuYiTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723C1EAEE5690011706C /* MuYiTBC.m */; };
 		18D672401EAEE5950011706C /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723F1EAEE5950011706C /* OrderListVC.m */; };
 		18D672421EAEE5B00011706C /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D672411EAEE5B00011706C /* Order.storyboard */; };
@@ -53,6 +55,10 @@
 /* Begin PBXFileReference section */
 		188AE77A1EB08A480039F11A /* UserCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterVC.h; sourceTree = "<group>"; };
 		188AE77B1EB08A480039F11A /* UserCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterVC.m; sourceTree = "<group>"; };
+		18A11A401EB87E93009437E0 /* MBProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHelper.h; sourceTree = "<group>"; };
+		18A11A411EB87E93009437E0 /* MBProgressHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHelper.m; sourceTree = "<group>"; };
+		18A11A421EB87E93009437E0 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		18A11A431EB87E93009437E0 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
 		18D6723B1EAEE5690011706C /* MuYiTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuYiTBC.h; sourceTree = "<group>"; };
 		18D6723C1EAEE5690011706C /* MuYiTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuYiTBC.m; sourceTree = "<group>"; };
 		18D6723E1EAEE5950011706C /* OrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListVC.h; sourceTree = "<group>"; };
@@ -144,6 +150,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A11A3F1EB87E93009437E0 /* MBProgressHelper */ = {
+			isa = PBXGroup;
+			children = (
+				18A11A401EB87E93009437E0 /* MBProgressHelper.h */,
+				18A11A411EB87E93009437E0 /* MBProgressHelper.m */,
+				18A11A421EB87E93009437E0 /* UIImage+GIF.h */,
+				18A11A431EB87E93009437E0 /* UIImage+GIF.m */,
+			);
+			path = MBProgressHelper;
+			sourceTree = "<group>";
+		};
 		18D672381EAEE5250011706C /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +277,7 @@
 		B76778481EAC7F1B00B76EDF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				18A11A3F1EB87E93009437E0 /* MBProgressHelper */,
 				B76778491EAC7F1B00B76EDF /* CZString */,
 			);
 			path = Utility;
@@ -641,9 +659,11 @@
 				B76778AD1EACF28E00B76EDF /* ProjectButton.m in Sources */,
 				B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */,
 				B76778A01EACE99B00B76EDF /* UIView+CZInspectableView.m in Sources */,
+				18A11A441EB87E93009437E0 /* MBProgressHelper.m in Sources */,
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
+				18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
 				188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */,
 				B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */,

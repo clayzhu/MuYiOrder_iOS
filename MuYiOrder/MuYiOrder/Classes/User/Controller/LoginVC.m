@@ -79,11 +79,11 @@
 #pragma mark - Action
 - (IBAction)submitAction:(UIButton *)sender {
     if ([CZString isEmpty:self.usernameTF.text]) {
-//        [MBProgressHelper showTextHUDWithMessage:@"请输入您的用户名"];
+        [MBProgressHelper showTextHUDWithMessage:@"请输入您的用户名"];
         return;
     }
     if ([CZString isEmpty:self.pwdTF.text]) {
-//        [MBProgressHelper showTextHUDWithMessage:@"请输入您的登录密码"];
+        [MBProgressHelper showTextHUDWithMessage:@"请输入您的登录密码"];
         return;
     }
     [self.view endEditing:YES];

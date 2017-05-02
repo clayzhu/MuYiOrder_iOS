@@ -4,4 +4,5 @@ platform :ios, '8.0'
 target 'MuYiOrder' do
 	pod 'Reveal-SDK', '~> 4', :configurations => ['Debug']
 	pod 'BmobSDK'
+	pod 'MBProgressHUD', '~> 1.0.0'
 end

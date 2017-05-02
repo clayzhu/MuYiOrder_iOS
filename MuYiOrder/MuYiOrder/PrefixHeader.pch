@@ -20,5 +20,6 @@
 #import <BmobSDK/Bmob.h>
 #import "AppConstant.h"
 #import "CZString.h"
+#import "MBProgressHelper.h"
 
 #endif /* PrefixHeader_pch */
