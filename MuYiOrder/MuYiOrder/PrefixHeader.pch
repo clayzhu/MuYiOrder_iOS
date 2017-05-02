@@ -19,5 +19,6 @@
 #import "UIView+Style.h"
 #import <BmobSDK/Bmob.h>
 #import "AppConstant.h"
+#import "CZString.h"
 
 #endif /* PrefixHeader_pch */
