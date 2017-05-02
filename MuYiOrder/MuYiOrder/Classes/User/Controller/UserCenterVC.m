@@ -7,8 +7,12 @@
 //
 
 #import "UserCenterVC.h"
+#import "ProjectUtility.h"
 
-@interface UserCenterVC ()
+@interface UserCenterVC () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIView *submitView;
 
 @end
 
@@ -34,5 +38,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *kUserCenterCell = @"UserCenterCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserCenterCell];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kUserCenterCell];
+    }
+    cell.textLabel.text = @"cell";
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+#pragma mark - Action
+- (IBAction)submitAction:(UIButton *)sender {
+    // 删除登录
+    [AppUtility signOut];
+    
+    UIViewController *vc = [ProjectUtility rootViewController];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 @end

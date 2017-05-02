@@ -29,7 +29,7 @@ static NSTimeInterval const textHideDelay = 2.0;
 }
 
 + (void)showProgressHUDInView:(UIView *)view {
-	[MBProgressHelper showProgressHUDInView:view withMessage:@"加载中"];
+	[MBProgressHelper showProgressHUDInView:view withMessage:@"拼命加载中"];
 }
 
 + (void)hideAllHUDsForView:(UIView*)view {

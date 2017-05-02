@@ -66,16 +66,23 @@
 #pragma mark - Request
 /** 请求登录 */
 - (void)requestLogin {
+    [MBProgressHelper showProgressHUD];
     [BmobUser loginWithUsernameInBackground:self.usernameTF.text password:self.pwdTF.text
                                       block:^(BmobUser *user, NSError *error) {
+                                          [MBProgressHelper hideProgressHUD];
                                           if (user) {
-                                              // 登录
+                                              // 保存登录
                                               [AppUtility signIn];
                                               
                                               UIViewController *vc = [ProjectUtility rootViewController];
                                               [self presentViewController:vc animated:YES completion:nil];
                                           } else {
                                               NSLog(@"error:%@", error);
+                                              if (error.code == 101) {
+                                                  [MBProgressHelper showTextHUDWithMessage:@"用户名或密码错误"];
+                                              } else {
+                                                  [MBProgressHelper showTextHUDWithMessage:error.localizedDescription];
+                                              }
                                           }
                                       }];
 }
