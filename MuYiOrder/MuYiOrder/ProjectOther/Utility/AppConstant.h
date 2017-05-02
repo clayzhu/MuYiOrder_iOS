@@ -19,8 +19,8 @@ FOUNDATION_EXPORT NSString *const kLoginNotification;
 // UserDefaults Key
 /** 判断登录的key */
 FOUNDATION_EXPORT NSString *const kLogined;
-/** 用户 Model 信息 UserDefaults Key */
-FOUNDATION_EXPORT NSString *const kUserModel;
+/** DeviceToken Key */
+FOUNDATION_EXPORT NSString *const kDeviceToken;
 
 /** 一页数据的数量 */
 FOUNDATION_EXPORT NSInteger const countPerPage;

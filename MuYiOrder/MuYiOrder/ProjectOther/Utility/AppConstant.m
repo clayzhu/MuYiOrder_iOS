@@ -13,6 +13,6 @@ NSString *const kBmobApplicationID = @"b577d17f603be1baca49f7ed6c67d95c";
 NSString *const kLoginNotification = @"LoginNotification";
 
 NSString *const kLogined = @"LoginedKey";
-NSString *const kUserModel = @"UserModelKey";
+NSString *const kDeviceToken = @"DeviceTokenKey";
 
 NSInteger const countPerPage = 15;

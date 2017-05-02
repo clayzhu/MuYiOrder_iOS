@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ProjectUtility.h"
 
 @interface AppDelegate ()
 
@@ -58,9 +59,8 @@
 
 #pragma mark - Root ViewController
 - (void)setupRootVC {
-    UIViewController *vc = [[UIStoryboard storyboardWithName:@"User" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginVC"];
-    BaseNavigationController *nc = [[BaseNavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = nc;
+    UIViewController *vc = [ProjectUtility rootViewController];
+    self.window.rootViewController = vc;
 }
 
 @end

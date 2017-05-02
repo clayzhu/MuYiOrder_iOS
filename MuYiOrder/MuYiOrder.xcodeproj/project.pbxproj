@@ -10,6 +10,8 @@
 		188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AE77B1EB08A480039F11A /* UserCenterVC.m */; };
 		18A11A441EB87E93009437E0 /* MBProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A411EB87E93009437E0 /* MBProgressHelper.m */; };
 		18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A431EB87E93009437E0 /* UIImage+GIF.m */; };
+		18A11A6B1EB88496009437E0 /* ProjectUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A6A1EB88496009437E0 /* ProjectUtility.m */; };
+		18A11A6E1EB884ED009437E0 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A11A6D1EB884ED009437E0 /* AppUtility.m */; };
 		18D6723D1EAEE5690011706C /* MuYiTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723C1EAEE5690011706C /* MuYiTBC.m */; };
 		18D672401EAEE5950011706C /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6723F1EAEE5950011706C /* OrderListVC.m */; };
 		18D672421EAEE5B00011706C /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D672411EAEE5B00011706C /* Order.storyboard */; };
@@ -59,6 +61,10 @@
 		18A11A411EB87E93009437E0 /* MBProgressHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHelper.m; sourceTree = "<group>"; };
 		18A11A421EB87E93009437E0 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		18A11A431EB87E93009437E0 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		18A11A691EB88496009437E0 /* ProjectUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectUtility.h; sourceTree = "<group>"; };
+		18A11A6A1EB88496009437E0 /* ProjectUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectUtility.m; sourceTree = "<group>"; };
+		18A11A6C1EB884ED009437E0 /* AppUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtility.h; sourceTree = "<group>"; };
+		18A11A6D1EB884ED009437E0 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtility.m; sourceTree = "<group>"; };
 		18D6723B1EAEE5690011706C /* MuYiTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuYiTBC.h; sourceTree = "<group>"; };
 		18D6723C1EAEE5690011706C /* MuYiTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuYiTBC.m; sourceTree = "<group>"; };
 		18D6723E1EAEE5950011706C /* OrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListVC.h; sourceTree = "<group>"; };
@@ -307,6 +313,10 @@
 			children = (
 				B767784F1EAC7F7900B76EDF /* AppConstant.h */,
 				B76778501EAC7F7900B76EDF /* AppConstant.m */,
+				18A11A691EB88496009437E0 /* ProjectUtility.h */,
+				18A11A6A1EB88496009437E0 /* ProjectUtility.m */,
+				18A11A6C1EB884ED009437E0 /* AppUtility.h */,
+				18A11A6D1EB884ED009437E0 /* AppUtility.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -673,7 +683,9 @@
 				B76778691EACB99B00B76EDF /* UIColor+ProjectColor.m in Sources */,
 				18D672401EAEE5950011706C /* OrderListVC.m in Sources */,
 				18D6723D1EAEE5690011706C /* MuYiTBC.m in Sources */,
+				18A11A6E1EB884ED009437E0 /* AppUtility.m in Sources */,
 				B76778511EAC7F7900B76EDF /* AppConstant.m in Sources */,
+				18A11A6B1EB88496009437E0 /* ProjectUtility.m in Sources */,
 				B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */,
 				B76778781EACE8F600B76EDF /* ProjectTextField.m in Sources */,
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,

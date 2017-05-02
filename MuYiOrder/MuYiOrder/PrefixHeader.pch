@@ -21,5 +21,6 @@
 #import "AppConstant.h"
 #import "CZString.h"
 #import "MBProgressHelper.h"
+#import "AppUtility.h"
 
 #endif /* PrefixHeader_pch */

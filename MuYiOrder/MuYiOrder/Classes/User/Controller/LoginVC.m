@@ -8,6 +8,7 @@
 
 #import "LoginVC.h"
 #import "MuYiTBC.h"
+#import "ProjectUtility.h"
 
 @interface LoginVC ()
 @property (weak, nonatomic) IBOutlet UIView *usernameView;
@@ -68,8 +69,11 @@
     [BmobUser loginWithUsernameInBackground:self.usernameTF.text password:self.pwdTF.text
                                       block:^(BmobUser *user, NSError *error) {
                                           if (user) {
-                                              MuYiTBC *tbc = [[MuYiTBC alloc] init];
-                                              [self presentViewController:tbc animated:YES completion:nil];
+                                              // 登录
+                                              [AppUtility signIn];
+                                              
+                                              UIViewController *vc = [ProjectUtility rootViewController];
+                                              [self presentViewController:vc animated:YES completion:nil];
                                           } else {
                                               NSLog(@"error:%@", error);
                                           }
