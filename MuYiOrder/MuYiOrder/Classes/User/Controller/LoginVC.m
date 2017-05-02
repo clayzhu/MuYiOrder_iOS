@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     self.title = @"MuYi楊";
     [self setupViewStyle];
+    [self setupDefaultViewData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,23 +50,29 @@
 }
 
 #pragma mark - Setup
+/** 设置 UI 样式 */
 - (void)setupViewStyle {
     [self.usernameView setupTFViewStyle];
     [self.pwdView setupTFViewStyle];
     [self.submitView setupTFViewStyle];
 }
 
+- (void)setupDefaultViewData {
+    self.usernameTF.text = @"muyiyang";
+    self.pwdTF.text = @"muyiyang";
+}
+
 #pragma mark - Action
 - (IBAction)submitAction:(UIButton *)sender {
-//    MuYiTBC *tbc = [[MuYiTBC alloc] init];
-//    [self presentViewController:tbc animated:YES completion:nil];
-    
-    BmobObject *user = [BmobObject objectWithClassName:@"_User"];
-    [user saveAllWithDictionary:@{@"username":@"Clay", @"password":@"qqqqqq"}];
-    [user saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        NSLog(@"");
-    }];
-    NSLog(@"");
+    [BmobUser loginWithUsernameInBackground:self.usernameTF.text password:self.pwdTF.text
+                                      block:^(BmobUser *user, NSError *error) {
+                                          if (user) {
+                                              MuYiTBC *tbc = [[MuYiTBC alloc] init];
+                                              [self presentViewController:tbc animated:YES completion:nil];
+                                          } else {
+                                              NSLog(@"error:%@", error);
+                                          }
+                                      }];
 }
 
 @end
