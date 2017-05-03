@@ -55,6 +55,9 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 #pragma mark - Action
 - (IBAction)submitAction:(UIButton *)sender {
