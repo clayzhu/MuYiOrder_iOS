@@ -8,6 +8,9 @@
 
 #import "UserCenterVC.h"
 #import "ProjectUtility.h"
+#import "BaseTextFieldCell.h"
+
+static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 
 @interface UserCenterVC () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,6 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"羊羊羊";
+    [self setupViewStyle];
+    [self registerCell];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,24 +44,31 @@
 }
 */
 
+#pragma mark - Setup
+/** 设置 UI 样式 */
+- (void)setupViewStyle {
+    [self.submitView setupTFViewStyle];
+}
+
+- (void)registerCell {
+    [self.tableView registerNib:[UINib nibWithNibName:kBaseTextFieldCell bundle:nil] forCellReuseIdentifier:kBaseTextFieldCell];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kUserCenterCell = @"UserCenterCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kUserCenterCell];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kUserCenterCell];
-    }
-    cell.textLabel.text = @"cell";
+    BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+    cell.textLabel.text = @"金库";
+    cell.textField.text = @"0.00 软妹币";
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView sectionCornerRadiusWillDisplayCell:cell forRowAtIndexPath:indexPath];
 }
 
 #pragma mark - Action

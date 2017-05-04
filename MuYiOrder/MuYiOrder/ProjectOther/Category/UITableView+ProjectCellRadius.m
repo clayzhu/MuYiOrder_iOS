@@ -12,9 +12,9 @@
 
 - (void)sectionCornerRadiusWillDisplayCell:(UITableViewCell *)cell
 						 forRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self sectionCornerRadius:2.0
-					  dxInset:10.0
-					  dyInset:2.0
+	[self sectionCornerRadius:6.0
+					  dxInset:15.0
+					  dyInset:0.0
 			  backgroundColor:[UIColor whiteColor]
 				  borderColor:[UIColor clearColor]
 				  shadowColor:[UIColor blackColor]
@@ -28,9 +28,9 @@
 
 - (void)cellCornerRadiusWillDisplayCell:(UITableViewCell *)cell
 					  forRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self cellCornerRadius:2.0
-				   dxInset:10.0
-				   dyInset:2.0
+	[self cellCornerRadius:6.0
+				   dxInset:15.0
+				   dyInset:0.0
 		   backgroundColor:[UIColor whiteColor]
 			   borderColor:[UIColor clearColor]
 			   shadowColor:[UIColor blackColor]

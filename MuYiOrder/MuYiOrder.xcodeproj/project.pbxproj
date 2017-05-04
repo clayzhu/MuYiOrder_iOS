@@ -18,6 +18,8 @@
 		18D6724B1EAEE67D0011706C /* ProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6724A1EAEE67D0011706C /* ProductListVC.m */; };
 		18D6724D1EAEE6970011706C /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D6724C1EAEE6970011706C /* Product.storyboard */; };
 		38ECE2177C610F46E09584D5 /* libPods-MuYiOrder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */; };
+		B76373531EBB7362001C209B /* BaseTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373511EBB7362001C209B /* BaseTextFieldCell.m */; };
+		B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76373521EBB7362001C209B /* BaseTextFieldCell.xib */; };
 		B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */; };
 		B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */ = {isa = PBXBuildFile; fileRef = B767782E1EAC7D2500B76EDF /* MLInputDodger.m */; };
 		B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778301EAC7D2500B76EDF /* MLInputDodgerRetractView.m */; };
@@ -76,6 +78,9 @@
 		2CFC397B4566F0FC775DCA97 /* Pods-MuYiOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuYiOrder.release.xcconfig"; path = "Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder.release.xcconfig"; sourceTree = "<group>"; };
 		8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MuYiOrder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF84856A4E1A2E18D92F372A /* Pods-MuYiOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuYiOrder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MuYiOrder/Pods-MuYiOrder.debug.xcconfig"; sourceTree = "<group>"; };
+		B76373501EBB7362001C209B /* BaseTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextFieldCell.h; sourceTree = "<group>"; };
+		B76373511EBB7362001C209B /* BaseTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextFieldCell.m; sourceTree = "<group>"; };
+		B76373521EBB7362001C209B /* BaseTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextFieldCell.xib; sourceTree = "<group>"; };
 		B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLInputDodger.bundle; sourceTree = "<group>"; };
 		B767782D1EAC7D2500B76EDF /* MLInputDodger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLInputDodger.h; sourceTree = "<group>"; };
 		B767782E1EAC7D2500B76EDF /* MLInputDodger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInputDodger.m; sourceTree = "<group>"; };
@@ -355,6 +360,9 @@
 			isa = PBXGroup;
 			children = (
 				B76778591EAC801D00B76EDF /* User.storyboard */,
+				B76373501EBB7362001C209B /* BaseTextFieldCell.h */,
+				B76373511EBB7362001C209B /* BaseTextFieldCell.m */,
+				B76373521EBB7362001C209B /* BaseTextFieldCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,6 +603,7 @@
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
+				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
 				18D6724D1EAEE6970011706C /* Product.storyboard in Resources */,
 				B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */,
 			);
@@ -675,6 +684,7 @@
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
 				18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
+				B76373531EBB7362001C209B /* BaseTextFieldCell.m in Sources */,
 				188AE77C1EB08A480039F11A /* UserCenterVC.m in Sources */,
 				B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */,
 				B76778411EAC7E2C00B76EDF /* BaseNavigationController.m in Sources */,
