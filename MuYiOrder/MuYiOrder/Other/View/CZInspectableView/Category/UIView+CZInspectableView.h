@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
+//IB_DESIGNABLE
 
 /** 
  使用 IBInspectable 可以在 IB 的 Attributes Inspector 中创建如 cornerRadius 等原本并不支持操作的属性，
