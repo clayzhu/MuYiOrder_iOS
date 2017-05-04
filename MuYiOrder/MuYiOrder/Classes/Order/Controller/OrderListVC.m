@@ -7,8 +7,10 @@
 //
 
 #import "OrderListVC.h"
+#import "TopFilterView.h"
 
 @interface OrderListVC ()
+@property (weak, nonatomic) IBOutlet TopFilterView *topFilterView;
 
 @end
 
@@ -19,6 +21,7 @@
     // Do any additional setup after loading the view.
     self.title = @"都是钱";
     [self setupNavItem];
+    [self setupTopFilterView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +43,12 @@
 /** 设置导航栏上按钮 */
 - (void)setupNavItem {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewOrder)];
+}
+
+- (void)setupTopFilterView {
+    self.topFilterView.titles = @[@"所有订单", @"未完成", @"已完成"];
+    self.topFilterView.titleHeight = 42.0;
+    [self.topFilterView createFilterView];
 }
 
 #pragma mark - Action

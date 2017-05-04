@@ -25,9 +25,9 @@
 
 - (void)createFilterView {
     for (int i = 0; i < _titles.count; i ++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
         CGFloat btnW = CGRectGetWidth([UIScreen mainScreen].bounds) / _titles.count;
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(i * btnW, 0.0, btnW, _titleHeight);
         btn.tag = i;
         [btn setTitle:_titles[i] forState:UIControlStateNormal];
@@ -36,7 +36,7 @@
         
         if (i == 0) {   // 默认选中第一个按钮
             // 初始化 line，宽度计算
-            _moveLine = [[UILabel alloc]initWithFrame:CGRectMake(0, _titleHeight, btnW, 2)];
+            _moveLine = [[UILabel alloc] initWithFrame:CGRectMake(0, _titleHeight, btnW, 2)];
             _moveLine.backgroundColor = [UIColor whiteColor];
             [self addSubview:_moveLine];
         }
@@ -48,10 +48,8 @@
 
 /** 选择顶部的所有订单、未完成、已完成 */
 - (void)selectTopType:(UIButton *)sender {
-    
-    CGSize currentSize = CGSizeMake([CZDeviceTool screenWidth] / 3, 44);
-    
-    CGPoint center = CGPointMake(sender.center.x, _btnH);
+    CGSize currentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) / _titles.count, _titleHeight);
+    CGPoint center = CGPointMake(sender.center.x, _titleHeight);
     CGRect temp = _moveLine.frame;
     temp.origin.x = center.x - currentSize.width / 2;
     temp.origin.y = center.y;
@@ -59,8 +57,6 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         _moveLine.frame = temp;
-        self.orderStatusType = sender.tag;
-        [self.tableView reloadData];
     }];
 }
 

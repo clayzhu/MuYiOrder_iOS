@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nx-5y-dUm">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nx-5y-dUm" customClass="TopFilterView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.73725490196078436" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -36,6 +36,9 @@
                             <constraint firstItem="2Nx-5y-dUm" firstAttribute="leading" secondItem="g5n-ef-JtC" secondAttribute="leading" id="xVc-dY-XaL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="topFilterView" destination="2Nx-5y-dUm" id="rkg-JJ-cVC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DK3-Mz-eYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
