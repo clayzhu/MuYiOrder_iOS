@@ -21,6 +21,8 @@
 		B76373531EBB7362001C209B /* BaseTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373511EBB7362001C209B /* BaseTextFieldCell.m */; };
 		B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76373521EBB7362001C209B /* BaseTextFieldCell.xib */; };
 		B76373571EBB83D5001C209B /* TopFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373561EBB83D5001C209B /* TopFilterView.m */; };
+		B763735B1EBB8AB3001C209B /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373591EBB8AB3001C209B /* OrderListCell.m */; };
+		B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B763735A1EBB8AB3001C209B /* OrderListCell.xib */; };
 		B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */; };
 		B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */ = {isa = PBXBuildFile; fileRef = B767782E1EAC7D2500B76EDF /* MLInputDodger.m */; };
 		B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778301EAC7D2500B76EDF /* MLInputDodgerRetractView.m */; };
@@ -84,6 +86,9 @@
 		B76373521EBB7362001C209B /* BaseTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextFieldCell.xib; sourceTree = "<group>"; };
 		B76373551EBB83D5001C209B /* TopFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopFilterView.h; sourceTree = "<group>"; };
 		B76373561EBB83D5001C209B /* TopFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopFilterView.m; sourceTree = "<group>"; };
+		B76373581EBB8AB3001C209B /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListCell.h; sourceTree = "<group>"; };
+		B76373591EBB8AB3001C209B /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListCell.m; sourceTree = "<group>"; };
+		B763735A1EBB8AB3001C209B /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListCell.xib; sourceTree = "<group>"; };
 		B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLInputDodger.bundle; sourceTree = "<group>"; };
 		B767782D1EAC7D2500B76EDF /* MLInputDodger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLInputDodger.h; sourceTree = "<group>"; };
 		B767782E1EAC7D2500B76EDF /* MLInputDodger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInputDodger.m; sourceTree = "<group>"; };
@@ -203,6 +208,9 @@
 				18D672411EAEE5B00011706C /* Order.storyboard */,
 				B76373551EBB83D5001C209B /* TopFilterView.h */,
 				B76373561EBB83D5001C209B /* TopFilterView.m */,
+				B76373581EBB8AB3001C209B /* OrderListCell.h */,
+				B76373591EBB8AB3001C209B /* OrderListCell.m */,
+				B763735A1EBB8AB3001C209B /* OrderListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 			files = (
 				18D672421EAEE5B00011706C /* Order.storyboard in Resources */,
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
+				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
@@ -694,6 +703,7 @@
 				B767789F1EACE99B00B76EDF /* UITextField+CZInspectableTextField.m in Sources */,
 				B76778411EAC7E2C00B76EDF /* BaseNavigationController.m in Sources */,
 				B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */,
+				B763735B1EBB8AB3001C209B /* OrderListCell.m in Sources */,
 				B767786A1EACB99B00B76EDF /* UITableView+ProjectCellRadius.m in Sources */,
 				B76778691EACB99B00B76EDF /* UIColor+ProjectColor.m in Sources */,
 				18D672401EAEE5950011706C /* OrderListVC.m in Sources */,

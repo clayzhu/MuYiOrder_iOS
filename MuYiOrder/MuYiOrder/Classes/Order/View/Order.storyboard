@@ -28,15 +28,28 @@
                                     <constraint firstAttribute="height" constant="44" id="JqG-NM-D9V"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fkn-LM-rXv">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HSD-qI-mt4" id="vkw-ri-yzL"/>
+                                    <outlet property="delegate" destination="HSD-qI-mt4" id="2Ue-fZ-Zf9"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bZk-WX-hhI" firstAttribute="top" secondItem="fkn-LM-rXv" secondAttribute="bottom" id="AcW-mH-tQv"/>
                             <constraint firstItem="2Nx-5y-dUm" firstAttribute="top" secondItem="qfx-m8-coK" secondAttribute="bottom" id="ErG-gR-dlg"/>
                             <constraint firstAttribute="trailing" secondItem="2Nx-5y-dUm" secondAttribute="trailing" id="Ewq-Vb-wfb"/>
+                            <constraint firstItem="fkn-LM-rXv" firstAttribute="top" secondItem="2Nx-5y-dUm" secondAttribute="bottom" id="Jqx-Xy-1Su"/>
+                            <constraint firstItem="fkn-LM-rXv" firstAttribute="leading" secondItem="g5n-ef-JtC" secondAttribute="leading" id="jTU-TA-Sv4"/>
+                            <constraint firstAttribute="trailing" secondItem="fkn-LM-rXv" secondAttribute="trailing" id="rvX-oT-trP"/>
                             <constraint firstItem="2Nx-5y-dUm" firstAttribute="leading" secondItem="g5n-ef-JtC" secondAttribute="leading" id="xVc-dY-XaL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="fkn-LM-rXv" id="AWq-F7-VCp"/>
                         <outlet property="topFilterView" destination="2Nx-5y-dUm" id="rkg-JJ-cVC"/>
                     </connections>
                 </viewController>
@@ -51,7 +64,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ahC-ZD-0PT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="w75-Zj-nqN">
                                 <cells>

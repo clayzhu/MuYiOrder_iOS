@@ -8,8 +8,13 @@
 
 #import "OrderListVC.h"
 #import "TopFilterView.h"
+#import "OrderListCell.h"
 
-@interface OrderListVC () <TopFilterViewDelegate>
+static NSString *kOrderListCell = @"OrderListCell";
+
+@interface OrderListVC () <UITableViewDelegate, UITableViewDataSource, TopFilterViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (weak, nonatomic) IBOutlet TopFilterView *topFilterView;
 
 @end
@@ -22,6 +27,7 @@
     self.title = @"都是钱";
     [self setupNavItem];
     [self setupTopFilterView];
+    [self registerCell];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +57,33 @@
     self.topFilterView.titleHeight = 42.0;
     [self.topFilterView createFilterView];
     self.topFilterView.delegate = self;
+}
+
+- (void)registerCell {
+    [self.tableView registerNib:[UINib nibWithNibName:kOrderListCell bundle:nil] forCellReuseIdentifier:kOrderListCell];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 10;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:kOrderListCell forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView sectionCornerRadiusWillDisplayCell:cell forRowAtIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 90.0;
 }
 
 #pragma mark - Action
