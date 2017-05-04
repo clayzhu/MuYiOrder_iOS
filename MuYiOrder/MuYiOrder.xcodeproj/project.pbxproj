@@ -20,6 +20,7 @@
 		38ECE2177C610F46E09584D5 /* libPods-MuYiOrder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8986E5B25335B859AADEA8DD /* libPods-MuYiOrder.a */; };
 		B76373531EBB7362001C209B /* BaseTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373511EBB7362001C209B /* BaseTextFieldCell.m */; };
 		B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76373521EBB7362001C209B /* BaseTextFieldCell.xib */; };
+		B76373571EBB83D5001C209B /* TopFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373561EBB83D5001C209B /* TopFilterView.m */; };
 		B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */; };
 		B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */ = {isa = PBXBuildFile; fileRef = B767782E1EAC7D2500B76EDF /* MLInputDodger.m */; };
 		B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778301EAC7D2500B76EDF /* MLInputDodgerRetractView.m */; };
@@ -81,6 +82,8 @@
 		B76373501EBB7362001C209B /* BaseTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextFieldCell.h; sourceTree = "<group>"; };
 		B76373511EBB7362001C209B /* BaseTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextFieldCell.m; sourceTree = "<group>"; };
 		B76373521EBB7362001C209B /* BaseTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextFieldCell.xib; sourceTree = "<group>"; };
+		B76373551EBB83D5001C209B /* TopFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopFilterView.h; sourceTree = "<group>"; };
+		B76373561EBB83D5001C209B /* TopFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopFilterView.m; sourceTree = "<group>"; };
 		B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLInputDodger.bundle; sourceTree = "<group>"; };
 		B767782D1EAC7D2500B76EDF /* MLInputDodger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLInputDodger.h; sourceTree = "<group>"; };
 		B767782E1EAC7D2500B76EDF /* MLInputDodger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInputDodger.m; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				18D672411EAEE5B00011706C /* Order.storyboard */,
+				B76373551EBB83D5001C209B /* TopFilterView.h */,
+				B76373561EBB83D5001C209B /* TopFilterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -694,6 +699,7 @@
 				18D672401EAEE5950011706C /* OrderListVC.m in Sources */,
 				18D6723D1EAEE5690011706C /* MuYiTBC.m in Sources */,
 				18A11A6E1EB884ED009437E0 /* AppUtility.m in Sources */,
+				B76373571EBB83D5001C209B /* TopFilterView.m in Sources */,
 				B76778511EAC7F7900B76EDF /* AppConstant.m in Sources */,
 				18A11A6B1EB88496009437E0 /* ProjectUtility.m in Sources */,
 				B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */,
