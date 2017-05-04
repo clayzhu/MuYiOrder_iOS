@@ -63,6 +63,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
     cell.textLabel.text = @"金库";
     cell.textField.text = @"0.00 软妹币";
+    cell.textField.enabled = NO;
     return cell;
 }
 

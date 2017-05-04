@@ -38,17 +38,28 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dt6-bb-TfR">
+                        <rect key="frame" x="122" y="42" width="168" height="0.5"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Bv1-bL-jZn"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Stc-k6-Or5" secondAttribute="trailing" constant="30" id="MLj-9G-qaT"/>
                     <constraint firstItem="Stc-k6-Or5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MUm-If-TJU"/>
                     <constraint firstItem="Stc-k6-Or5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ofq-2C-RwU"/>
+                    <constraint firstItem="Dt6-bb-TfR" firstAttribute="top" secondItem="Stc-k6-Or5" secondAttribute="bottom" id="QUG-2N-sYo"/>
                     <constraint firstItem="aOc-3f-de9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="URD-r1-nqd"/>
                     <constraint firstItem="aOc-3f-de9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aus-UI-bXU"/>
+                    <constraint firstItem="Dt6-bb-TfR" firstAttribute="trailing" secondItem="Stc-k6-Or5" secondAttribute="trailing" id="fua-7M-T5L"/>
+                    <constraint firstItem="Dt6-bb-TfR" firstAttribute="leading" secondItem="Stc-k6-Or5" secondAttribute="leading" id="oRE-wv-6Wf"/>
                     <constraint firstItem="aOc-3f-de9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="pMd-QM-kQm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="editingIndicatorLine" destination="Dt6-bb-TfR" id="Q4H-ZS-1yc"/>
                 <outlet property="textField" destination="Stc-k6-Or5" id="H4R-3v-LdO"/>
                 <outlet property="textLabel" destination="aOc-3f-de9" id="IJW-IH-jyt"/>
             </connections>
