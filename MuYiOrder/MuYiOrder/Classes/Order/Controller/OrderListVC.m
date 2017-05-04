@@ -9,7 +9,7 @@
 #import "OrderListVC.h"
 #import "TopFilterView.h"
 
-@interface OrderListVC ()
+@interface OrderListVC () <TopFilterViewDelegate>
 @property (weak, nonatomic) IBOutlet TopFilterView *topFilterView;
 
 @end
@@ -45,15 +45,22 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewOrder)];
 }
 
+/** 设置顶部筛选视图 */
 - (void)setupTopFilterView {
     self.topFilterView.titles = @[@"所有订单", @"未完成", @"已完成"];
     self.topFilterView.titleHeight = 42.0;
     [self.topFilterView createFilterView];
+    self.topFilterView.delegate = self;
 }
 
 #pragma mark - Action
 /** 添加新订单 */
 - (void)addNewOrder {
+    
+}
+
+#pragma mark TopFilterViewDelegate
+- (void)topFilterView:(TopFilterView *)filterView didSelectTitle:(NSString *)title atIndex:(NSInteger)index {
     
 }
 

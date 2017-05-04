@@ -30,8 +30,8 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(i * btnW, 0.0, btnW, _titleHeight);
         btn.tag = i;
-        [btn setTitle:_titles[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+        [btn setTitle:_titles[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         if (i == 0) {   // 默认选中第一个按钮
@@ -55,9 +55,17 @@
     temp.origin.y = center.y;
     temp.size.width = currentSize.width;
     
-    [UIView animateWithDuration:0.3 animations:^{
-        _moveLine.frame = temp;
-    }];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _moveLine.frame = temp;
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                             if ([self.delegate respondsToSelector:@selector(topFilterView:didSelectTitle:atIndex:)]) {
+                                 [self.delegate topFilterView:self didSelectTitle:[sender titleForState:UIControlStateNormal] atIndex:sender.tag];
+                             }
+                         }
+                     }];
 }
 
 @end

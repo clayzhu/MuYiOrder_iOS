@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TopFilterView;
+
+@protocol TopFilterViewDelegate <NSObject>
+
+- (void)topFilterView:(TopFilterView *)filterView didSelectTitle:(NSString *)title atIndex:(NSInteger)index;
+
+@end
+
 @interface TopFilterView : UIView
 
 @property (strong, nonatomic) NSArray<NSString *> *titles;
@@ -15,5 +23,7 @@
 
 /** 绘制筛选视图，需要先设置上面的属性 */
 - (void)createFilterView;
+
+@property (weak, nonatomic) id<TopFilterViewDelegate> delegate;
 
 @end
