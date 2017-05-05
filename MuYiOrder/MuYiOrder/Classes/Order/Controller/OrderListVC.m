@@ -9,6 +9,7 @@
 #import "OrderListVC.h"
 #import "TopFilterView.h"
 #import "OrderListCell.h"
+#import "OrderDetailTVC.h"
 
 static NSString *kOrderListCell = @"OrderListCell";
 
@@ -84,6 +85,11 @@ static NSString *kOrderListCell = @"OrderListCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderDetailTVC *tvc = [[UIStoryboard storyboardWithName:@"Order" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderDetailTVC"];
+    [self pushForTabbarVc:tvc];
 }
 
 #pragma mark - Action

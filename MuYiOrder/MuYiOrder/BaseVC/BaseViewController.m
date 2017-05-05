@@ -94,7 +94,7 @@
 }
 
 - (void)setupBackBtn {
-	[self setupBackBtnWithBackImage:[UIImage imageNamed:@"nav_back_normal"] pressedImage:[UIImage imageNamed:@"nav_back_pressed"]];
+	[self setupBackBtnWithBackImage:[UIImage imageNamed:@"nav_back"] pressedImage:[UIImage imageNamed:@"nav_back"]];
 }
 
 - (void)back {
