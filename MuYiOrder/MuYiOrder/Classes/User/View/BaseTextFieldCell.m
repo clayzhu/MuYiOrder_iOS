@@ -32,4 +32,8 @@
     }
 }
 
+- (void)dealloc {
+    [self.textField removeObserver:self forKeyPath:@"enabled"];
+}
+
 @end
