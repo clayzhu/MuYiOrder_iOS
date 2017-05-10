@@ -96,6 +96,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     if (indexPath.section < 3) {
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
         cell.textLabel.text = self.cellTextList[indexPath.section][indexPath.row];
+        cell.separatorLine.hidden = indexPath.row == self.cellTextList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
         return cell;
     } else {
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];

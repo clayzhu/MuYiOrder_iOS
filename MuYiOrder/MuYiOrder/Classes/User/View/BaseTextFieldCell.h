@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIView *editingIndicatorLine;
+@property (weak, nonatomic) IBOutlet UIView *separatorLine;
 
 @end

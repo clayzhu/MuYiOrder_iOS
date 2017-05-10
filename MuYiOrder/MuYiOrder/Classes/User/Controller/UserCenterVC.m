@@ -68,6 +68,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     cell.textLabel.text = @"金库";
     cell.textField.text = @"0.00 软妹币";
     cell.textField.enabled = NO;
+    cell.separatorLine.hidden = YES;
     return cell;
 }
 
