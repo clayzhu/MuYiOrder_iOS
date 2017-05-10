@@ -8,6 +8,19 @@
 
 #import "BaseTableViewController.h"
 
+/**
+ 订单详情查看／编辑状态
+
+ - OrderDetailTVCStatusNormal: 查看状态
+ - OrderDetailTVCStatusEdit: 编辑状态
+ */
+typedef NS_ENUM(NSUInteger, OrderDetailTVCStatus) {
+    OrderDetailTVCStatusNormal,
+    OrderDetailTVCStatusEdit,
+};
+
 @interface OrderDetailTVC : BaseTableViewController
+
+@property (assign, nonatomic) OrderDetailTVCStatus orderDetailTVCStatus;
 
 @end

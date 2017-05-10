@@ -89,13 +89,16 @@ static NSString *kOrderListCell = @"OrderListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderDetailTVC *tvc = [[UIStoryboard storyboardWithName:@"Order" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderDetailTVC"];
+    tvc.orderDetailTVCStatus = OrderDetailTVCStatusNormal;
     [self pushForTabbarVc:tvc];
 }
 
 #pragma mark - Action
 /** 添加新订单 */
 - (void)addNewOrder {
-    
+    OrderDetailTVC *tvc = [[UIStoryboard storyboardWithName:@"Order" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderDetailTVC"];
+    tvc.orderDetailTVCStatus = OrderDetailTVCStatusEdit;
+    [self pushForTabbarVc:tvc];
 }
 
 #pragma mark TopFilterViewDelegate

@@ -19,7 +19,6 @@
     // Do any additional setup after loading the view.
     self.title = @"订单详情";
     [self setupBackBtn];
-    [self setupNavItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,12 +36,19 @@
 }
 */
 
-#pragma mark - Setup
-/** 设置导航栏上按钮 */
-- (void)setupNavItem {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
+#pragma mark - Getter and Setter
+- (void)setOrderDetailTVCStatus:(OrderDetailTVCStatus)orderDetailTVCStatus {
+    _orderDetailTVCStatus = orderDetailTVCStatus;
+    if (orderDetailTVCStatus == OrderDetailTVCStatusNormal) {
+        // 设置导航栏上按钮：查看状态，编辑按钮
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
+        // 设置导航栏上按钮：编辑状态，保存按钮
+    } else if (orderDetailTVCStatus == OrderDetailTVCStatusEdit) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
+    }
 }
+
+#pragma mark - Setup
 
 #pragma mark - Action
 - (void)saveAction {
