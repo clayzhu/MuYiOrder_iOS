@@ -12,6 +12,7 @@
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 
 @interface OrderDetailTVC ()
+@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTextList;
 
 @end
 
@@ -52,6 +53,15 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     }
 }
 
+- (NSArray<NSArray<NSString *> *> *)cellTextList {
+    if (!_cellTextList) {
+        _cellTextList = @[@[@"客户", @"电话", @"下单时间", @"收货地址"],
+                          @[@"发货状态", @"发货时间", @"物流信息", @"快递单号"],
+                          @[@"订单金额", @"付款状态", @"付款渠道"]];
+    }
+    return _cellTextList;
+}
+
 #pragma mark - Setup
 - (void)registerCell {
     [self.tableView registerNib:[UINib nibWithNibName:kBaseTextFieldCell bundle:nil] forCellReuseIdentifier:kBaseTextFieldCell];
@@ -63,12 +73,34 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    switch (section) {
+        case 0:
+            return 4;
+            break;
+        case 1:
+            return 4;
+            break;
+        case 2:
+            return 3;
+            break;
+        case 3:
+            return 1;
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
-    return cell;
+    if (indexPath.section < 3) {
+        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+        cell.textLabel.text = self.cellTextList[indexPath.section][indexPath.row];
+        return cell;
+    } else {
+        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
