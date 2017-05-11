@@ -8,8 +8,10 @@
 
 #import "OrderDetailTVC.h"
 #import "BaseTextFieldCell.h"
+#import "BaseTextLabelCell.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
+static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 
 @interface OrderDetailTVC ()
 /** cell 标题 */
@@ -83,6 +85,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 #pragma mark - Setup
 - (void)registerCell {
     [self.tableView registerNib:[UINib nibWithNibName:kBaseTextFieldCell bundle:nil] forCellReuseIdentifier:kBaseTextFieldCell];
+    [self.tableView registerNib:[UINib nibWithNibName:kBaseTextLabelCell bundle:nil] forCellReuseIdentifier:kBaseTextLabelCell];
 }
 
 #pragma mark - UITableViewDataSource

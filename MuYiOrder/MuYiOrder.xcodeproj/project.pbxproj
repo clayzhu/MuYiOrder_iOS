@@ -25,6 +25,8 @@
 		B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B763735A1EBB8AB3001C209B /* OrderListCell.xib */; };
 		B765EDDE1EC4B0BC0038A7A7 /* BaseTextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */; };
 		B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */; };
+		B765EDE31EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EDE11EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m */; };
+		B765EDE41EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B765EDE21EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib */; };
 		B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */; };
 		B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */ = {isa = PBXBuildFile; fileRef = B767782E1EAC7D2500B76EDF /* MLInputDodger.m */; };
 		B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778301EAC7D2500B76EDF /* MLInputDodgerRetractView.m */; };
@@ -94,6 +96,9 @@
 		B765EDDB1EC4B0BC0038A7A7 /* BaseTextLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextLabelCell.h; sourceTree = "<group>"; };
 		B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextLabelCell.m; sourceTree = "<group>"; };
 		B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextLabelCell.xib; sourceTree = "<group>"; };
+		B765EDE01EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextFieldWithUnitCell.h; sourceTree = "<group>"; };
+		B765EDE11EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextFieldWithUnitCell.m; sourceTree = "<group>"; };
+		B765EDE21EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextFieldWithUnitCell.xib; sourceTree = "<group>"; };
 		B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLInputDodger.bundle; sourceTree = "<group>"; };
 		B767782D1EAC7D2500B76EDF /* MLInputDodger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLInputDodger.h; sourceTree = "<group>"; };
 		B767782E1EAC7D2500B76EDF /* MLInputDodger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInputDodger.m; sourceTree = "<group>"; };
@@ -384,6 +389,9 @@
 				B765EDDB1EC4B0BC0038A7A7 /* BaseTextLabelCell.h */,
 				B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */,
 				B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */,
+				B765EDE01EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.h */,
+				B765EDE11EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m */,
+				B765EDE21EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B765EDE41EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib in Resources */,
 				18D672421EAEE5B00011706C /* Order.storyboard in Resources */,
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
 				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
@@ -727,6 +736,7 @@
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,
 				B76778381EAC7D2500B76EDF /* UIScrollView+MLInputDodger.m in Sources */,
 				B76778581EAC800700B76EDF /* LoginVC.m in Sources */,
+				B765EDE31EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m in Sources */,
 				B7D754B01EA504EF0089A8CD /* main.m in Sources */,
 				B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */,
 			);
