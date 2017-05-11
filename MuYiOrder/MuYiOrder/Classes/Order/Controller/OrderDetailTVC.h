@@ -15,8 +15,8 @@
  - OrderDetailTVCStatusEdit: 编辑状态
  */
 typedef NS_ENUM(NSUInteger, OrderDetailTVCStatus) {
-    OrderDetailTVCStatusNormal,
-    OrderDetailTVCStatusEdit,
+    OrderDetailTVCStatusNormal = 0,
+    OrderDetailTVCStatusEdit = 1,
 };
 
 @interface OrderDetailTVC : BaseTableViewController

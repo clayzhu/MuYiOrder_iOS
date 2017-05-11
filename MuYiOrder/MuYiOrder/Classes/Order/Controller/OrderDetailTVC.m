@@ -12,7 +12,7 @@
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 
 @interface OrderDetailTVC ()
-@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTextList;
+@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 
 @end
 
@@ -51,15 +51,16 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     } else if (orderDetailTVCStatus == OrderDetailTVCStatusEdit) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
     }
+    [self.tableView reloadData];
 }
 
 - (NSArray<NSArray<NSString *> *> *)cellTextList {
-    if (!_cellTextList) {
-        _cellTextList = @[@[@"客户", @"电话", @"下单时间", @"收货地址"],
+    if (!_cellTitleList) {
+        _cellTitleList = @[@[@"客户", @"电话", @"下单时间", @"收货地址"],
                           @[@"发货状态", @"发货时间", @"物流信息", @"快递单号"],
                           @[@"订单金额", @"付款状态", @"付款渠道"]];
     }
-    return _cellTextList;
+    return _cellTitleList;
 }
 
 #pragma mark - Setup
@@ -95,8 +96,9 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < 3) {
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
-        cell.textLabel.text = self.cellTextList[indexPath.section][indexPath.row];
-        cell.separatorLine.hidden = indexPath.row == self.cellTextList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
+        cell.textLabel.text = self.cellTitleList[indexPath.section][indexPath.row];
+        cell.textField.enabled = self.orderDetailTVCStatus;
+        cell.separatorLine.hidden = indexPath.row == self.cellTitleList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
         return cell;
     } else {
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
