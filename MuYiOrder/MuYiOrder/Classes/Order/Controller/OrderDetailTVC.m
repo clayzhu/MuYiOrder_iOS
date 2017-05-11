@@ -9,9 +9,11 @@
 #import "OrderDetailTVC.h"
 #import "BaseTextFieldCell.h"
 #import "BaseTextLabelCell.h"
+#import "BaseTextFieldWithUnitCell.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
+static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
 @interface OrderDetailTVC ()
 /** cell 标题 */
@@ -86,6 +88,7 @@ static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 - (void)registerCell {
     [self.tableView registerNib:[UINib nibWithNibName:kBaseTextFieldCell bundle:nil] forCellReuseIdentifier:kBaseTextFieldCell];
     [self.tableView registerNib:[UINib nibWithNibName:kBaseTextLabelCell bundle:nil] forCellReuseIdentifier:kBaseTextLabelCell];
+    [self.tableView registerNib:[UINib nibWithNibName:kBaseTextFieldWithUnitCell bundle:nil] forCellReuseIdentifier:kBaseTextFieldWithUnitCell];
 }
 
 #pragma mark - UITableViewDataSource
@@ -115,8 +118,8 @@ static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < 3) {
-        NSString *cellTitle = self.cellTitleList[indexPath.section][indexPath.row];
-        NSString *cellContent = self.cellContentList[indexPath.section][indexPath.row];
+        NSString *cellTitle = self.cellTitleList[indexPath.section][indexPath.row]; // cell 标题
+        NSString *cellContent = self.cellContentList[indexPath.section][indexPath.row]; // cell 内容
         
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
         cell.textLabel.text = cellTitle;
