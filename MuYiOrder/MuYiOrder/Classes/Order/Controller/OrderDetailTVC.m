@@ -15,7 +15,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
-@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellContentList;
+@property (strong, nonatomic) NSMutableArray<NSMutableArray<NSString *> *> *cellContentList;
 
 @end
 
@@ -66,11 +66,16 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     return _cellTitleList;
 }
 
-- (NSArray<NSArray<NSString *> *> *)cellContentList {
+- (NSMutableArray<NSMutableArray<NSString *> *> *)cellContentList {
     if (!_cellContentList) {
-        _cellContentList = @[@[@"", @"", @"", @""],
-                            @[@"", @"", @"", @""],
-                            @[@"", @"", @""]];
+        _cellContentList = [NSMutableArray array];
+        for (NSArray *array in self.cellTitleList) {
+            NSMutableArray *subMA = [NSMutableArray array];
+            for (NSUInteger i = 0; i < array.count; i ++) {
+                [subMA addObject:@""];
+            }
+            [_cellContentList addObject:subMA];
+        }
     }
     return _cellContentList;
 }
@@ -107,10 +112,13 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < 3) {
+        NSString *cellTitle = self.cellTitleList[indexPath.section][indexPath.row];
+        NSString *cellContent = self.cellContentList[indexPath.section][indexPath.row];
+        
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
-        cell.textLabel.text = self.cellTitleList[indexPath.section][indexPath.row];
+        cell.textLabel.text = cellTitle;
         cell.textField.enabled = self.orderDetailTVCStatus;
-        cell.textField.text = self.cellContentList[indexPath.section][indexPath.row];
+        cell.textField.text = cellContent;
         cell.separatorLine.hidden = indexPath.row == self.cellTitleList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
         return cell;
     } else {
