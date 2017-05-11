@@ -12,7 +12,10 @@
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 
 @interface OrderDetailTVC ()
+/** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
+/** cell 内容 */
+@property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellContentList;
 
 @end
 
@@ -54,13 +57,22 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
     [self.tableView reloadData];
 }
 
-- (NSArray<NSArray<NSString *> *> *)cellTextList {
+- (NSArray<NSArray<NSString *> *> *)cellTitleList {
     if (!_cellTitleList) {
         _cellTitleList = @[@[@"客户", @"电话", @"下单时间", @"收货地址"],
                           @[@"发货状态", @"发货时间", @"物流信息", @"快递单号"],
                           @[@"订单金额", @"付款状态", @"付款渠道"]];
     }
     return _cellTitleList;
+}
+
+- (NSArray<NSArray<NSString *> *> *)cellContentList {
+    if (!_cellContentList) {
+        _cellContentList = @[@[@"", @"", @"", @""],
+                            @[@"", @"", @"", @""],
+                            @[@"", @"", @""]];
+    }
+    return _cellContentList;
 }
 
 #pragma mark - Setup
@@ -98,6 +110,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
         cell.textLabel.text = self.cellTitleList[indexPath.section][indexPath.row];
         cell.textField.enabled = self.orderDetailTVCStatus;
+        cell.textField.text = self.cellContentList[indexPath.section][indexPath.row];
         cell.separatorLine.hidden = indexPath.row == self.cellTitleList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
         return cell;
     } else {

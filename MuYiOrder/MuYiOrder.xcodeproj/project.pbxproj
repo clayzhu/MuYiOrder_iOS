@@ -23,6 +23,8 @@
 		B76373571EBB83D5001C209B /* TopFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373561EBB83D5001C209B /* TopFilterView.m */; };
 		B763735B1EBB8AB3001C209B /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B76373591EBB8AB3001C209B /* OrderListCell.m */; };
 		B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B763735A1EBB8AB3001C209B /* OrderListCell.xib */; };
+		B765EDDE1EC4B0BC0038A7A7 /* BaseTextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */; };
+		B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */; };
 		B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */; };
 		B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */ = {isa = PBXBuildFile; fileRef = B767782E1EAC7D2500B76EDF /* MLInputDodger.m */; };
 		B76778371EAC7D2500B76EDF /* MLInputDodgerRetractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778301EAC7D2500B76EDF /* MLInputDodgerRetractView.m */; };
@@ -89,6 +91,9 @@
 		B76373581EBB8AB3001C209B /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListCell.h; sourceTree = "<group>"; };
 		B76373591EBB8AB3001C209B /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListCell.m; sourceTree = "<group>"; };
 		B763735A1EBB8AB3001C209B /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListCell.xib; sourceTree = "<group>"; };
+		B765EDDB1EC4B0BC0038A7A7 /* BaseTextLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextLabelCell.h; sourceTree = "<group>"; };
+		B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextLabelCell.m; sourceTree = "<group>"; };
+		B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTextLabelCell.xib; sourceTree = "<group>"; };
 		B767782C1EAC7D2500B76EDF /* MLInputDodger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLInputDodger.bundle; sourceTree = "<group>"; };
 		B767782D1EAC7D2500B76EDF /* MLInputDodger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLInputDodger.h; sourceTree = "<group>"; };
 		B767782E1EAC7D2500B76EDF /* MLInputDodger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInputDodger.m; sourceTree = "<group>"; };
@@ -376,6 +381,9 @@
 				B76373501EBB7362001C209B /* BaseTextFieldCell.h */,
 				B76373511EBB7362001C209B /* BaseTextFieldCell.m */,
 				B76373521EBB7362001C209B /* BaseTextFieldCell.xib */,
+				B765EDDB1EC4B0BC0038A7A7 /* BaseTextLabelCell.h */,
+				B765EDDC1EC4B0BC0038A7A7 /* BaseTextLabelCell.m */,
+				B765EDDD1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -617,6 +625,7 @@
 				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
+				B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
 				18D6724D1EAEE6970011706C /* Product.storyboard in Resources */,
 				B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */,
@@ -678,6 +687,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B765EDDE1EC4B0BC0038A7A7 /* BaseTextLabelCell.m in Sources */,
 				18D6724B1EAEE67D0011706C /* ProductListVC.m in Sources */,
 				B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */,
 				B76778361EAC7D2500B76EDF /* MLInputDodger.m in Sources */,
