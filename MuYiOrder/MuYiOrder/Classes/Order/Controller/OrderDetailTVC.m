@@ -121,16 +121,155 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
         NSString *cellTitle = self.cellTitleList[indexPath.section][indexPath.row]; // cell 标题
         NSString *cellContent = self.cellContentList[indexPath.section][indexPath.row]; // cell 内容
         
-        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
-        cell.textLabel.text = cellTitle;
-        cell.textField.enabled = self.orderDetailTVCStatus;
-        cell.textField.text = cellContent;
-        cell.separatorLine.hidden = indexPath.row == self.cellTitleList[indexPath.section].count - 1 ? YES : NO; // 每一个 section 的最后一个 cell 不显示 separator
-        return cell;
+        switch (indexPath.section) {
+            case 0: // 客户、电话、下单时间、收货地址
+            {
+                switch (indexPath.row) {
+                    case 0: // 客户
+                    {
+                        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.textField.text = cellContent;
+                        cell.textField.keyboardType = UIKeyboardTypeDefault;
+                        cell.textField.enabled = self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 1: // 电话
+                    {
+                        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.textField.text = cellContent;
+                        cell.textField.keyboardType = UIKeyboardTypePhonePad;
+                        cell.textField.enabled = self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 2: // 下单时间
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 3: // 收货地址
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+                break;
+            case 1: // 发货状态、发货时间、物流信息、快递单号
+            {
+                switch (indexPath.row) {
+                    case 0: // 发货状态
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 1: // 发货时间
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 2: // 物流信息
+                    {
+                        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.textField.text = cellContent;
+                        cell.textField.keyboardType = UIKeyboardTypeDefault;
+                        cell.textField.enabled = self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 3: // 快递单号
+                    {
+                        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.textField.text = cellContent;
+                        cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+                        cell.textField.enabled = self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+                break;
+            case 2: // 订单金额、付款状态、付款渠道
+            {
+                switch (indexPath.row) {
+                    case 0: // 订单金额
+                    {
+                        BaseTextFieldWithUnitCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldWithUnitCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.textField.text = cellContent;
+                        cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
+                        cell.textField.enabled = self.orderDetailTVCStatus;
+                        cell.unitLabel.text = @"软妹币";
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 1: // 付款状态
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    case 2: // 付款渠道
+                    {
+                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                        cell.textLabel.text = cellTitle;
+                        cell.detailTextLabel.text = cellContent;
+                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
+                        cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                        return cell;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+                break;
+            default:
+                break;
+        }
     } else {
         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
         return cell;
     }
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
@@ -143,7 +282,11 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Action
