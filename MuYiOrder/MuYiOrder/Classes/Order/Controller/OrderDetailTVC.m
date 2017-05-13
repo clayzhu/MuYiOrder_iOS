@@ -15,7 +15,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
-@interface OrderDetailTVC ()
+@interface OrderDetailTVC () <UITextFieldDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
@@ -130,6 +130,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
                         cell.textField.text = cellContent;
+                        cell.textField.delegate = self;
+                        cell.textField.tag = indexPath.section * 10 + indexPath.row;
                         cell.textField.keyboardType = UIKeyboardTypeDefault;
                         cell.textField.enabled = self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
@@ -141,6 +143,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
                         cell.textField.text = cellContent;
+                        cell.textField.delegate = self;
+                        cell.textField.tag = indexPath.section * 10 + indexPath.row;
                         cell.textField.keyboardType = UIKeyboardTypePhonePad;
                         cell.textField.enabled = self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
@@ -159,12 +163,25 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         break;
                     case 3: // 收货地址
                     {
-                        BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
-                        cell.textLabel.text = cellTitle;
-                        cell.detailTextLabel.text = cellContent;
-                        cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
-                        cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
-                        return cell;
+                        if (self.orderDetailTVCStatus == OrderDetailTVCStatusNormal) {  // 查看模式下，label 多行显示
+                            BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
+                            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                            cell.textLabel.text = cellTitle;
+                            cell.detailTextLabel.text = cellContent;
+                            cell.editingIndicatorLine.hidden = YES;
+                            cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                            return cell;
+                        } else {    // 编辑模式下，textField 单行编辑
+                            BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+                            cell.textLabel.text = cellTitle;
+                            cell.textField.text = cellContent;
+                            cell.textField.delegate = self;
+                            cell.textField.tag = indexPath.section * 10 + indexPath.row;
+                            cell.textField.keyboardType = UIKeyboardTypeDefault;
+                            cell.textField.enabled = YES;
+                            cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
+                            return cell;
+                        }
                     }
                         break;
                     default:
@@ -200,6 +217,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
                         cell.textField.text = cellContent;
+                        cell.textField.delegate = self;
+                        cell.textField.tag = indexPath.section * 10 + indexPath.row;
                         cell.textField.keyboardType = UIKeyboardTypeDefault;
                         cell.textField.enabled = self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
@@ -211,6 +230,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
                         cell.textField.text = cellContent;
+                        cell.textField.delegate = self;
+                        cell.textField.tag = indexPath.section * 10 + indexPath.row;
                         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
                         cell.textField.enabled = self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = YES; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
@@ -230,6 +251,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                         BaseTextFieldWithUnitCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldWithUnitCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
                         cell.textField.text = cellContent;
+                        cell.textField.delegate = self;
+                        cell.textField.tag = indexPath.section * 10 + indexPath.row;
                         cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                         cell.textField.enabled = self.orderDetailTVCStatus;
                         cell.unitLabel.text = @"软妹币";
@@ -285,8 +308,16 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSUInteger section = textField.tag / 10;
+    NSUInteger row = textField.tag % 10;
+    [self.cellContentList[section] replaceObjectAtIndex:row withObject:textField.text];
 }
 
 #pragma mark - Action
@@ -297,6 +328,7 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
 /** 保存 */
 - (void)saveAction {
+    [self.view endEditing:YES];
     self.orderDetailTVCStatus = OrderDetailTVCStatusNormal;
 }
 
