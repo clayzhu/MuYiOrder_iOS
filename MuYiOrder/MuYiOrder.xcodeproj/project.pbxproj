@@ -55,6 +55,7 @@
 		B76778AA1EACF27900B76EDF /* CZBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778A91EACF27900B76EDF /* CZBlockButton.m */; };
 		B76778AD1EACF28E00B76EDF /* ProjectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778AC1EACF28E00B76EDF /* ProjectButton.m */; };
 		B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778B01EACF2E000B76EDF /* UIImage+Custom.m */; };
+		B79235CC1EC6E8FF00143E8A /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79235CB1EC6E8FF00143E8A /* CZPickerView.m */; };
 		B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
@@ -154,6 +155,8 @@
 		B76778AF1EACF2E000B76EDF /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
 		B76778B01EACF2E000B76EDF /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
 		B78FFC141EABB3990095A554 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B79235CA1EC6E8FF00143E8A /* CZPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPickerView.h; sourceTree = "<group>"; };
+		B79235CB1EC6E8FF00143E8A /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
 		B79C31A11EB24711002D1A4D /* OrderDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTVC.h; sourceTree = "<group>"; };
 		B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTVC.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -451,6 +454,7 @@
 		B767788E1EACE99B00B76EDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B79235C91EC6E8DE00143E8A /* CZPickerView */,
 				B76778A71EACF27900B76EDF /* CZBlockButton */,
 				B767788F1EACE99B00B76EDF /* CZInspectableView */,
 			);
@@ -508,6 +512,15 @@
 				B76778B01EACF2E000B76EDF /* UIImage+Custom.m */,
 			);
 			path = CZImage;
+			sourceTree = "<group>";
+		};
+		B79235C91EC6E8DE00143E8A /* CZPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				B79235CA1EC6E8FF00143E8A /* CZPickerView.h */,
+				B79235CB1EC6E8FF00143E8A /* CZPickerView.m */,
+			);
+			path = CZPickerView;
 			sourceTree = "<group>";
 		};
 		B7D754A21EA504EF0089A8CD = {
@@ -731,6 +744,7 @@
 				B76373571EBB83D5001C209B /* TopFilterView.m in Sources */,
 				B76778511EAC7F7900B76EDF /* AppConstant.m in Sources */,
 				18A11A6B1EB88496009437E0 /* ProjectUtility.m in Sources */,
+				B79235CC1EC6E8FF00143E8A /* CZPickerView.m in Sources */,
 				B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */,
 				B76778781EACE8F600B76EDF /* ProjectTextField.m in Sources */,
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,
