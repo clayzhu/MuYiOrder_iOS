@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSString *identifier;
 
 - (void)setupPickerView;
+
 - (void)showPickerView;
+- (void)hidePickerView;
 
 @end

@@ -323,6 +323,7 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
                 case 0: // 发货状态
                 {
                     [self.czPickerView showPickerView];
+                    self.czPickerView.dataSource = @[@"A", @"B", @"C"];
                 }
                     break;
                     
