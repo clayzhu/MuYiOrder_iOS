@@ -36,8 +36,8 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 - (void)setDataSource:(NSArray<NSString *> *)dataSource {
     _dataSource = dataSource;
     [self.pickerView reloadAllComponents];
-    if (self.selectedRow > 0) {
-        [self.pickerView selectRow:self.selectedRow inComponent:0 animated:YES];
+    if (self.selectedIndex > 0) {
+        [self.pickerView selectRow:self.selectedIndex inComponent:0 animated:YES];
     }
 }
 
@@ -114,9 +114,9 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
-- (void)setSelectedRow:(NSUInteger)selectedRow {
-    _selectedRow = selectedRow;
-    [self.pickerView selectRow:selectedRow inComponent:0 animated:YES];
+- (void)setSelectedIndex:(NSUInteger)selectedIndex {
+    _selectedIndex = selectedIndex;
+    [self.pickerView selectRow:selectedIndex inComponent:0 animated:YES];
 }
 
 #pragma mark - Setup
@@ -152,7 +152,7 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _selectedRow = row;
+    _selectedIndex = row;
 }
 
 #pragma mark - Show and Hide
@@ -188,7 +188,7 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
         isClickSure = YES;
     }
     if ([self.delegate respondsToSelector:@selector(czPickerView:selectedRow:clickSureButton:)]) {
-        [self.delegate czPickerView:self selectedRow:self.selectedRow clickSureButton:isClickSure];
+        [self.delegate czPickerView:self selectedRow:self.selectedIndex clickSureButton:isClickSure];
     }
     
     [self hidePickerView];

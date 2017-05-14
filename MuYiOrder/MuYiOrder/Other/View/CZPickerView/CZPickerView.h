@@ -28,7 +28,7 @@
 @property (strong, nonatomic) NSString *identifier;
 
 @property (strong, nonatomic) NSArray<NSString *> *dataSource;
-@property (assign, nonatomic) NSUInteger selectedRow;
+@property (assign, nonatomic) NSUInteger selectedIndex;
 
 /** 设定主色调 */
 @property (strong, nonatomic) UIColor *mainColor;

@@ -16,6 +16,10 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
+static NSString *kPickerDeliverStatus = @"PickerDeliverStatusKey";
+static NSString *kPickerPayStatus = @"PickerPayStatusKey";
+static NSString *kPickerPayWay = @"PickerPayWayKey";
+
 @interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
@@ -115,7 +119,7 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
             return 4;
             break;
         case 1:
-            return 4;
+            return ([self.cellContentList[1][0] isEqualToString:@"待发货"] || [self.cellContentList[1][0] isEqualToString:@""]) ? 1 : 4;   // “发货状态”未选择或选择“待发货”时，不展示下面的【发货时间、物流信息、快递单号】
             break;
         case 2:
             return 3;
@@ -321,19 +325,51 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 1:
+        {
             switch (indexPath.row) {
                 case 0: // 发货状态
                 {
+                    NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];
+                    NSUInteger selectedIndex = [[ProjectUtility deliverStatusList] indexOfObject:oldContent];
+                    self.czPickerView.selectedIndex = selectedIndex == NSNotFound ? 0 : selectedIndex;
+                    self.czPickerView.dataSource = [ProjectUtility deliverStatusList];
+                    self.czPickerView.identifier = kPickerDeliverStatus;
                     [self.czPickerView showPickerView];
-                    self.czPickerView.dataSource = @[@"A", @"B", @"C"];
                 }
                     break;
-                    
                 default:
                     break;
             }
+        }
             break;
-            
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 1: // 付款状态
+                {
+                    NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];
+                    NSUInteger selectedIndex = [[ProjectUtility payStatusList] indexOfObject:oldContent];
+                    self.czPickerView.selectedIndex = selectedIndex == NSNotFound ? 0 : selectedIndex;
+                    self.czPickerView.dataSource = [ProjectUtility payStatusList];
+                    self.czPickerView.identifier = kPickerPayStatus;
+                    [self.czPickerView showPickerView];
+                }
+                    break;
+                case 2: // 付款渠道
+                {
+                    NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];
+                    NSUInteger selectedIndex = [[ProjectUtility payWayList] indexOfObject:oldContent];
+                    self.czPickerView.selectedIndex = selectedIndex == NSNotFound ? 0 : selectedIndex;
+                    self.czPickerView.dataSource = [ProjectUtility payWayList];
+                    self.czPickerView.identifier = kPickerPayWay;
+                    [self.czPickerView showPickerView];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
         default:
             break;
     }
@@ -354,7 +390,17 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 #pragma mark - CZPickerViewDelegate
 - (void)czPickerView:(CZPickerView *)czPickerView selectedRow:(NSUInteger)index clickSureButton:(BOOL)isClickSure {
     if (isClickSure) {
-        NSLog(@"selectedRow:%@", @(index));
+        if ([czPickerView.identifier isEqualToString:kPickerDeliverStatus]) {   // 发货状态
+            NSString *newContent = [ProjectUtility deliverStatusList][index];
+            [self.cellContentList[1] replaceObjectAtIndex:0 withObject:newContent];
+        } else if ([czPickerView.identifier isEqualToString:kPickerPayStatus]) {    // 付款状态
+            NSString *newContent = [ProjectUtility payStatusList][index];
+            [self.cellContentList[2] replaceObjectAtIndex:1 withObject:newContent];
+        } else if ([czPickerView.identifier isEqualToString:kPickerPayWay]) {    // 付款渠道
+            NSString *newContent = [ProjectUtility payWayList][index];
+            [self.cellContentList[2] replaceObjectAtIndex:2 withObject:newContent];
+        }
+        [self.tableView reloadData];
     }
 }
 
