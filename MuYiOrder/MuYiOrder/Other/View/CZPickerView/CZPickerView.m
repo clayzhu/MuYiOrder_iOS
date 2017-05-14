@@ -12,10 +12,13 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 
 @interface CZPickerView () <UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (strong, nonatomic) UIView *controlView;
+@property (strong, nonatomic) UIView *containerView;
+
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *sureButton;
+
+@property (strong, nonatomic) UIPickerView *pickerView;
 
 @end
 
@@ -38,11 +41,11 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     }
 }
 
-- (UIView *)controlView {
-    if (!_controlView) {
-        _controlView = [[UIView alloc] initWithFrame:CGRectMake(0.0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), kPickerViewHeight + kToolbarHeight)];
+- (UIView *)containerView {
+    if (!_containerView) {
+        _containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), kPickerViewHeight + kToolbarHeight)];
     }
-    return _controlView;
+    return _containerView;
 }
 
 - (UIPickerView *)pickerView {
@@ -120,11 +123,12 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 - (void)setupPickerView {
     self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
     
-    [self.controlView addSubview:self.pickerView];
-    [self.controlView addSubview:self.toolbar];
-    [self addSubview:self.controlView];
+    [self.containerView addSubview:self.pickerView];
+    [self.containerView addSubview:self.toolbar];
+    [self addSubview:self.containerView];
 }
 
+/** 设置 toolbar 上按钮的共同样式 */
 - (void)setupToolbarButtonStyle:(UIButton *)button {
     button.frame = CGRectMake(0.0, 0.0, 64.0, 32.0);
     button.titleLabel.font = [UIFont systemFontOfSize:16.0];
@@ -157,18 +161,18 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     
     [UIView animateWithDuration:0.3
                      animations:^{
-                         CGRect frame = self.controlView.frame;
+                         CGRect frame = self.containerView.frame;
                          frame.origin.y = CGRectGetHeight(self.bounds) - kPickerViewHeight - kToolbarHeight;
-                         self.controlView.frame = frame;
+                         self.containerView.frame = frame;
                      }];
 }
 
 - (void)hidePickerView {
     [UIView animateWithDuration:0.3
                      animations:^{
-                         CGRect frame = self.controlView.frame;
+                         CGRect frame = self.containerView.frame;
                          frame.origin.y = CGRectGetHeight(self.bounds);
-                         self.controlView.frame = frame;
+                         self.containerView.frame = frame;
                      }
                      completion:^(BOOL finished) {
                          if (finished) {

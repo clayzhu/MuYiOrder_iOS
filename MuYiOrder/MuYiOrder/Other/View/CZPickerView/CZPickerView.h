@@ -27,7 +27,6 @@
 /** 如果一个页面需要使用多个 CZPickerView，可以使用 identifier 标记 */
 @property (strong, nonatomic) NSString *identifier;
 
-@property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray<NSString *> *dataSource;
 @property (assign, nonatomic) NSUInteger selectedRow;
 
@@ -36,9 +35,12 @@
 
 @property (weak, nonatomic) id<CZPickerViewDelegate> delegate;
 
+/** 初始化基础样式和控件 */
 - (void)setupPickerView;
 
+/** 显示 pickerView */
 - (void)showPickerView;
+/** 隐藏 pickerView */
 - (void)hidePickerView;
 
 @end
