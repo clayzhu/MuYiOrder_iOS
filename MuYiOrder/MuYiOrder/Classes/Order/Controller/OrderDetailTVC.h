@@ -17,6 +17,7 @@
 typedef NS_ENUM(NSUInteger, OrderDetailTVCStatus) {
     OrderDetailTVCStatusNormal = 0,
     OrderDetailTVCStatusEdit = 1,
+    OrderDetailTVCStatusNew = 2,
 };
 
 @interface OrderDetailTVC : BaseTableViewController

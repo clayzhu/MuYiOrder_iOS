@@ -97,7 +97,7 @@ static NSString *kOrderListCell = @"OrderListCell";
 /** 添加新订单 */
 - (void)addNewOrder {
     OrderDetailTVC *tvc = [[UIStoryboard storyboardWithName:@"Order" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderDetailTVC"];
-    tvc.orderDetailTVCStatus = OrderDetailTVCStatusEdit;
+    tvc.orderDetailTVCStatus = OrderDetailTVCStatusNew;
     [self pushForTabbarVc:tvc];
 }
 

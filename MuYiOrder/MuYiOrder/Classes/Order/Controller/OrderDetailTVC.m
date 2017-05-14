@@ -70,7 +70,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         // 设置导航栏上按钮：查看状态，编辑按钮
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
         // 设置导航栏上按钮：编辑状态，保存按钮
-    } else if (orderDetailTVCStatus == OrderDetailTVCStatusEdit) {
+    } else if (orderDetailTVCStatus == OrderDetailTVCStatusEdit || orderDetailTVCStatus == OrderDetailTVCStatusNew) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
     }
     [self.tableView reloadData];
@@ -336,6 +336,13 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == 3) { // 收货地址
+        if (self.orderDetailTVCStatus == OrderDetailTVCStatusNormal) {  // 查看模式下，label 多行显示
+            NSString *cellContent = self.cellContentList[indexPath.section][indexPath.row]; // cell 内容
+            CGFloat height = CGRectGetHeight([cellContent boundingRectWithSize:CGSizeMake(168.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0]} context:nil]);
+            return height + 13.0 * 2;
+        }
+    }
     return 44.0;
 }
 
@@ -375,7 +382,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
                 case 1: // 发货时间
                 {
                     NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];
-                    NSDate *date = [CZDateUtility dateFromDateString:oldContent dateFormat:kDataFormatter];
+                    NSDate *date = [CZDateUtility dateFromTimeStamp:oldContent];
                     self.czDatePickerView.datePicker.date = date == nil ? [NSDate date] : date;
                     self.czDatePickerView.identifier = kDatePickerDeliver;
                     [self.czDatePickerView showPickerView];
