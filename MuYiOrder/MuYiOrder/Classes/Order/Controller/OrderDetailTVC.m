@@ -12,6 +12,7 @@
 #import "BaseTextFieldWithUnitCell.h"
 #import "CZPickerView.h"
 #import "CZDatePickerView.h"
+#import "CZDateUtility.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -24,7 +25,9 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
 static NSString *kDatePickerOrder = @"DatePickerOrderKey";
 static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
 
-@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate>
+static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
+
+@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate, CZDatePickerViewDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
@@ -111,7 +114,7 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
         _czDatePickerView = [[CZDatePickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
         [_czDatePickerView setupPickerView];
         _czDatePickerView.mainColor = [UIColor hex_33bc99];
-//        _czDatePickerView.delegate = self;
+        _czDatePickerView.delegate = self;
     }
     return _czDatePickerView;
 }
@@ -187,7 +190,7 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
                     {
                         BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
-                        cell.detailTextLabel.text = cellContent;
+                        cell.detailTextLabel.text = [CZDateUtility dateStringFromTimeStamp:cellContent withDateFormat:kDataFormatter];
                         cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
                         return cell;
@@ -238,7 +241,7 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
                     {
                         BaseTextLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextLabelCell forIndexPath:indexPath];
                         cell.textLabel.text = cellTitle;
-                        cell.detailTextLabel.text = cellContent;
+                        cell.detailTextLabel.text = [CZDateUtility dateStringFromTimeStamp:cellContent withDateFormat:kDataFormatter];
                         cell.editingIndicatorLine.hidden = !self.orderDetailTVCStatus;
                         cell.separatorLine.hidden = NO; // 每一个 section 的最后一个 cell 不显示 separator，前几个 cell 显示
                         return cell;
@@ -344,6 +347,9 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
             switch (indexPath.row) {
                 case 2: // 下单时间
                 {
+                    NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];  // 时间戳
+                    NSDate *date = [CZDateUtility dateFromTimeStamp:oldContent];
+                    self.czDatePickerView.datePicker.date = date == nil ? [NSDate date] : date;
                     self.czDatePickerView.identifier = kDatePickerOrder;
                     [self.czDatePickerView showPickerView];
                 }
@@ -368,6 +374,9 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
                     break;
                 case 1: // 发货时间
                 {
+                    NSString *oldContent = self.cellContentList[indexPath.section][indexPath.row];
+                    NSDate *date = [CZDateUtility dateFromDateString:oldContent dateFormat:kDataFormatter];
+                    self.czDatePickerView.datePicker.date = date == nil ? [NSDate date] : date;
                     self.czDatePickerView.identifier = kDatePickerDeliver;
                     [self.czDatePickerView showPickerView];
                 }
@@ -438,6 +447,20 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
             NSString *newContent = [ProjectUtility payWayList][index];
             [self.cellContentList[2] replaceObjectAtIndex:2 withObject:newContent];
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:2]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
+}
+
+#pragma mark - CZDatePickerViewDelegate
+- (void)czDatePickerView:(CZDatePickerView *)czDatePickerView selectedDate:(NSDate *)date clickSureButton:(BOOL)isClickSure {
+    if (isClickSure) {
+        NSString *newContent = [CZDateUtility timeStampWithDate:date];
+        if ([czDatePickerView.identifier isEqualToString:kDatePickerOrder]) {   // 下单时间
+            [self.cellContentList[0] replaceObjectAtIndex:2 withObject:newContent];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else if ([czDatePickerView.identifier isEqualToString:kDatePickerDeliver]) {    // 发货时间
+            [self.cellContentList[1] replaceObjectAtIndex:1 withObject:newContent];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
 }
