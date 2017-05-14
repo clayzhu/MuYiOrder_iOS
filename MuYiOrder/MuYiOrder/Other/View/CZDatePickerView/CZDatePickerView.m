@@ -152,9 +152,9 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     if (sender.tag == 911) {
         isClickSure = YES;
     }
-//    if ([self.delegate respondsToSelector:@selector(czPickerView:selectedRow:clickSureButton:)]) {
-//        [self.delegate czPickerView:self selectedRow:self.selectedIndex clickSureButton:isClickSure];
-//    }
+    if ([self.delegate respondsToSelector:@selector(czDatePickerView:selectedDate:clickSureButton:)]) {
+        [self.delegate czDatePickerView:self selectedDate:self.datePicker.date clickSureButton:isClickSure];
+    }
     
     [self hidePickerView];
 }
