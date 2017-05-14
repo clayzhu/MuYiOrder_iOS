@@ -348,6 +348,8 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.view endEditing:YES];
+    
     switch (indexPath.section) {
         case 0:
         {
