@@ -1,16 +1,16 @@
 //
-//  CZPickerView.m
+//  CZDatePickerView.m
 //  MuYiOrder
 //
-//  Created by ug19 on 2017/5/13.
+//  Created by ug19 on 2017/5/14.
 //  Copyright © 2017年 Clay Zhu. All rights reserved.
 //
 
-#import "CZPickerView.h"
+#import "CZDatePickerView.h"
 
 static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 
-@interface CZPickerView () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CZDatePickerView ()
 
 @property (strong, nonatomic) UIView *containerView;
 
@@ -18,11 +18,9 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *sureButton;
 
-@property (strong, nonatomic) UIPickerView *pickerView;
-
 @end
 
-@implementation CZPickerView
+@implementation CZDatePickerView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -33,14 +31,6 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 */
 
 #pragma mark - Getter and Setter
-- (void)setDataSource:(NSArray<NSString *> *)dataSource {
-    _dataSource = dataSource;
-    [self.pickerView reloadAllComponents];
-    if (self.selectedIndex > 0) {
-        [self.pickerView selectRow:self.selectedIndex inComponent:0 animated:YES];
-    }
-}
-
 - (UIView *)containerView {
     if (!_containerView) {
         _containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), kPickerViewHeight + kToolbarHeight)];
@@ -94,14 +84,12 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     return _sureButton;
 }
 
-- (UIPickerView *)pickerView {
-    if (!_pickerView) {
-        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, kToolbarHeight, CGRectGetWidth(self.bounds), kPickerViewHeight)];
-        _pickerView.backgroundColor = [UIColor whiteColor];
-        _pickerView.dataSource = self;
-        _pickerView.delegate = self;
+- (UIDatePicker *)datePicker {
+    if (!_datePicker) {
+        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, kToolbarHeight, CGRectGetWidth(self.bounds), kPickerViewHeight)];
+        _datePicker.backgroundColor = [UIColor whiteColor];
     }
-    return _pickerView;
+    return _datePicker;
 }
 
 - (void)setMainColor:(UIColor *)mainColor {
@@ -114,16 +102,11 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
-- (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    _selectedIndex = selectedIndex;
-    [self.pickerView selectRow:selectedIndex inComponent:0 animated:YES];
-}
-
 #pragma mark - Setup
 - (void)setupPickerView {
     self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
     
-    [self.containerView addSubview:self.pickerView];
+    [self.containerView addSubview:self.datePicker];
     [self.containerView addSubview:self.toolbar];
     [self addSubview:self.containerView];
 }
@@ -135,24 +118,6 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     [button addTarget:self action:@selector(toolbarButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     button.layer.cornerRadius = 6.0;
     button.layer.masksToBounds = YES;
-}
-
-#pragma mark - UIPickerViewDataSource
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.dataSource.count;
-}
-
-#pragma mark - UIPickerViewDelegate
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.dataSource[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _selectedIndex = row;
 }
 
 #pragma mark - Show and Hide
@@ -187,9 +152,9 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
     if (sender.tag == 911) {
         isClickSure = YES;
     }
-    if ([self.delegate respondsToSelector:@selector(czPickerView:selectedRow:clickSureButton:)]) {
-        [self.delegate czPickerView:self selectedRow:self.selectedIndex clickSureButton:isClickSure];
-    }
+//    if ([self.delegate respondsToSelector:@selector(czPickerView:selectedRow:clickSureButton:)]) {
+//        [self.delegate czPickerView:self selectedRow:self.selectedIndex clickSureButton:isClickSure];
+//    }
     
     [self hidePickerView];
 }

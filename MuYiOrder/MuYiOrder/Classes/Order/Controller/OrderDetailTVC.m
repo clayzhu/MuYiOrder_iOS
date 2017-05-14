@@ -11,6 +11,7 @@
 #import "BaseTextLabelCell.h"
 #import "BaseTextFieldWithUnitCell.h"
 #import "CZPickerView.h"
+#import "CZDatePickerView.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -20,6 +21,9 @@ static NSString *kPickerDeliverStatus = @"PickerDeliverStatusKey";
 static NSString *kPickerPayStatus = @"PickerPayStatusKey";
 static NSString *kPickerPayWay = @"PickerPayWayKey";
 
+static NSString *kDatePickerOrder = @"DatePickerOrderKey";
+static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
+
 @interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
@@ -27,6 +31,7 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
 @property (strong, nonatomic) NSMutableArray<NSMutableArray<NSString *> *> *cellContentList;
 
 @property (strong, nonatomic) CZPickerView *czPickerView;
+@property (strong, nonatomic) CZDatePickerView *czDatePickerView;
 
 @end
 
@@ -99,6 +104,16 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
         _czPickerView.delegate = self;
     }
     return _czPickerView;
+}
+
+- (CZDatePickerView *)czDatePickerView {
+    if (!_czDatePickerView) {
+        _czDatePickerView = [[CZDatePickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
+        [_czDatePickerView setupPickerView];
+        _czDatePickerView.mainColor = [UIColor hex_33bc99];
+//        _czDatePickerView.delegate = self;
+    }
+    return _czDatePickerView;
 }
 
 #pragma mark - Setup
@@ -324,6 +339,20 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
+        case 0:
+        {
+            switch (indexPath.row) {
+                case 2: // 下单时间
+                {
+                    self.czDatePickerView.identifier = kDatePickerOrder;
+                    [self.czDatePickerView showPickerView];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
         case 1:
         {
             switch (indexPath.row) {
@@ -335,6 +364,12 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
                     self.czPickerView.dataSource = [ProjectUtility deliverStatusList];
                     self.czPickerView.identifier = kPickerDeliverStatus;
                     [self.czPickerView showPickerView];
+                }
+                    break;
+                case 1: // 发货时间
+                {
+                    self.czDatePickerView.identifier = kDatePickerDeliver;
+                    [self.czDatePickerView showPickerView];
                 }
                     break;
                 default:
@@ -382,6 +417,7 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    // 输入完成，键盘隐藏
     NSUInteger section = textField.tag / 10;
     NSUInteger row = textField.tag % 10;
     [self.cellContentList[section] replaceObjectAtIndex:row withObject:textField.text];
@@ -393,14 +429,16 @@ static NSString *kPickerPayWay = @"PickerPayWayKey";
         if ([czPickerView.identifier isEqualToString:kPickerDeliverStatus]) {   // 发货状态
             NSString *newContent = [ProjectUtility deliverStatusList][index];
             [self.cellContentList[1] replaceObjectAtIndex:0 withObject:newContent];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
         } else if ([czPickerView.identifier isEqualToString:kPickerPayStatus]) {    // 付款状态
             NSString *newContent = [ProjectUtility payStatusList][index];
             [self.cellContentList[2] replaceObjectAtIndex:1 withObject:newContent];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationAutomatic];
         } else if ([czPickerView.identifier isEqualToString:kPickerPayWay]) {    // 付款渠道
             NSString *newContent = [ProjectUtility payWayList][index];
             [self.cellContentList[2] replaceObjectAtIndex:2 withObject:newContent];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:2]] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-        [self.tableView reloadData];
     }
 }
 

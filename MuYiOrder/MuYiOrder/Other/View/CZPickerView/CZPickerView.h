@@ -24,14 +24,14 @@
 @end
 
 @interface CZPickerView : UIView
+
 /** 如果一个页面需要使用多个 CZPickerView，可以使用 identifier 标记 */
 @property (strong, nonatomic) NSString *identifier;
+/** 设定主色调 */
+@property (strong, nonatomic) UIColor *mainColor;
 
 @property (strong, nonatomic) NSArray<NSString *> *dataSource;
 @property (assign, nonatomic) NSUInteger selectedIndex;
-
-/** 设定主色调 */
-@property (strong, nonatomic) UIColor *mainColor;
 
 @property (weak, nonatomic) id<CZPickerViewDelegate> delegate;
 
