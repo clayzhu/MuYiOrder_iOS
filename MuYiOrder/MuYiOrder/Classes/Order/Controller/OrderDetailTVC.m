@@ -16,7 +16,7 @@ static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
 static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
-@interface OrderDetailTVC () <UITextFieldDelegate>
+@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
@@ -91,6 +91,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
     if (!_czPickerView) {
         _czPickerView = [[CZPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
         [_czPickerView setupPickerView];
+        _czPickerView.mainColor = [UIColor hex_33bc99];
+        _czPickerView.delegate = self;
     }
     return _czPickerView;
 }
@@ -347,6 +349,13 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
     NSUInteger section = textField.tag / 10;
     NSUInteger row = textField.tag % 10;
     [self.cellContentList[section] replaceObjectAtIndex:row withObject:textField.text];
+}
+
+#pragma mark - CZPickerViewDelegate
+- (void)czPickerView:(CZPickerView *)czPickerView selectedRow:(NSUInteger)index clickSureButton:(BOOL)isClickSure {
+    if (isClickSure) {
+        NSLog(@"selectedRow:%@", @(index));
+    }
 }
 
 #pragma mark - Action
