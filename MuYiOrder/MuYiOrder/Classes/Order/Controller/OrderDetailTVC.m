@@ -10,6 +10,7 @@
 #import "BaseTextFieldCell.h"
 #import "BaseTextLabelCell.h"
 #import "BaseTextFieldWithUnitCell.h"
+#import "CZPickerView.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -20,6 +21,8 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
 @property (strong, nonatomic) NSMutableArray<NSMutableArray<NSString *> *> *cellContentList;
+
+@property (strong, nonatomic) CZPickerView *czPickerView;
 
 @end
 
@@ -82,6 +85,14 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
         }
     }
     return _cellContentList;
+}
+
+- (CZPickerView *)czPickerView {
+    if (!_czPickerView) {
+        _czPickerView = [[CZPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
+        [_czPickerView setupPickerView];
+    }
+    return _czPickerView;
 }
 
 #pragma mark - Setup
@@ -306,6 +317,23 @@ static NSString *kBaseTextFieldWithUnitCell = @"BaseTextFieldWithUnitCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.section) {
+        case 1:
+            switch (indexPath.row) {
+                case 0: // 发货状态
+                {
+                    [self.czPickerView showPickerView];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - UIScrollViewDelegate

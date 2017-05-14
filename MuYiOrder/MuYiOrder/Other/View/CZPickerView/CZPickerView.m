@@ -22,8 +22,29 @@
 }
 */
 
+#pragma mark - Getter and Setter
+
+#pragma mark - Setup
+- (void)setupPickerView {
+    self.hidden = YES;
+    self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+}
+
 #pragma mark - UIPickerViewDataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 0;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 0;
+}
 
 #pragma mark - UIPickerViewDelegate
+
+#pragma mark - Show and Hide
+- (void)showPickerView {
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    self.hidden = NO;
+}
 
 @end

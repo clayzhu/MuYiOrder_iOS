@@ -15,4 +15,7 @@
 @property (assign, nonatomic) NSUInteger selectedRow;
 @property (strong, nonatomic) NSString *identifier;
 
+- (void)setupPickerView;
+- (void)showPickerView;
+
 @end
