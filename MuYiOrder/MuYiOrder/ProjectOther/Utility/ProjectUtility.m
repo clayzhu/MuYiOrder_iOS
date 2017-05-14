@@ -23,4 +23,16 @@
     return nc;
 }
 
++ (NSArray<NSString *> *)deliverStatusList {
+    return @[@"待发货", @"待收货", @"已收货"];
+}
+
++ (NSArray<NSString *> *)payStatusList {
+    return @[@"待付款", @"已付款"];
+}
+
++ (NSArray<NSString *> *)payWayList {
+    return @[@"支付宝", @"微信", @"现金", @"银行卡"];
+}
+
 @end
