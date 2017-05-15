@@ -59,6 +59,7 @@
 		B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778B01EACF2E000B76EDF /* UIImage+Custom.m */; };
 		B79235CC1EC6E8FF00143E8A /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79235CB1EC6E8FF00143E8A /* CZPickerView.m */; };
 		B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */; };
+		B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -165,6 +166,8 @@
 		B79235CB1EC6E8FF00143E8A /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
 		B79C31A11EB24711002D1A4D /* OrderDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTVC.h; sourceTree = "<group>"; };
 		B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTVC.m; sourceTree = "<group>"; };
+		B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZImagePickerView.h; sourceTree = "<group>"; };
+		B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B7D754B11EA504EF0089A8CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -479,6 +482,7 @@
 		B767788E1EACE99B00B76EDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7C4FFD71EC9F952006B273D /* CZImagePickerView */,
 				B75D4C071EC894B800E4CD7E /* CZDatePickerView */,
 				B79235C91EC6E8DE00143E8A /* CZPickerView */,
 				B76778A71EACF27900B76EDF /* CZBlockButton */,
@@ -547,6 +551,15 @@
 				B79235CB1EC6E8FF00143E8A /* CZPickerView.m */,
 			);
 			path = CZPickerView;
+			sourceTree = "<group>";
+		};
+		B7C4FFD71EC9F952006B273D /* CZImagePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */,
+				B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */,
+			);
+			path = CZImagePickerView;
 			sourceTree = "<group>";
 		};
 		B7D754A21EA504EF0089A8CD = {
@@ -754,6 +767,7 @@
 				18A11A441EB87E93009437E0 /* MBProgressHelper.m in Sources */,
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
+				B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */,
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
 				18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
