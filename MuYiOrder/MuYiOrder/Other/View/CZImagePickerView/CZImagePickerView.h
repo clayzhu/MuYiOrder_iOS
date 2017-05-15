@@ -10,4 +10,8 @@
 
 @interface CZImagePickerView : UIView
 
+@property (strong, nonatomic) NSArray<UIImage *> *imageList;
+
+- (void)setupImagePickerView;
+
 @end

@@ -8,6 +8,14 @@
 
 #import "CZImagePickerView.h"
 
+@interface CZImagePickerView ()
+
+@property (strong, nonatomic) NSMutableArray<UIImage *> *imageListPrivate;
+@property (strong, nonatomic) NSMutableArray<UIButton *> *imageButtonList;
+@property (strong, nonatomic) UIButton *addButton;
+
+@end
+
 @implementation CZImagePickerView
 
 /*
@@ -17,5 +25,9 @@
     // Drawing code
 }
 */
+
+- (void)setupImagePickerView {
+    
+}
 
 @end
