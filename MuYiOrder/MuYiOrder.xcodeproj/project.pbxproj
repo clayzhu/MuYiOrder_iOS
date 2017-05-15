@@ -60,6 +60,8 @@
 		B79235CC1EC6E8FF00143E8A /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79235CB1EC6E8FF00143E8A /* CZPickerView.m */; };
 		B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */; };
 		B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */; };
+		B7C4FFDD1ECA0642006B273D /* addImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDB1ECA0642006B273D /* addImage@2x.png */; };
+		B7C4FFDE1ECA0642006B273D /* addImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDC1ECA0642006B273D /* addImage@3x.png */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -168,6 +170,8 @@
 		B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTVC.m; sourceTree = "<group>"; };
 		B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZImagePickerView.h; sourceTree = "<group>"; };
 		B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
+		B7C4FFDB1ECA0642006B273D /* addImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@2x.png"; sourceTree = "<group>"; };
+		B7C4FFDC1ECA0642006B273D /* addImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@3x.png"; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B7D754B11EA504EF0089A8CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 			children = (
 				B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */,
 				B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */,
+				B7C4FFDB1ECA0642006B273D /* addImage@2x.png */,
+				B7C4FFDC1ECA0642006B273D /* addImage@3x.png */,
 			);
 			path = CZImagePickerView;
 			sourceTree = "<group>";
@@ -681,10 +687,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B765EDE41EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib in Resources */,
+				B7C4FFDE1ECA0642006B273D /* addImage@3x.png in Resources */,
 				18D672421EAEE5B00011706C /* Order.storyboard in Resources */,
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
 				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
+				B7C4FFDD1ECA0642006B273D /* addImage@2x.png in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
 				B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
