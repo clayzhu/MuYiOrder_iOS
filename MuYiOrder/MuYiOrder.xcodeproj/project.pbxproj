@@ -62,6 +62,7 @@
 		B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */; };
 		B7C4FFDD1ECA0642006B273D /* addImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDB1ECA0642006B273D /* addImage@2x.png */; };
 		B7C4FFDE1ECA0642006B273D /* addImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDC1ECA0642006B273D /* addImage@3x.png */; };
+		B7C4FFE41ECA087A006B273D /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
@@ -172,6 +173,8 @@
 		B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
 		B7C4FFDB1ECA0642006B273D /* addImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@2x.png"; sourceTree = "<group>"; };
 		B7C4FFDC1ECA0642006B273D /* addImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@3x.png"; sourceTree = "<group>"; };
+		B7C4FFE21ECA087A006B273D /* ProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailVC.h; sourceTree = "<group>"; };
+		B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailVC.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D754AF1EA504EF0089A8CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B7D754B11EA504EF0089A8CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 			children = (
 				18D672491EAEE67D0011706C /* ProductListVC.h */,
 				18D6724A1EAEE67D0011706C /* ProductListVC.m */,
+				B7C4FFE21ECA087A006B273D /* ProductDetailVC.h */,
+				B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -797,6 +802,7 @@
 				B75D4C111EC8A17E00E4CD7E /* CZDateUtility.m in Sources */,
 				B76778A61EACEB1100B76EDF /* UIView+Style.m in Sources */,
 				B76778781EACE8F600B76EDF /* ProjectTextField.m in Sources */,
+				B7C4FFE41ECA087A006B273D /* ProductDetailVC.m in Sources */,
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,
 				B76778381EAC7D2500B76EDF /* UIScrollView+MLInputDodger.m in Sources */,
 				B76778581EAC800700B76EDF /* LoginVC.m in Sources */,
