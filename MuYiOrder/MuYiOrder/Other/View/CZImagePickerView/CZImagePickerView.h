@@ -11,6 +11,7 @@
 @interface CZImagePickerView : UIView
 
 @property (strong, nonatomic) NSArray<UIImage *> *imageList;
+@property (strong, nonatomic) UIImage *addButtonImage;
 
 - (void)setupImagePickerView;
 

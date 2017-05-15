@@ -26,8 +26,38 @@
 }
 */
 
+@synthesize imageList = _imageList;
+
+#pragma mark - Getter and Setter
+- (NSArray<UIImage *> *)imageList {
+    return [NSArray arrayWithArray:self.imageListPrivate];
+}
+
+- (void)setImageList:(NSArray<UIImage *> *)imageList {
+    _imageList = imageList;
+    for (UIImage *image in imageList) {
+        [self.imageListPrivate addObject:image];
+    }
+}
+
+- (NSMutableArray<UIImage *> *)imageListPrivate {
+    if (!_imageListPrivate) {
+        _imageListPrivate = [NSMutableArray array];
+    }
+    return _imageListPrivate;
+}
+
+- (UIButton *)addButton {
+    if (!_addButton) {
+        _addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    }
+    return _addButton;
+}
+
+#pragma mark - Setup
 - (void)setupImagePickerView {
-    
+    self.addButton.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    [self addSubview:self.addButton];
 }
 
 @end

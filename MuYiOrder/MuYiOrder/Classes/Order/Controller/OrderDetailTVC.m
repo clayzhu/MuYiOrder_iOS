@@ -13,6 +13,7 @@
 #import "CZPickerView.h"
 #import "CZDatePickerView.h"
 #import "CZDateUtility.h"
+#import "CZImagePickerView.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -35,6 +36,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 
 @property (strong, nonatomic) CZPickerView *czPickerView;
 @property (strong, nonatomic) CZDatePickerView *czDatePickerView;
+@property (strong, nonatomic) CZImagePickerView *czImagePickerView;
 
 @end
 
@@ -117,6 +119,14 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         _czDatePickerView.delegate = self;
     }
     return _czDatePickerView;
+}
+
+- (CZImagePickerView *)czImagePickerView {
+    if (!_czImagePickerView) {
+        _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 100.0)];
+        [_czImagePickerView setupImagePickerView];
+    }
+    return _czImagePickerView;
 }
 
 #pragma mark - Setup
@@ -324,7 +334,12 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
                 break;
         }
     } else {
-        BaseTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kBaseTextFieldCell forIndexPath:indexPath];
+        static NSString *kCZImagePickerViewCell = @"CZImagePickerViewCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCZImagePickerViewCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCZImagePickerViewCell];
+            [cell.contentView addSubview:self.czImagePickerView];
+        }
         return cell;
     }
     return nil;
@@ -342,6 +357,8 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
             CGFloat height = CGRectGetHeight([cellContent boundingRectWithSize:CGSizeMake(168.0, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0]} context:nil]);
             return height + 13.0 * 2;
         }
+    } else if (indexPath.section == 3) {    // 图片选择
+        return 100.0;
     }
     return 44.0;
 }
