@@ -49,9 +49,15 @@
 
 - (UIButton *)addButton {
     if (!_addButton) {
-        _addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_addButton setImage:(self.addButtonImage == nil ? [UIImage imageNamed:@"addImage"] : self.addButtonImage) forState:UIControlStateNormal];
     }
     return _addButton;
+}
+
+- (void)setAddButtonImage:(UIImage *)addButtonImage {
+    _addButtonImage = addButtonImage;
+    [self.addButton setImage:addButtonImage forState:UIControlStateNormal];
 }
 
 #pragma mark - Setup
