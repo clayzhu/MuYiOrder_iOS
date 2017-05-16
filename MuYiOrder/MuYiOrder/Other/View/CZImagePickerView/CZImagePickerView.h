@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSArray<UIImage *> *imageList;
 @property (strong, nonatomic) UIImage *addButtonImage;
 
+@property (assign, nonatomic, getter=isEdit) BOOL edit;
+
 - (void)setupImagePickerView;
 
 @end

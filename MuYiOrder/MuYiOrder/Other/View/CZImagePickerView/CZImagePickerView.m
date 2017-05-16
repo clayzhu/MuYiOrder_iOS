@@ -60,6 +60,11 @@
     [self.addButton setImage:addButtonImage forState:UIControlStateNormal];
 }
 
+- (void)setEdit:(BOOL)edit {
+    _edit = edit;
+    self.addButton.hidden = !edit;
+}
+
 #pragma mark - Setup
 - (void)setupImagePickerView {
     self.addButton.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
