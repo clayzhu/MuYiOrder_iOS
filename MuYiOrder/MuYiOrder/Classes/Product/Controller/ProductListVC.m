@@ -9,6 +9,7 @@
 #import "ProductListVC.h"
 #import "ProductDetailVC.h"
 #import "ProductCVCell.h"
+#import "CZDeviceTool.h"
 
 static NSString *kProductCVCell = @"ProductCVCell";
 
@@ -69,6 +70,22 @@ static NSString *kProductCVCell = @"ProductCVCell";
 #pragma mark - UICollectionViewDelegate
 
 #pragma mark - UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat width = ([CZDeviceTool screenWidth] - 8.0 * 4) / 3;
+    return CGSizeMake(width, width);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 8.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 8.0;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(4.0, 4.0, 4.0, 4.0);
+}
 
 #pragma mark - Action
 /** 添加新产品 */
