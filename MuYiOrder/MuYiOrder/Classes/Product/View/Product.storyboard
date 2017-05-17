@@ -20,8 +20,34 @@
                     <view key="view" contentMode="scaleToFill" id="EsF-2g-esU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XJO-EJ-jau">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xmg-f0-N5F">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DlG-NJ-l5P" id="4is-bv-1hv"/>
+                                    <outlet property="delegate" destination="DlG-NJ-l5P" id="v1R-8h-OrK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XJO-EJ-jau" firstAttribute="top" secondItem="SON-CF-k1H" secondAttribute="bottom" id="BOK-oZ-VVT"/>
+                            <constraint firstAttribute="trailing" secondItem="XJO-EJ-jau" secondAttribute="trailing" id="VwL-Ea-7KA"/>
+                            <constraint firstItem="XJO-EJ-jau" firstAttribute="leading" secondItem="EsF-2g-esU" secondAttribute="leading" id="e4X-wF-F8d"/>
+                            <constraint firstItem="ciZ-fJ-Nt1" firstAttribute="top" secondItem="XJO-EJ-jau" secondAttribute="bottom" id="zdq-oH-V3G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="XJO-EJ-jau" id="FM7-9Z-vMw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itS-Fy-gOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

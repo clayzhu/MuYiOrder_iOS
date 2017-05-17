@@ -68,6 +68,8 @@
 		B7D754B61EA504EF0089A8CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B51EA504EF0089A8CD /* ViewController.m */; };
 		B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D754BA1EA504EF0089A8CD /* Assets.xcassets */; };
 		B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7D754BC1EA504EF0089A8CD /* LaunchScreen.storyboard */; };
+		B7DD228F1ECC83E5004C508A /* ProductCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DD228D1ECC83E5004C508A /* ProductCVCell.m */; };
+		B7DD22901ECC83E5004C508A /* ProductCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DD228E1ECC83E5004C508A /* ProductCVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +186,9 @@
 		B7D754BA1EA504EF0089A8CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7D754BD1EA504EF0089A8CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7D754BF1EA504EF0089A8CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7DD228C1ECC83E5004C508A /* ProductCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCVCell.h; sourceTree = "<group>"; };
+		B7DD228D1ECC83E5004C508A /* ProductCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCVCell.m; sourceTree = "<group>"; };
+		B7DD228E1ECC83E5004C508A /* ProductCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				18D6724C1EAEE6970011706C /* Product.storyboard */,
+				B7DD228C1ECC83E5004C508A /* ProductCVCell.h */,
+				B7DD228D1ECC83E5004C508A /* ProductCVCell.m */,
+				B7DD228E1ECC83E5004C508A /* ProductCVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -702,6 +710,7 @@
 				B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
 				18D6724D1EAEE6970011706C /* Product.storyboard in Resources */,
+				B7DD22901ECC83E5004C508A /* ProductCVCell.xib in Resources */,
 				B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,6 +788,7 @@
 				B76778A01EACE99B00B76EDF /* UIView+CZInspectableView.m in Sources */,
 				18A11A441EB87E93009437E0 /* MBProgressHelper.m in Sources */,
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
+				B7DD228F1ECC83E5004C508A /* ProductCVCell.m in Sources */,
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
 				B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */,
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,

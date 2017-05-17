@@ -8,8 +8,12 @@
 
 #import "ProductListVC.h"
 #import "ProductDetailVC.h"
+#import "ProductCVCell.h"
 
-@interface ProductListVC ()
+static NSString *kProductCVCell = @"ProductCVCell";
+
+@interface ProductListVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -20,6 +24,7 @@
     // Do any additional setup after loading the view.
     self.title = @"百宝箱";
     [self setupNavItem];
+    [self registerCell];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +47,28 @@
 - (void)setupNavItem {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProduct)];
 }
+
+- (void)registerCell {
+    [self.collectionView registerNib:[UINib nibWithNibName:kProductCVCell bundle:nil] forCellWithReuseIdentifier:kProductCVCell];
+}
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 10;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ProductCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kProductCVCell forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+#pragma mark - UICollectionViewDelegateFlowLayout
 
 #pragma mark - Action
 /** 添加新产品 */
