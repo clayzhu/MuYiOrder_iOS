@@ -14,6 +14,10 @@
 @property (strong, nonatomic) NSMutableArray<UIButton *> *imageButtonList;
 @property (strong, nonatomic) UIButton *addButton;
 
+@property (assign, nonatomic) CGFloat spacingForButton;
+@property (assign, nonatomic) NSUInteger numberOfButtonInRow;
+@property (assign, nonatomic) CGFloat singleButtonWidth;
+
 @end
 
 @implementation CZImagePickerView
@@ -50,7 +54,8 @@
 - (UIButton *)addButton {
     if (!_addButton) {
         _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_addButton setImage:(self.addButtonImage == nil ? [UIImage imageNamed:@"addImage"] : self.addButtonImage) forState:UIControlStateNormal];
+        [_addButton setImage:(self.addButtonImage == nil ? [UIImage imageNamed:@"addImage_CZImagePickerView"] : self.addButtonImage) forState:UIControlStateNormal];
+        _addButton.layer.borderWidth = 0.5;
     }
     return _addButton;
 }
@@ -65,9 +70,22 @@
     self.addButton.hidden = !edit;
 }
 
+- (CGFloat)spacingForButton {
+    return 8.0;
+}
+
+- (NSUInteger)numberOfButtonInRow {
+    return 3;
+}
+
+- (CGFloat)singleButtonWidth {
+    CGFloat width = (CGRectGetWidth(self.bounds) - self.spacingForButton * (self.numberOfButtonInRow + 1)) / self.numberOfButtonInRow;
+    return width;
+}
+
 #pragma mark - Setup
 - (void)setupImagePickerView {
-    self.addButton.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    self.addButton.frame = CGRectMake(0.0, 0.0, self.singleButtonWidth, self.singleButtonWidth);
     [self addSubview:self.addButton];
 }
 

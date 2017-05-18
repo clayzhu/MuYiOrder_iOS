@@ -59,9 +59,9 @@
 		B76778B11EACF2E000B76EDF /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B76778B01EACF2E000B76EDF /* UIImage+Custom.m */; };
 		B79235CC1EC6E8FF00143E8A /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79235CB1EC6E8FF00143E8A /* CZPickerView.m */; };
 		B79C31A31EB24711002D1A4D /* OrderDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */; };
-		B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */; };
-		B7C4FFDD1ECA0642006B273D /* addImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDB1ECA0642006B273D /* addImage@2x.png */; };
-		B7C4FFDE1ECA0642006B273D /* addImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C4FFDC1ECA0642006B273D /* addImage@3x.png */; };
+		B7A48D241ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D201ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png */; };
+		B7A48D251ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */; };
+		B7A48D261ECDD5D900985C3D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */; };
 		B7C4FFE41ECA087A006B273D /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
@@ -172,10 +172,10 @@
 		B79235CB1EC6E8FF00143E8A /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
 		B79C31A11EB24711002D1A4D /* OrderDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTVC.h; sourceTree = "<group>"; };
 		B79C31A21EB24711002D1A4D /* OrderDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTVC.m; sourceTree = "<group>"; };
-		B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZImagePickerView.h; sourceTree = "<group>"; };
-		B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
-		B7C4FFDB1ECA0642006B273D /* addImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@2x.png"; sourceTree = "<group>"; };
-		B7C4FFDC1ECA0642006B273D /* addImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage@3x.png"; sourceTree = "<group>"; };
+		B7A48D201ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage_CZImagePickerView@2x.png"; sourceTree = "<group>"; };
+		B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage_CZImagePickerView@3x.png"; sourceTree = "<group>"; };
+		B7A48D221ECDD5D900985C3D /* CZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZImagePickerView.h; sourceTree = "<group>"; };
+		B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
 		B7C4FFE21ECA087A006B273D /* ProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailVC.h; sourceTree = "<group>"; };
 		B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailVC.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -503,7 +503,7 @@
 		B767788E1EACE99B00B76EDF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B7C4FFD71EC9F952006B273D /* CZImagePickerView */,
+				B7A48D1F1ECDD5D900985C3D /* CZImagePickerView */,
 				B75D4C071EC894B800E4CD7E /* CZDatePickerView */,
 				B79235C91EC6E8DE00143E8A /* CZPickerView */,
 				B76778A71EACF27900B76EDF /* CZBlockButton */,
@@ -574,13 +574,13 @@
 			path = CZPickerView;
 			sourceTree = "<group>";
 		};
-		B7C4FFD71EC9F952006B273D /* CZImagePickerView */ = {
+		B7A48D1F1ECDD5D900985C3D /* CZImagePickerView */ = {
 			isa = PBXGroup;
 			children = (
-				B7C4FFD81EC9F9BD006B273D /* CZImagePickerView.h */,
-				B7C4FFD91EC9F9BD006B273D /* CZImagePickerView.m */,
-				B7C4FFDB1ECA0642006B273D /* addImage@2x.png */,
-				B7C4FFDC1ECA0642006B273D /* addImage@3x.png */,
+				B7A48D221ECDD5D900985C3D /* CZImagePickerView.h */,
+				B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */,
+				B7A48D201ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png */,
+				B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */,
 			);
 			path = CZImagePickerView;
 			sourceTree = "<group>";
@@ -712,13 +712,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A48D251ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png in Resources */,
 				B765EDE41EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.xib in Resources */,
-				B7C4FFDE1ECA0642006B273D /* addImage@3x.png in Resources */,
 				18D672421EAEE5B00011706C /* Order.storyboard in Resources */,
+				B7A48D241ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png in Resources */,
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
 				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
-				B7C4FFDD1ECA0642006B273D /* addImage@2x.png in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
 				B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
@@ -803,7 +803,6 @@
 				B76778601EACB92700B76EDF /* UIColor+CZColor.m in Sources */,
 				B7DD228F1ECC83E5004C508A /* ProductCVCell.m in Sources */,
 				B76778641EACB97D00B76EDF /* UITableView+CellRadius.m in Sources */,
-				B7C4FFDA1EC9F9BD006B273D /* CZImagePickerView.m in Sources */,
 				B76778A21EACE99B00B76EDF /* CZInspectableTextField.m in Sources */,
 				18A11A451EB87E93009437E0 /* UIImage+GIF.m in Sources */,
 				B76778391EAC7D2500B76EDF /* UIView+MLInputDodger.m in Sources */,
@@ -829,6 +828,7 @@
 				B7C4FFE41ECA087A006B273D /* ProductDetailVC.m in Sources */,
 				B76778461EAC7E3600B76EDF /* BaseTabBarController.m in Sources */,
 				B76778381EAC7D2500B76EDF /* UIScrollView+MLInputDodger.m in Sources */,
+				B7A48D261ECDD5D900985C3D /* CZImagePickerView.m in Sources */,
 				B76778581EAC800700B76EDF /* LoginVC.m in Sources */,
 				B765EDE31EC4BD370038A7A7 /* BaseTextFieldWithUnitCell.m in Sources */,
 				B7D754B01EA504EF0089A8CD /* main.m in Sources */,

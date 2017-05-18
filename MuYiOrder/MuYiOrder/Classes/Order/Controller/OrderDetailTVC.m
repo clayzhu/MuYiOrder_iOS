@@ -123,7 +123,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 
 - (CZImagePickerView *)czImagePickerView {
     if (!_czImagePickerView) {
-        _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 100.0)];
+        _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(15.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds) - 15.0 * 2, 105.0)];
         [_czImagePickerView setupImagePickerView];
     }
     return _czImagePickerView;
@@ -339,7 +339,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCZImagePickerViewCell];
             [cell.contentView addSubview:self.czImagePickerView];
-            self.czImagePickerView.edit = NO;
+//            self.czImagePickerView.edit = NO;
         }
         return cell;
     }
@@ -359,7 +359,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
             return height + 13.0 * 2;
         }
     } else if (indexPath.section == 3) {    // 图片选择
-        return 100.0;
+        return 105.0;
     }
     return 44.0;
 }
