@@ -25,6 +25,4 @@
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 
-- (void)setupImagePickerView;
-
 @end

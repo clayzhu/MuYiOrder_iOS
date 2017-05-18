@@ -46,33 +46,15 @@
     for (UIImage *image in imageList) {
         [self.imageListPrivate addObject:image];
         
-        UIButton *lastButton = [self.imageButtonList lastObject];   // 目前显示的最后一个 button
-        CGFloat maxX = CGRectGetMaxX(lastButton.frame) + self.spacingForButton + self.widthForSingleButton; // 计算新加入的 button 如果放在上一个 button 的后面，x 最大的值
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    // 创建新的 button
         [button setImage:image forState:UIControlStateNormal];
-        if (maxX > CGRectGetWidth(self.bounds)) {   // 如果新加入的 button 的 x 最大的值超过 self 的宽度，则另起一行绘制
-            button.frame = CGRectMake(self.spacingForButton,
-                                      self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
-                                      self.widthForSingleButton, self.widthForSingleButton);
-        } else {    // 在目前显示的最后一个 button 的后面绘制
-            button.frame = CGRectMake(self.spacingForButton * (self.indexOfLastButton + 1) + self.widthForSingleButton * self.indexOfLastButton,
-                                      self.spacingForButton * self.numberOfRows + self.widthForSingleButton * (self.numberOfRows - 1),
-                                      self.widthForSingleButton, self.widthForSingleButton);
-        }
+        UIButton *lastButton = [self.imageButtonList lastObject];   // 目前显示的最后一个 button
+        [self updateFrameOfButton:button fromLastButton:lastButton];
         [self.imageButtonList addObject:button];
         [self addSubview:button];
         
         // 重新绘制 addButton 的位置，方法和上面类似
-        CGFloat maxXOfAddButton = CGRectGetMaxX(button.frame) + self.spacingForButton + self.widthForSingleButton; // 计算 addButton 如果放在上面的 button 的后面，x 最大的值
-        if (maxXOfAddButton > CGRectGetWidth(self.bounds)) {
-            self.addButton.frame = CGRectMake(self.spacingForButton,
-                                              self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
-                                              self.widthForSingleButton, self.widthForSingleButton);
-        } else {
-            self.addButton.frame = CGRectMake(self.spacingForButton * (self.indexOfLastButton + 1) + self.widthForSingleButton * self.indexOfLastButton,
-                                              self.spacingForButton * self.numberOfRows + self.widthForSingleButton * (self.numberOfRows - 1),
-                                              self.widthForSingleButton, self.widthForSingleButton);
-        }
+        [self updateFrameOfButton:self.addButton fromLastButton:button];
     }
     
     UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
@@ -110,6 +92,9 @@
 - (void)setEdit:(BOOL)edit {
     _edit = edit;
     self.addButton.hidden = !edit;
+    
+    [self updateFrameOfButton:self.addButton fromLastButton:[self.imageButtonList lastObject]];
+    [self addSubview:self.addButton];
     
     UIButton *lastButtonInView = edit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
     self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
@@ -150,9 +135,17 @@
 }
 
 #pragma mark - Setup
-- (void)setupImagePickerView {
-    self.addButton.frame = CGRectMake(self.spacingForButton, self.spacingForButton, self.widthForSingleButton, self.widthForSingleButton);
-    [self addSubview:self.addButton];
+- (void)updateFrameOfButton:(UIButton *)button fromLastButton:(UIButton *)lastButton {
+    CGFloat maxX = CGRectGetMaxX(lastButton.frame) + self.spacingForButton + self.widthForSingleButton; // 计算新加入的 button 如果放在上一个 button 的后面，x 最大的值
+    if (maxX > CGRectGetWidth(self.bounds)) {   // 如果新加入的 button 的 x 最大的值超过 self 的宽度，则另起一行绘制
+        button.frame = CGRectMake(self.spacingForButton,
+                                  self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
+                                  self.widthForSingleButton, self.widthForSingleButton);
+    } else {    // 在目前显示的最后一个 button 的后面绘制
+        button.frame = CGRectMake(self.spacingForButton * (self.indexOfLastButton + 1) + self.widthForSingleButton * self.indexOfLastButton,
+                                  self.spacingForButton * self.numberOfRows + self.widthForSingleButton * (self.numberOfRows - 1),
+                                  self.widthForSingleButton, self.widthForSingleButton);
+    }
 }
 
 @end

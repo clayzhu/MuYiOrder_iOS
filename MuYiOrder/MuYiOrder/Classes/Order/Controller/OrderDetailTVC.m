@@ -75,6 +75,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
     } else if (orderDetailTVCStatus == OrderDetailTVCStatusEdit || orderDetailTVCStatus == OrderDetailTVCStatusNew) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
     }
+    self.czImagePickerView.edit = orderDetailTVCStatus;
     [self.tableView reloadData];
 }
 
@@ -124,7 +125,10 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 - (CZImagePickerView *)czImagePickerView {
     if (!_czImagePickerView) {
         _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(15.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds) - 15.0 * 2, 105.0)];
-        [_czImagePickerView setupImagePickerView];
+        UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
+        UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
+        UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
+        self.czImagePickerView.imageList = @[image1, image2, image3];
         _czImagePickerView.delegate = self;
     }
     return _czImagePickerView;
@@ -339,13 +343,8 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCZImagePickerViewCell];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCZImagePickerViewCell];
-            [cell.contentView addSubview:self.czImagePickerView];
-//            self.czImagePickerView.edit = NO;
-            UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
-            UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
-            UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
-            self.czImagePickerView.imageList = @[image1, image2, image3];
         }
+        [cell.contentView addSubview:self.czImagePickerView];
         return cell;
     }
     return nil;
