@@ -62,6 +62,8 @@
 		B7A48D241ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D201ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png */; };
 		B7A48D251ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */; };
 		B7A48D261ECDD5D900985C3D /* CZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */; };
+		B7A48D291ECDFB5800985C3D /* deleteImage_CZImagePickerView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D271ECDFB5800985C3D /* deleteImage_CZImagePickerView@2x.png */; };
+		B7A48D2A1ECDFB5800985C3D /* deleteImage_CZImagePickerView@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A48D281ECDFB5800985C3D /* deleteImage_CZImagePickerView@3x.png */; };
 		B7C4FFE41ECA087A006B273D /* ProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */; };
 		B7D754B01EA504EF0089A8CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754AF1EA504EF0089A8CD /* main.m */; };
 		B7D754B31EA504EF0089A8CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D754B21EA504EF0089A8CD /* AppDelegate.m */; };
@@ -176,6 +178,8 @@
 		B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addImage_CZImagePickerView@3x.png"; sourceTree = "<group>"; };
 		B7A48D221ECDD5D900985C3D /* CZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZImagePickerView.h; sourceTree = "<group>"; };
 		B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZImagePickerView.m; sourceTree = "<group>"; };
+		B7A48D271ECDFB5800985C3D /* deleteImage_CZImagePickerView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deleteImage_CZImagePickerView@2x.png"; sourceTree = "<group>"; };
+		B7A48D281ECDFB5800985C3D /* deleteImage_CZImagePickerView@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deleteImage_CZImagePickerView@3x.png"; sourceTree = "<group>"; };
 		B7C4FFE21ECA087A006B273D /* ProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailVC.h; sourceTree = "<group>"; };
 		B7C4FFE31ECA087A006B273D /* ProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailVC.m; sourceTree = "<group>"; };
 		B7D754AB1EA504EF0089A8CD /* MuYiOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuYiOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -581,6 +585,8 @@
 				B7A48D231ECDD5D900985C3D /* CZImagePickerView.m */,
 				B7A48D201ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png */,
 				B7A48D211ECDD5D900985C3D /* addImage_CZImagePickerView@3x.png */,
+				B7A48D271ECDFB5800985C3D /* deleteImage_CZImagePickerView@2x.png */,
+				B7A48D281ECDFB5800985C3D /* deleteImage_CZImagePickerView@3x.png */,
 			);
 			path = CZImagePickerView;
 			sourceTree = "<group>";
@@ -718,11 +724,13 @@
 				B7A48D241ECDD5D900985C3D /* addImage_CZImagePickerView@2x.png in Resources */,
 				B7D754BE1EA504EF0089A8CD /* LaunchScreen.storyboard in Resources */,
 				B763735C1EBB8AB3001C209B /* OrderListCell.xib in Resources */,
+				B7A48D2A1ECDFB5800985C3D /* deleteImage_CZImagePickerView@3x.png in Resources */,
 				B767785A1EAC801D00B76EDF /* User.storyboard in Resources */,
 				B7D754BB1EA504EF0089A8CD /* Assets.xcassets in Resources */,
 				B765EDDF1EC4B0BC0038A7A7 /* BaseTextLabelCell.xib in Resources */,
 				B76373541EBB7362001C209B /* BaseTextFieldCell.xib in Resources */,
 				18D6724D1EAEE6970011706C /* Product.storyboard in Resources */,
+				B7A48D291ECDFB5800985C3D /* deleteImage_CZImagePickerView@2x.png in Resources */,
 				B7DD22901ECC83E5004C508A /* ProductCVCell.xib in Resources */,
 				B76778351EAC7D2500B76EDF /* MLInputDodger.bundle in Resources */,
 			);
