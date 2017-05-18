@@ -20,6 +20,8 @@
 @property (assign, nonatomic) NSUInteger numberOfButtonInRow;
 @property (assign, nonatomic) CGFloat widthForSingleButton;
 
+@property (assign, nonatomic) CGFloat heightOfView;
+
 @end
 
 @implementation CZImagePickerView
@@ -48,11 +50,11 @@
         CGFloat maxX = CGRectGetMaxX(lastButton.frame) + self.spacingForButton + self.widthForSingleButton; // 计算新加入的 button 如果放在上一个 button 的后面，x 最大的值
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    // 创建新的 button
         [button setImage:image forState:UIControlStateNormal];
-        if (maxX > CGRectGetWidth(self.bounds)) {
+        if (maxX > CGRectGetWidth(self.bounds)) {   // 如果新加入的 button 的 x 最大的值超过 self 的宽度，则另起一行绘制
             button.frame = CGRectMake(self.spacingForButton,
                                       self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
                                       self.widthForSingleButton, self.widthForSingleButton);
-        } else {
+        } else {    // 在目前显示的最后一个 button 的后面绘制
             button.frame = CGRectMake(self.spacingForButton * (self.indexOfLastButton + 1) + self.widthForSingleButton * self.indexOfLastButton,
                                       self.spacingForButton * self.numberOfRows + self.widthForSingleButton * (self.numberOfRows - 1),
                                       self.widthForSingleButton, self.widthForSingleButton);
@@ -60,8 +62,8 @@
         [self.imageButtonList addObject:button];
         [self addSubview:button];
         
-        // 重新绘制 addButton 的位置
-        CGFloat maxXOfAddButton = CGRectGetMaxX(button.frame) + self.spacingForButton + self.widthForSingleButton; // 计算 addButton 如果放在上一个 button 的后面，x 最大的值
+        // 重新绘制 addButton 的位置，方法和上面类似
+        CGFloat maxXOfAddButton = CGRectGetMaxX(button.frame) + self.spacingForButton + self.widthForSingleButton; // 计算 addButton 如果放在上面的 button 的后面，x 最大的值
         if (maxXOfAddButton > CGRectGetWidth(self.bounds)) {
             self.addButton.frame = CGRectMake(self.spacingForButton,
                                               self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
@@ -72,6 +74,9 @@
                                               self.widthForSingleButton, self.widthForSingleButton);
         }
     }
+    
+    UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则
+    self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
 }
 
 - (NSMutableArray<UIImage *> *)imageListPrivate {
@@ -129,6 +134,16 @@
 - (CGFloat)widthForSingleButton {
     CGFloat width = (CGRectGetWidth(self.bounds) - self.spacingForButton * (self.numberOfButtonInRow + 1)) / self.numberOfButtonInRow;
     return width;
+}
+
+- (void)setHeightOfView:(CGFloat)heightOfView {
+    CGRect frame = self.frame;
+    frame.size.height = heightOfView;
+    self.frame = frame;
+    
+    if ([self.delegate respondsToSelector:@selector(czImagePickerView:heightOfView:imageListDidPick:)]) {
+        [self.delegate czImagePickerView:self heightOfView:heightOfView imageListDidPick:self.imageList];
+    }
 }
 
 #pragma mark - Setup

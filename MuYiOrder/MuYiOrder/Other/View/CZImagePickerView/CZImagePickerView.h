@@ -23,6 +23,8 @@
 
 @property (assign, nonatomic, getter=isEdit) BOOL edit;
 
+@property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
+
 - (void)setupImagePickerView;
 
 @end
