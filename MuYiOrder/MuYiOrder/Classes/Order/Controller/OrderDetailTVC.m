@@ -340,6 +340,10 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCZImagePickerViewCell];
             [cell.contentView addSubview:self.czImagePickerView];
 //            self.czImagePickerView.edit = NO;
+            UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
+            UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
+            UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
+            self.czImagePickerView.imageList = @[image1, image2, image3];
         }
         return cell;
     }
