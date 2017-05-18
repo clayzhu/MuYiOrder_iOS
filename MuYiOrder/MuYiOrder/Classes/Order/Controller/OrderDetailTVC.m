@@ -28,7 +28,7 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
 
 static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 
-@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate, CZDatePickerViewDelegate>
+@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate, CZDatePickerViewDelegate, CZImagePickerViewDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
@@ -125,6 +125,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
     if (!_czImagePickerView) {
         _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(15.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds) - 15.0 * 2, 105.0)];
         [_czImagePickerView setupImagePickerView];
+        _czImagePickerView.delegate = self;
     }
     return _czImagePickerView;
 }
@@ -363,7 +364,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
             return height + 13.0 * 2;
         }
     } else if (indexPath.section == 3) {    // 图片选择
-        return 105.0;
+        return CGRectGetHeight(self.czImagePickerView.bounds);
     }
     return 44.0;
 }
@@ -494,6 +495,11 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
+}
+
+#pragma mark - CZImagePickerViewDelegate
+- (void)czImagePickerView:(CZImagePickerView *)czImagePickerView heightOfView:(CGFloat)height imageListDidPick:(NSArray<UIImage *> *)imageList {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Action
