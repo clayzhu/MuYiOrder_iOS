@@ -239,7 +239,13 @@ static NSInteger kDeteleButtonTag = 910;
         
         // 改变其他按钮的位置
         for (NSUInteger i = 0; i < self.imageButtonList.count; i ++) {
-            UIButton *button = self.imageButtonList[i];
+            UIButton *otherButton = self.imageButtonList[i];
+//            NSLog(@"minX:%.2f, centerX:%.2f", minX, otherButton.center.x);
+            if (minX == otherButton.center.x) {
+                [self.imageButtonList removeObjectAtIndex:button.tag];
+                [self.imageButtonList insertObject:button atIndex:i];
+                [self updateFrameOfButtonsFromIndex:i];
+            }
         }
     } else if (sender.state == UIGestureRecognizerStateEnded) { // 拖动结束
         
