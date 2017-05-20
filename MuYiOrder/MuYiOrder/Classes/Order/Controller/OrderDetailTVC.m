@@ -343,6 +343,7 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCZImagePickerViewCell];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCZImagePickerViewCell];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         [cell.contentView addSubview:self.czImagePickerView];
         return cell;
