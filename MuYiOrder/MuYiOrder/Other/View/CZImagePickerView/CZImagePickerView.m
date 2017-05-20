@@ -238,7 +238,9 @@ static NSInteger kDeteleButtonTag = 910;
         [sender setTranslation:CGPointZero inView:self];
         
         // 改变其他按钮的位置
-        
+        for (NSUInteger i = 0; i < self.imageButtonList.count; i ++) {
+            UIButton *button = self.imageButtonList[i];
+        }
     } else if (sender.state == UIGestureRecognizerStateEnded) { // 拖动结束
         
     }
