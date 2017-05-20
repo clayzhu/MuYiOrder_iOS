@@ -128,7 +128,9 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
         UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
         UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
-        self.czImagePickerView.imageList = @[image1, image2, image3];
+        UIImage *image4 = [UIImage imageNamed:@"new_pressed"];
+        UIImage *image5 = [UIImage imageNamed:@"add"];
+        self.czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
         _czImagePickerView.delegate = self;
     }
     return _czImagePickerView;

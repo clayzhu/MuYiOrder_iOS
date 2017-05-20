@@ -8,7 +8,12 @@
 
 #import "CZImagePickerView.h"
 
+/** 删除按钮的 tag 值 */
 static NSInteger kDeteleButtonTag = 910;
+/** 按钮动画更新 frame 的时长 */
+static CGFloat kFrameAnimationDuration = 0.3;
+/** 拖动按钮变更位置时，和其他按钮的相对位置的感应阈值 */
+static CGFloat kDragThresholdValue = 8.0;
 
 @interface CZImagePickerView ()
 
@@ -17,7 +22,7 @@ static NSInteger kDeteleButtonTag = 910;
 @property (strong, nonatomic) UIButton *addButton;
 
 @property (assign, nonatomic) CGFloat spacingForButton;
-@property (assign, nonatomic) NSUInteger indexOfLastButton;
+@property (assign, nonatomic) NSUInteger indexOfNextButton;
 @property (assign, nonatomic) NSUInteger numberOfRows;
 @property (assign, nonatomic) NSUInteger numberOfButtonInRow;
 @property (assign, nonatomic) CGFloat widthForSingleButton;
@@ -45,6 +50,8 @@ static NSInteger kDeteleButtonTag = 910;
 
 - (void)setImageList:(NSArray<UIImage *> *)imageList {
     _imageList = imageList;
+    [self.imageListPrivate removeAllObjects];
+    [self.imageButtonList removeAllObjects];
     
     for (NSUInteger i = 0; i < imageList.count; i ++) {
         UIImage *image = imageList[i];
@@ -69,14 +76,12 @@ static NSInteger kDeteleButtonTag = 910;
         panGesture.enabled = self.isEdit;
         [button addGestureRecognizer:panGesture];
         
-        UIButton *lastButton = [self.imageButtonList lastObject];   // 目前显示的最后一个 button
-        [self updateFrameOfButton:button fromLastButton:lastButton];
+        button.frame = [self frameOfButtonAtIndex:i];   // 绘制图片按钮的位置
         [self.imageButtonList addObject:button];
         [self addSubview:button];
-        
-        // 重新绘制 addButton 的位置，方法和上面类似
-        [self updateFrameOfButton:self.addButton fromLastButton:button];
     }
+    // 重新绘制 addButton 的位置，方法和上面类似
+    self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];
     
     UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
     self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
@@ -123,7 +128,7 @@ static NSInteger kDeteleButtonTag = 910;
         panGesture.enabled = edit;
     }
     
-    [self updateFrameOfButton:self.addButton fromLastButton:[self.imageButtonList lastObject]]; // 更新添加按钮的位置
+    self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];  // 更新添加按钮的位置
     [self addSubview:self.addButton];
     
     UIButton *lastButtonInView = edit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
@@ -134,14 +139,14 @@ static NSInteger kDeteleButtonTag = 910;
     return 8.0;
 }
 
-- (NSUInteger)indexOfLastButton {
+- (NSUInteger)indexOfNextButton {
     NSUInteger remainder = self.imageButtonList.count % self.numberOfButtonInRow; // 取余
     return remainder;
 }
 
 - (NSUInteger)numberOfRows {
     NSUInteger divide = self.imageButtonList.count / self.numberOfButtonInRow;    // 除以
-    NSUInteger numberOfRows = divide + self.indexOfLastButton > 0 ? 1 : 0;
+    NSUInteger numberOfRows = divide + (self.indexOfNextButton > 0 ? 1 : 0);
     return numberOfRows > 0 ? numberOfRows : 1;
 }
 
@@ -166,37 +171,22 @@ static NSInteger kDeteleButtonTag = 910;
 }
 
 #pragma mark - Setup
-/**
- 根据上一个按钮的位置来布局当前按钮的位置
-
- @param button 当前按钮
- @param lastButton 上一个按钮。可为 nil，表示当前设置第一个按钮
- */
-- (void)updateFrameOfButton:(UIButton *)button fromLastButton:(UIButton *)lastButton {
-    CGFloat maxX = CGRectGetMaxX(lastButton.frame) + self.spacingForButton + self.widthForSingleButton; // 计算新加入的 button 如果放在上一个 button 的后面，x 最大的值
-    if (maxX > CGRectGetWidth(self.bounds)) {   // 如果新加入的 button 的 x 最大的值超过 self 的宽度，则另起一行绘制
-        button.frame = CGRectMake(self.spacingForButton,
-                                  self.spacingForButton * (self.numberOfRows + 1) + self.widthForSingleButton * self.numberOfRows,
-                                  self.widthForSingleButton, self.widthForSingleButton);
-    } else {    // 在目前显示的最后一个 button 的后面绘制
-        button.frame = CGRectMake(self.spacingForButton * (self.indexOfLastButton + 1) + self.widthForSingleButton * self.indexOfLastButton,
-                                  self.spacingForButton * self.numberOfRows + self.widthForSingleButton * (self.numberOfRows - 1),
-                                  self.widthForSingleButton, self.widthForSingleButton);
-    }
+/** 计算某个 index 的按钮的位置，self.addButton 的 index 为 self.imageButtonList.count */
+- (CGRect)frameOfButtonAtIndex:(NSUInteger)index {
+    NSUInteger column = index % self.numberOfButtonInRow; // 取余
+    NSUInteger row = index / self.numberOfButtonInRow;    // 除以
+    CGRect frame = CGRectMake(self.spacingForButton * (column + 1) + self.widthForSingleButton * column,
+                              self.spacingForButton * (row + 1) + self.widthForSingleButton * row,
+                              self.widthForSingleButton, self.widthForSingleButton);
+    return frame;
 }
 
-/** 更新从 index 开始的后面所有按钮的位置 */
-- (void)updateFrameOfButtonsFromIndex:(NSUInteger)index {
-    NSMutableArray<UIButton *> *imageButtonListTemp = [NSMutableArray arrayWithArray:self.imageButtonList]; // 拷贝一个临时图片按钮数组
-    [self.imageButtonList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(index, imageButtonListTemp.count - index)]];    // 从原图片按钮数组中，先临时移除现在删除的图片按钮的后面的所有图片按钮
-    // 循环更新图片按钮的位置，依次向前填补删除的图片按钮
-    for (NSUInteger i = index; i < imageButtonListTemp.count; i ++) {
-        UIButton *lastButton = i == 0 ? nil : imageButtonListTemp[i - 1];
-        UIButton *nextButton = imageButtonListTemp[i];
-        nextButton.tag = i;
-        [self updateFrameOfButton:nextButton fromLastButton:lastButton];
-        [self.imageButtonList addObject:nextButton];
-    }
+/** 动画改变 button 的位置 */
+- (void)animateForButton:(UIButton *)button withFrame:(CGRect)frame {
+    [UIView animateWithDuration:kFrameAnimationDuration
+                     animations:^{
+                         button.frame = frame;
+                     }];
 }
 
 #pragma mark - Action
@@ -208,10 +198,14 @@ static NSInteger kDeteleButtonTag = 910;
     [self.imageButtonList removeObjectAtIndex:index];
     [superButton removeFromSuperview];
     
-    [self updateFrameOfButtonsFromIndex:index];
+    // 更新从 index 开始的后面所有按钮的位置
+    for (; index < self.imageButtonList.count; index ++) {
+        UIButton *button = self.imageButtonList[index];
+        [self animateForButton:button withFrame:[self frameOfButtonAtIndex:index]];
+        button.tag = index;
+    }
     
-    UIButton *lastButton = [self.imageButtonList lastObject];   // 目前显示的最后一个图片按钮
-    [self updateFrameOfButton:self.addButton fromLastButton:lastButton];    // 更新添加按钮的位置
+    [self animateForButton:self.addButton withFrame:[self frameOfButtonAtIndex:self.imageButtonList.count]];    // 更新添加按钮的位置
     
     UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
     self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
@@ -221,6 +215,7 @@ static NSInteger kDeteleButtonTag = 910;
 - (void)dragImageButtonAction:(UIPanGestureRecognizer *)sender {
     CGPoint offsetPoint = [sender translationInView:self];
     UIButton *button = (UIButton *)sender.view;
+    UIImage *image = self.imageListPrivate[button.tag];
     CGFloat centerX = button.center.x + offsetPoint.x;
     CGFloat centerY = button.center.y + offsetPoint.y;
     CGFloat minX = centerX - CGRectGetWidth(button.bounds) / 2;
@@ -240,15 +235,62 @@ static NSInteger kDeteleButtonTag = 910;
         // 改变其他按钮的位置
         for (NSUInteger i = 0; i < self.imageButtonList.count; i ++) {
             UIButton *otherButton = self.imageButtonList[i];
-//            NSLog(@"minX:%.2f, centerX:%.2f", minX, otherButton.center.x);
-            if (minX == otherButton.center.x) {
-                [self.imageButtonList removeObjectAtIndex:button.tag];
-                [self.imageButtonList insertObject:button atIndex:i];
-                [self updateFrameOfButtonsFromIndex:i];
+            CGPoint velocity = [sender velocityInView:self];
+            if (velocity.x < 0) {   // 向左拖动，则原来左边的按钮向右移动，两个按钮互换位置
+                if (otherButton.center.x - kDragThresholdValue <= minX && minX <= otherButton.center.x + kDragThresholdValue && CGRectGetMinY(otherButton.frame) <= centerY && centerY <= CGRectGetMaxY(otherButton.frame)) {   // button 的左边在 otherButton 中线 x 的附近，且 button 的中线 y 在 otherButton 的上下之间
+                    [self.imageListPrivate exchangeObjectAtIndex:i withObjectAtIndex:button.tag];   // 左右两边图片位置互换
+                    [self.imageButtonList exchangeObjectAtIndex:i withObjectAtIndex:button.tag];    // 左右两边按钮位置互换
+                    otherButton.tag = button.tag;   // 左右两边按钮 tag 互换
+                    button.tag = i;
+                    [self animateForButton:otherButton withFrame:[self frameOfButtonAtIndex:i + 1]];
+                    break;
+                }
+            }
+            if (velocity.x > 0) {   // 向右拖动，则原来右边的按钮向左移动，两个按钮互换位置
+                if (otherButton.center.x - kDragThresholdValue <= maxX && maxX <= otherButton.center.x + kDragThresholdValue && CGRectGetMinY(otherButton.frame) <= centerY && centerY <= CGRectGetMaxY(otherButton.frame)) {   // button 的右边在 otherButton 中线 x 的附近，且 button 的中线 y 在 otherButton 的上下之间
+                    [self.imageListPrivate exchangeObjectAtIndex:i withObjectAtIndex:button.tag];   // 左右两边图片位置互换
+                    [self.imageButtonList exchangeObjectAtIndex:i withObjectAtIndex:button.tag];    // 左右两边按钮位置互换
+                    otherButton.tag = button.tag;   // 左右两边按钮 tag 互换
+                    button.tag = i;
+                    [self animateForButton:otherButton withFrame:[self frameOfButtonAtIndex:i - 1]];
+                    break;
+                }
+            }
+            if (velocity.y < 0) {   // 向上拖动，则原来上边的按钮和 button 之间的按钮都向右移动
+                if (otherButton.center.y - kDragThresholdValue <= minY && minY <= otherButton.center.y + kDragThresholdValue && CGRectGetMinX(otherButton.frame) <= centerX && centerX <= CGRectGetMaxX(otherButton.frame)) {   // button 的上边在 otherButton 中线 y 的附近，且 button 的中线 x 在 otherButton 的左右之间
+                    [self.imageListPrivate removeObjectAtIndex:button.tag]; // 先移除 button 原来位置的图片，再插入到新位置中
+                    [self.imageListPrivate insertObject:image atIndex:i];
+                    [self.imageButtonList removeObjectAtIndex:button.tag];
+                    [self.imageButtonList insertObject:button atIndex:i];
+                    NSUInteger buttonOldIndex = button.tag; // button 原来的位置
+                    button.tag = i; // button 设置新的 tag 值，即新的位置
+                    for (NSUInteger j = i + 1; j <= buttonOldIndex; j ++) { // 更新上边的按钮和 button 之间的按钮（不包括 button）的位置
+                        UIButton *button = self.imageButtonList[j];
+                        [self animateForButton:button withFrame:[self frameOfButtonAtIndex:j]];
+                        button.tag = j;
+                    }
+                    break;
+                }
+            }
+            if (velocity.y > 0) {   // 向下拖动，则原来下边的按钮和 button 之间的按钮都向左移动
+                if (otherButton.center.y - kDragThresholdValue <= maxY && maxY <= otherButton.center.y + kDragThresholdValue && CGRectGetMinX(otherButton.frame) <= centerX && centerX <= CGRectGetMaxX(otherButton.frame)) {   // button 的下边在 otherButton 中线 y 的附近，且 button 的中线 x 在 otherButton 的左右之间
+                    [self.imageListPrivate removeObjectAtIndex:button.tag]; // 先移除 button 原来位置的图片，再插入到新位置中
+                    [self.imageListPrivate insertObject:image atIndex:i];
+                    [self.imageButtonList removeObjectAtIndex:button.tag];
+                    [self.imageButtonList insertObject:button atIndex:i];
+                    NSUInteger buttonOldIndex = button.tag; // button 原来的位置
+                    button.tag = i; // button 设置新的 tag 值，即新的位置
+                    for (NSUInteger j = buttonOldIndex; j < i; j ++) {  // 更新下边的按钮和 button 之间的按钮（不包括 button）的位置
+                        UIButton *button = self.imageButtonList[j];
+                        [self animateForButton:button withFrame:[self frameOfButtonAtIndex:j]];
+                        button.tag = j;
+                    }
+                    break;
+                }
             }
         }
     } else if (sender.state == UIGestureRecognizerStateEnded) { // 拖动结束
-        
+        [self animateForButton:button withFrame:[self frameOfButtonAtIndex:button.tag]];    // 根据 button 的 tag 值，即得到 button 新的位置，直接动画更新 button 的 frame
     }
 }
 
