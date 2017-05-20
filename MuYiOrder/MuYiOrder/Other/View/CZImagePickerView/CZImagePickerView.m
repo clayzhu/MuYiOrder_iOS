@@ -238,6 +238,20 @@ static CGFloat kDragThresholdValue = 8.0;
             CGPoint velocity = [sender velocityInView:self];
             if (velocity.x < 0) {   // 向左拖动，则原来左边的按钮向右移动，两个按钮互换位置
                 if (otherButton.center.x - kDragThresholdValue <= minX && minX <= otherButton.center.x + kDragThresholdValue && CGRectGetMinY(otherButton.frame) <= centerY && centerY <= CGRectGetMaxY(otherButton.frame)) {   // button 的左边在 otherButton 中线 x 的附近，且 button 的中线 y 在 otherButton 的上下之间
+                    if (otherButton.tag == self.imageButtonList.count - 1) {    // 左边的是最后一个按钮。这种情况发生在上排的按钮向下拖动到 addButton 或最后的空白处区域，再往左靠近最后一个按钮。按照按钮向下拖动处理
+                        [self.imageListPrivate removeObjectAtIndex:button.tag]; // 先移除 button 原来位置的图片，再插入到新位置中
+                        [self.imageListPrivate insertObject:image atIndex:i];
+                        [self.imageButtonList removeObjectAtIndex:button.tag];
+                        [self.imageButtonList insertObject:button atIndex:i];
+                        NSUInteger buttonOldIndex = button.tag; // button 原来的位置
+                        button.tag = i; // button 设置新的 tag 值，即新的位置
+                        for (NSUInteger j = buttonOldIndex; j < i; j ++) {  // 更新下边的按钮和 button 之间的按钮（不包括 button）的位置
+                            UIButton *button = self.imageButtonList[j];
+                            [self animateForButton:button withFrame:[self frameOfButtonAtIndex:j]];
+                            button.tag = j;
+                        }
+                        break;
+                    }
                     [self.imageListPrivate exchangeObjectAtIndex:i withObjectAtIndex:button.tag];   // 左右两边图片位置互换
                     [self.imageButtonList exchangeObjectAtIndex:i withObjectAtIndex:button.tag];    // 左右两边按钮位置互换
                     otherButton.tag = button.tag;   // 左右两边按钮 tag 互换
