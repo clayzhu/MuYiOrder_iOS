@@ -106,6 +106,7 @@ static CGFloat kDragThresholdValue = 8.0;
         _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_addButton setImage:(self.addButtonImage == nil ? [UIImage imageNamed:@"addImage_CZImagePickerView"] : self.addButtonImage) forState:UIControlStateNormal];
         _addButton.layer.borderWidth = 0.5;
+        [_addButton addTarget:self action:@selector(addImageAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
 }
@@ -306,6 +307,27 @@ static CGFloat kDragThresholdValue = 8.0;
     } else if (sender.state == UIGestureRecognizerStateEnded) { // 拖动结束
         [self animateForButton:button withFrame:[self frameOfButtonAtIndex:button.tag]];    // 根据 button 的 tag 值，即得到 button 新的位置，直接动画更新 button 的 frame
     }
+}
+
+/** 添加图片 */
+- (void)addImageAction:(UIButton *)sender {
+    [self showActionSheet];
+}
+
+#pragma mark - Pick Photo
+/** 显示【拍照】【从手机相册选择】的选项 */
+- (void)showActionSheet {
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [ac addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             NSLog(@"拍照");
+                                         }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             NSLog(@"从手机相册选择");
+                                         }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
 }
 
 @end
