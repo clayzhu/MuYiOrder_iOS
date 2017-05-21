@@ -7,10 +7,15 @@
 //
 
 #import "ProductDetailVC.h"
+#import "CZImagePickerView.h"
+#import "CZDeviceTool.h"
 
-@interface ProductDetailVC () <UITextFieldDelegate>
+@interface ProductDetailVC () <UITextFieldDelegate, CZImagePickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *productNumberView;
 @property (weak, nonatomic) IBOutlet UITextField *productNumberTF;
+
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) CZImagePickerView *czImagePickerView;
 
 @end
 
@@ -23,6 +28,7 @@
     [self setupBackBtn];
     [self setupNavItem];
     [self setupViewStyle];
+    [self setupImagePickerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +50,29 @@
     [self.view endEditing:YES];
 }
 
+#pragma mark - Getter and Setter
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        CGFloat y = 94.0;
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0, y, [CZDeviceTool screenWidth], [CZDeviceTool screenHeight] - 64.0 - y)];
+    }
+    return _scrollView;
+}
+
+- (CZImagePickerView *)czImagePickerView {
+    if (!_czImagePickerView) {
+        _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(15.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds) - 15.0 * 2, 105.0)];
+        UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
+        UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
+        UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
+        UIImage *image4 = [UIImage imageNamed:@"new_pressed"];
+        UIImage *image5 = [UIImage imageNamed:@"add"];
+        self.czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
+        _czImagePickerView.delegate = self;
+    }
+    return _czImagePickerView;
+}
+
 #pragma mark - Setup
 /** 设置导航栏上按钮 */
 - (void)setupNavItem {
@@ -53,6 +82,12 @@
 /** 设置 UI 样式 */
 - (void)setupViewStyle {
     [self.productNumberView setupTFViewStyle];
+}
+
+- (void)setupImagePickerView {
+    [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.czImagePickerView];
+    self.czImagePickerView.edit = YES;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -72,6 +107,11 @@
         }
     }
     return YES;
+}
+
+#pragma mark - CZImagePickerViewDelegate
+- (void)czImagePickerView:(CZImagePickerView *)czImagePickerView heightOfView:(CGFloat)height imageListDidPick:(NSArray<UIImage *> *)imageList {
+    self.scrollView.contentSize = CGSizeMake(0.0, height);
 }
 
 #pragma mark - Action
