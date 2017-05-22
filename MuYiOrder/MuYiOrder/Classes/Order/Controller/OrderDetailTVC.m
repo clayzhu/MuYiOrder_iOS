@@ -16,6 +16,7 @@
 #import "CZImagePickerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "ProductListVC.h"
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -557,6 +558,13 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
                                              imagePicker.delegate = self;
                                              imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                                              [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
+                                         }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"从百宝箱选择" style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             ProductListVC *vc = [[UIStoryboard storyboardWithName:@"Product" bundle:nil] instantiateViewControllerWithIdentifier:@"ProductListVC"];
+                                             vc.productListVCType = ProductListVCTypePick;
+                                             BaseNavigationController *nc = [[BaseNavigationController alloc] initWithRootViewController:vc];
+                                             [self presentViewController:nc animated:YES completion:nil];
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];

@@ -7,6 +7,7 @@
 //
 
 #import "MuYiTBC.h"
+#import "ProductListVC.h"
 
 @interface MuYiTBC ()
 
@@ -43,7 +44,8 @@
     UIViewController *vc = [self setWithStoryboardName:@"Order" viewControllerId:@"OrderListVC" title:@"订单" image:@"money" selectedImage:@"money_pressed"];
     BaseNavigationController *nc = [[BaseNavigationController alloc] initWithRootViewController:vc];
     // 产品
-    UIViewController *vc2 = [self setWithStoryboardName:@"Product" viewControllerId:@"ProductListVC" title:@"产品" image:@"needle" selectedImage:@"needle_pressed"];
+    ProductListVC *vc2 = (ProductListVC *)[self setWithStoryboardName:@"Product" viewControllerId:@"ProductListVC" title:@"产品" image:@"needle" selectedImage:@"needle_pressed"];
+    vc2.productListVCType = ProductListVCTypeNormal;
     BaseNavigationController *nc2 = [[BaseNavigationController alloc] initWithRootViewController:vc2];
     // 我的
     UIViewController *vc3 = [self setWithStoryboardName:@"User" viewControllerId:@"UserCenterVC" title:@"我的" image:@"sheep" selectedImage:@"sheep_pressed"];

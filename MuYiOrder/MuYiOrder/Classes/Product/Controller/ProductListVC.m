@@ -43,10 +43,24 @@ static NSString *kProductCVCell = @"ProductCVCell";
 }
 */
 
+#pragma mark - Getter and Setter
+//- (void)setProductListVCType:(ProductListVCType)productListVCType {
+//    _productListVCType = productListVCType;
+//    if (productListVCType == ProductListVCTypeNormal) {
+//        [self setupNavItem];
+//    } else if (productListVCType == ProductListVCTypePick) {
+//        
+//    }
+//}
+
 #pragma mark - Setup
 /** 设置导航栏上按钮 */
 - (void)setupNavItem {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProduct)];
+    if (self.productListVCType == ProductListVCTypeNormal) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"new_pressed"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewProductAction)];
+    } else if (self.productListVCType == ProductListVCTypePick) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_ok"] style:UIBarButtonItemStylePlain target:self action:@selector(pickProductFinishedAction)];
+    }
 }
 
 - (void)registerCell {
@@ -89,9 +103,14 @@ static NSString *kProductCVCell = @"ProductCVCell";
 
 #pragma mark - Action
 /** 添加新产品 */
-- (void)addNewProduct {
+- (void)addNewProductAction {
     ProductDetailVC *vc = [[UIStoryboard storyboardWithName:@"Product" bundle:nil] instantiateViewControllerWithIdentifier:@"ProductDetailVC"];
     [self pushForTabbarVc:vc];
+}
+
+/** 完成产品的选择 */
+- (void)pickProductFinishedAction {
+    
 }
 
 @end
