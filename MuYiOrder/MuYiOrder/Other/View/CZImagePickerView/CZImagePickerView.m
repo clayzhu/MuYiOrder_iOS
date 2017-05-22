@@ -35,6 +35,9 @@ static CGFloat kDragThresholdValue = 8.0;
 /** self 的高度，每次更新会回调 delegate */
 @property (assign, nonatomic) CGFloat heightOfView;
 
+@property (strong, nonatomic) id addButtonTarget;
+@property (assign, nonatomic) SEL addButtonAction;
+
 @end
 
 @implementation CZImagePickerView
@@ -160,6 +163,13 @@ static CGFloat kDragThresholdValue = 8.0;
     if ([self.delegate respondsToSelector:@selector(czImagePickerView:heightOfView:imageListDidPick:)]) {
         [self.delegate czImagePickerView:self heightOfView:heightOfView imageListDidPick:self.imageList];
     }
+}
+
+#pragma mark - Public
+- (void)customAddButtonTarget:(id)target action:(SEL)action {
+    self.addButtonTarget = target;
+    self.addButtonAction = action;
+    [self.addButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Setup
@@ -353,7 +363,16 @@ static CGFloat kDragThresholdValue = 8.0;
 
 /** 添加图片 */
 - (void)addImageAction:(UIButton *)sender {
-    [self showActionSheet];
+    if (self.addButtonTarget && self.addButtonAction) {
+        if (!self.addButtonTarget) {
+            return;
+        }
+        IMP imp = [self.addButtonTarget methodForSelector:self.addButtonAction];
+        void (*func)(id, SEL) = (void *)imp;
+        func(self.addButtonTarget, self.addButtonAction);
+    } else {
+        [self showActionSheet];
+    }
 }
 
 #pragma mark - Pick Photo

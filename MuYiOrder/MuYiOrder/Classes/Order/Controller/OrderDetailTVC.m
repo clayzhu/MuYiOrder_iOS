@@ -14,6 +14,8 @@
 #import "CZDatePickerView.h"
 #import "CZDateUtility.h"
 #import "CZImagePickerView.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 static NSString *kBaseTextFieldCell = @"BaseTextFieldCell";
 static NSString *kBaseTextLabelCell = @"BaseTextLabelCell";
@@ -28,7 +30,7 @@ static NSString *kDatePickerDeliver = @"DatePickerDeliverKey";
 
 static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 
-@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate, CZDatePickerViewDelegate, CZImagePickerViewDelegate>
+@interface OrderDetailTVC () <UITextFieldDelegate, CZPickerViewDelegate, CZDatePickerViewDelegate, CZImagePickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** cell 标题 */
 @property (strong, nonatomic) NSArray<NSArray<NSString *> *> *cellTitleList;
 /** cell 内容 */
@@ -130,8 +132,9 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
         UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
         UIImage *image4 = [UIImage imageNamed:@"new_pressed"];
         UIImage *image5 = [UIImage imageNamed:@"add"];
-        self.czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
+        _czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
         _czImagePickerView.delegate = self;
+        [_czImagePickerView customAddButtonTarget:self action:@selector(pickImage)];
     }
     return _czImagePickerView;
 }
@@ -504,6 +507,17 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *originImage = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                                   NSMutableArray *ma = [NSMutableArray arrayWithArray:self.czImagePickerView.imageList];
+                                   [ma addObject:originImage];
+                                   self.czImagePickerView.imageList = [NSArray arrayWithArray:ma];
+                               }];
+}
+
 #pragma mark - Action
 /** 编辑 */
 - (void)editAction {
@@ -514,6 +528,38 @@ static NSString *kDataFormatter = @"yyyy-MM-dd HH:mm:ss";
 - (void)saveAction {
     [self.view endEditing:YES];
     self.orderDetailTVCStatus = OrderDetailTVCStatusNormal;
+}
+
+- (void)pickImage {
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [ac addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied) {
+                                                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-相机”选项中，允许应用访问您的摄像头" preferredStyle:UIAlertControllerStyleAlert];
+                                                 [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 return;
+                                             }
+                                             UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                                             imagePicker.delegate = self;
+                                             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
+                                         }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                             if ([ALAssetsLibrary authorizationStatus] == AVAuthorizationStatusDenied) {
+                                                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-照片”选项中，允许应用访问您的手机相册" preferredStyle:UIAlertControllerStyleAlert];
+                                                 [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 return;
+                                             }
+                                             UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                                             imagePicker.delegate = self;
+                                             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
+                                         }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
 }
 
 @end

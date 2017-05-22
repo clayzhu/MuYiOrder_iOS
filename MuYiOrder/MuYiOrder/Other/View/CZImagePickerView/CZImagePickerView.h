@@ -34,4 +34,7 @@
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 
+/** 设置添加按钮的自定义的执行方法 */
+- (void)customAddButtonTarget:(id)target action:(SEL)action;
+
 @end
