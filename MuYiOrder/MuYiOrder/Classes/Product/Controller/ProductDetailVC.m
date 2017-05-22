@@ -67,7 +67,7 @@
         UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
         UIImage *image4 = [UIImage imageNamed:@"new_pressed"];
         UIImage *image5 = [UIImage imageNamed:@"add"];
-        self.czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
+        _czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
         _czImagePickerView.delegate = self;
     }
     return _czImagePickerView;

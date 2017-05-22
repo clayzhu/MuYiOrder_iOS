@@ -18,10 +18,19 @@
 
 @interface CZImagePickerView : UIView
 
+/** 图片数组，可以设置一组默认图片 */
 @property (strong, nonatomic) NSArray<UIImage *> *imageList;
+/** 设置添加按钮的图片 */
 @property (strong, nonatomic) UIImage *addButtonImage;
-
+/** 设置每个图片按钮中删除按钮的图片 */
+@property (strong, nonatomic) UIImage *deleteButtonImage;
+/** 设置 CZImagePickerView 是否可以编辑。YES-编辑模式，NO-查看模式 */
 @property (assign, nonatomic, getter=isEdit) BOOL edit;
+
+/** 按钮之间、按钮和边框的间距 */
+@property (assign, nonatomic) CGFloat spacingForButton;
+/** 一行的图片按钮数量 */
+@property (assign, nonatomic) NSUInteger numberOfButtonInRow;
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 

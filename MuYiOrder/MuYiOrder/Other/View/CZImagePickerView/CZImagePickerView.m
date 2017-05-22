@@ -19,16 +19,20 @@ static CGFloat kDragThresholdValue = 8.0;
 
 @interface CZImagePickerView () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+/** 私有的图片数组，用于添加图片，回调给公有的照片数组 */
 @property (strong, nonatomic) NSMutableArray<UIImage *> *imageListPrivate;
+/** 图片按钮数组 */
 @property (strong, nonatomic) NSMutableArray<UIButton *> *imageButtonList;
+/** 排在最后的添加照片的按钮 */
 @property (strong, nonatomic) UIButton *addButton;
 
-@property (assign, nonatomic) CGFloat spacingForButton;
+/** 最后一行将要添加的图片按钮位置 */
 @property (assign, nonatomic) NSUInteger indexOfNextButton;
+/** 图片按钮的行数 */
 @property (assign, nonatomic) NSUInteger numberOfRows;
-@property (assign, nonatomic) NSUInteger numberOfButtonInRow;
+/** 单个按钮的长宽 */
 @property (assign, nonatomic) CGFloat widthForSingleButton;
-
+/** self 的高度，每次更新会回调 delegate */
 @property (assign, nonatomic) CGFloat heightOfView;
 
 @end
@@ -43,7 +47,7 @@ static CGFloat kDragThresholdValue = 8.0;
 }
 */
 
-@synthesize imageList = _imageList;
+@synthesize imageList = _imageList, spacingForButton = _spacingForButton, numberOfButtonInRow = _numberOfButtonInRow;
 
 #pragma mark - Getter and Setter
 - (NSArray<UIImage *> *)imageList {
@@ -53,13 +57,8 @@ static CGFloat kDragThresholdValue = 8.0;
 - (void)setImageList:(NSArray<UIImage *> *)imageList {
     _imageList = imageList;
     [self.imageListPrivate removeAllObjects];
-    [self.imageButtonList removeAllObjects];
-    
-    for (NSUInteger i = 0; i < imageList.count; i ++) {
-        UIImage *image = imageList[i];
-        [self createButtonWithImage:image atIndex:i];
-    }
-    [self updateAddButtonAndSelfFrame];
+    [self.imageListPrivate addObjectsFromArray:imageList];
+    [self redrawImageButtons];
 }
 
 - (NSMutableArray<UIImage *> *)imageListPrivate {
@@ -81,6 +80,7 @@ static CGFloat kDragThresholdValue = 8.0;
         _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_addButton setImage:(self.addButtonImage == nil ? [UIImage imageNamed:@"addImage_CZImagePickerView"] : self.addButtonImage) forState:UIControlStateNormal];
         _addButton.layer.borderWidth = 0.5;
+        _addButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_addButton addTarget:self action:@selector(addImageAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
@@ -89,6 +89,15 @@ static CGFloat kDragThresholdValue = 8.0;
 - (void)setAddButtonImage:(UIImage *)addButtonImage {
     _addButtonImage = addButtonImage;
     [self.addButton setImage:addButtonImage forState:UIControlStateNormal];
+}
+
+- (void)setDeleteButtonImage:(UIImage *)deleteButtonImage {
+    _deleteButtonImage = deleteButtonImage;
+    for (UIButton *button in self.imageButtonList) {
+        // 设置每个图片按钮中删除按钮的图片
+        UIButton *deleteButton = [button viewWithTag:kDeteleButtonTag];
+        [deleteButton setImage:deleteButtonImage forState:UIControlStateNormal];
+    }
 }
 
 - (void)setEdit:(BOOL)edit {
@@ -109,7 +118,21 @@ static CGFloat kDragThresholdValue = 8.0;
 }
 
 - (CGFloat)spacingForButton {
-    return 8.0;
+    return _spacingForButton > 0.0 ? _spacingForButton : 8.0;
+}
+
+- (void)setSpacingForButton:(CGFloat)spacingForButton {
+    _spacingForButton = spacingForButton > 0.0 ? spacingForButton : 8.0;
+    [self redrawImageButtons];
+}
+
+- (NSUInteger)numberOfButtonInRow {
+    return _numberOfButtonInRow > 0 ? _numberOfButtonInRow : 3;
+}
+
+- (void)setNumberOfButtonInRow:(NSUInteger)numberOfButtonInRow {
+    _numberOfButtonInRow = numberOfButtonInRow > 0 ? numberOfButtonInRow : 3;
+    [self redrawImageButtons];
 }
 
 - (NSUInteger)indexOfNextButton {
@@ -121,10 +144,6 @@ static CGFloat kDragThresholdValue = 8.0;
     NSUInteger divide = self.imageButtonList.count / self.numberOfButtonInRow;    // 除以
     NSUInteger numberOfRows = divide + (self.indexOfNextButton > 0 ? 1 : 0);
     return numberOfRows > 0 ? numberOfRows : 1;
-}
-
-- (NSUInteger)numberOfButtonInRow {
-    return 3;
 }
 
 - (CGFloat)widthForSingleButton {
@@ -164,8 +183,6 @@ static CGFloat kDragThresholdValue = 8.0;
 
 /** 在指定位置创建图片按钮 */
 - (void)createButtonWithImage:(UIImage *)image atIndex:(NSUInteger)index {
-    [self.imageListPrivate addObject:image];    // 添加图片
-    
     // 创建新的图片 button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:image forState:UIControlStateNormal];
@@ -174,7 +191,7 @@ static CGFloat kDragThresholdValue = 8.0;
     
     // 创建内部删除 button
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [deleteButton setImage:[UIImage imageNamed:@"deleteImage_CZImagePickerView"] forState:UIControlStateNormal];
+    [deleteButton setImage:(self.deleteButtonImage == nil ? [UIImage imageNamed:@"deleteImage_CZImagePickerView"] : self.deleteButtonImage) forState:UIControlStateNormal];
     deleteButton.frame = CGRectMake(self.widthForSingleButton - 22.0, 0.0, 22.0, 22.0);
     [deleteButton addTarget:self action:@selector(deleteImageButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     deleteButton.tag = kDeteleButtonTag;
@@ -198,6 +215,21 @@ static CGFloat kDragThresholdValue = 8.0;
     
     UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
     self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
+}
+
+/** 重新绘制按钮视图 */
+- (void)redrawImageButtons {
+    // 重新绘制按钮视图
+    for (UIButton *button in self.imageButtonList) {
+        [button removeFromSuperview];
+    }
+    [self.imageButtonList removeAllObjects];
+    
+    for (NSUInteger i = 0; i < self.imageListPrivate.count; i ++) {
+        UIImage *image = self.imageListPrivate[i];
+        [self createButtonWithImage:image atIndex:i];
+    }
+    [self updateAddButtonAndSelfFrame];
 }
 
 #pragma mark - Action
@@ -365,6 +397,7 @@ static CGFloat kDragThresholdValue = 8.0;
                                completion:^{
                                    [self createButtonWithImage:originImage atIndex:self.imageListPrivate.count];
                                    [self updateAddButtonAndSelfFrame];
+                                   [self.imageListPrivate addObject:originImage];    // 添加图片
                                }];
 }
 
