@@ -40,7 +40,8 @@
 */
 
 - (UIViewController *)childViewControllerForStatusBarStyle {
-	return self.visibleViewController;	// 如果 childVC 设置了 statusBarStyle，则使用 childVC 的设置；另外使用 BaseViewController 和 BaseTableViewController 中 -preferredStatusBarStyle 的设置
+//	return self.visibleViewController;	// 如果 childVC 设置了 statusBarStyle，则使用 childVC 的设置；另外使用 BaseViewController 和 BaseTableViewController 中 -preferredStatusBarStyle 的设置
+    return self.topViewController;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
