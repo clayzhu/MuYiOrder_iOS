@@ -17,7 +17,7 @@ static CGFloat kFrameAnimationDuration = 0.3;
 /** 拖动按钮变更位置时，和其他按钮的相对位置的感应阈值 */
 static CGFloat kDragThresholdValue = 8.0;
 
-@interface CZImagePickerView ()
+@interface CZImagePickerView () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray<UIImage *> *imageListPrivate;
 @property (strong, nonatomic) NSMutableArray<UIButton *> *imageButtonList;
@@ -57,36 +57,9 @@ static CGFloat kDragThresholdValue = 8.0;
     
     for (NSUInteger i = 0; i < imageList.count; i ++) {
         UIImage *image = imageList[i];
-        [self.imageListPrivate addObject:image];    // 添加图片
-        
-        // 创建新的图片 button
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:image forState:UIControlStateNormal];
-        button.tag = i;
-        
-        // 创建内部删除 button
-        UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [deleteButton setImage:[UIImage imageNamed:@"deleteImage_CZImagePickerView"] forState:UIControlStateNormal];
-        deleteButton.frame = CGRectMake(self.widthForSingleButton - 22.0, 0.0, 22.0, 22.0);
-        [deleteButton addTarget:self action:@selector(deleteImageButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        deleteButton.tag = kDeteleButtonTag;
-        deleteButton.hidden = !self.isEdit;
-        [button addSubview:deleteButton];
-        
-        // 创建拖动手势
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragImageButtonAction:)];
-        panGesture.enabled = self.isEdit;
-        [button addGestureRecognizer:panGesture];
-        
-        button.frame = [self frameOfButtonAtIndex:i];   // 绘制图片按钮的位置
-        [self.imageButtonList addObject:button];
-        [self addSubview:button];
+        [self createButtonWithImage:image atIndex:i];
     }
-    // 重新绘制 addButton 的位置，方法和上面类似
-    self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];
-    
-    UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
-    self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
+    [self updateAddButtonAndSelfFrame];
 }
 
 - (NSMutableArray<UIImage *> *)imageListPrivate {
@@ -131,11 +104,8 @@ static CGFloat kDragThresholdValue = 8.0;
         panGesture.enabled = edit;
     }
     
-    self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];  // 更新添加按钮的位置
     [self addSubview:self.addButton];
-    
-    UIButton *lastButtonInView = edit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
-    self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
+    [self updateAddButtonAndSelfFrame];
 }
 
 - (CGFloat)spacingForButton {
@@ -190,6 +160,44 @@ static CGFloat kDragThresholdValue = 8.0;
                      animations:^{
                          button.frame = frame;
                      }];
+}
+
+/** 在指定位置创建图片按钮 */
+- (void)createButtonWithImage:(UIImage *)image atIndex:(NSUInteger)index {
+    [self.imageListPrivate addObject:image];    // 添加图片
+    
+    // 创建新的图片 button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:image forState:UIControlStateNormal];
+    button.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    button.tag = index;
+    
+    // 创建内部删除 button
+    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [deleteButton setImage:[UIImage imageNamed:@"deleteImage_CZImagePickerView"] forState:UIControlStateNormal];
+    deleteButton.frame = CGRectMake(self.widthForSingleButton - 22.0, 0.0, 22.0, 22.0);
+    [deleteButton addTarget:self action:@selector(deleteImageButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    deleteButton.tag = kDeteleButtonTag;
+    deleteButton.hidden = !self.isEdit;
+    [button addSubview:deleteButton];
+    
+    // 创建拖动手势
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragImageButtonAction:)];
+    panGesture.enabled = self.isEdit;
+    [button addGestureRecognizer:panGesture];
+    
+    button.frame = [self frameOfButtonAtIndex:index];   // 绘制图片按钮的位置
+    [self.imageButtonList addObject:button];
+    [self addSubview:button];
+}
+
+/** 更新 addButton 和 self 的 frame */
+- (void)updateAddButtonAndSelfFrame {
+    // 重新绘制 addButton 的位置，方法和上面类似
+    self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];
+    
+    UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
+    self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
 }
 
 #pragma mark - Action
@@ -328,6 +336,10 @@ static CGFloat kDragThresholdValue = 8.0;
                                                  [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
                                                  return;
                                              }
+                                             UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                                             imagePicker.delegate = self;
+                                             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
@@ -337,9 +349,23 @@ static CGFloat kDragThresholdValue = 8.0;
                                                  [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
                                                  return;
                                              }
+                                             UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                                             imagePicker.delegate = self;
+                                             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+}
+
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *originImage = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                                   [self createButtonWithImage:originImage atIndex:self.imageListPrivate.count];
+                                   [self updateAddButtonAndSelfFrame];
+                               }];
 }
 
 @end
