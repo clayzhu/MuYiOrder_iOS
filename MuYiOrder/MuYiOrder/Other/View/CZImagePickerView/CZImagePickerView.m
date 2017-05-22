@@ -7,6 +7,8 @@
 //
 
 #import "CZImagePickerView.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 /** 删除按钮的 tag 值 */
 static NSInteger kDeteleButtonTag = 910;
@@ -320,11 +322,21 @@ static CGFloat kDragThresholdValue = 8.0;
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [ac addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
-                                             NSLog(@"拍照");
+                                             if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied) {
+                                                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-相机”选项中，允许应用访问您的摄像头。" preferredStyle:UIAlertControllerStyleAlert];
+                                                 [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 return;
+                                             }
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
-                                             NSLog(@"从手机相册选择");
+                                             if ([ALAssetsLibrary authorizationStatus] == AVAuthorizationStatusDenied) {
+                                                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-照片”选项中，允许应用访问您的手机相册。" preferredStyle:UIAlertControllerStyleAlert];
+                                                 [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 return;
+                                             }
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
