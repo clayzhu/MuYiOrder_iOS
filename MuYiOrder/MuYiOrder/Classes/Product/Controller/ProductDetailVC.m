@@ -10,7 +10,7 @@
 #import "CZImagePickerView.h"
 #import "CZDeviceTool.h"
 
-@interface ProductDetailVC () <UITextFieldDelegate, CZImagePickerViewDelegate>
+@interface ProductDetailVC () <UITextFieldDelegate, CZImagePickerViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *productNumberView;
 @property (weak, nonatomic) IBOutlet UITextField *productNumberTF;
 
@@ -55,6 +55,7 @@
     if (!_scrollView) {
         CGFloat y = 94.0;
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0, y, [CZDeviceTool screenWidth], [CZDeviceTool screenHeight] - 64.0 - y)];
+        _scrollView.delegate = self;
     }
     return _scrollView;
 }
@@ -62,14 +63,9 @@
 - (CZImagePickerView *)czImagePickerView {
     if (!_czImagePickerView) {
         _czImagePickerView = [[CZImagePickerView alloc] initWithFrame:CGRectMake(15.0, 0.0, CGRectGetWidth([UIScreen mainScreen].bounds) - 15.0 * 2, 105.0)];
-        UIImage *image1 = [UIImage imageNamed:@"money_pressed"];
-        UIImage *image2 = [UIImage imageNamed:@"needle_pressed"];
-        UIImage *image3 = [UIImage imageNamed:@"sheep_pressed"];
-        UIImage *image4 = [UIImage imageNamed:@"new_pressed"];
-        UIImage *image5 = [UIImage imageNamed:@"add"];
-        _czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
         _czImagePickerView.delegate = self;
         _czImagePickerView.maxImageNumber = 1;
+        _czImagePickerView.edit = YES;
     }
     return _czImagePickerView;
 }
@@ -88,7 +84,6 @@
 - (void)setupImagePickerView {
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.czImagePickerView];
-    self.czImagePickerView.edit = YES;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -115,10 +110,19 @@
     self.scrollView.contentSize = CGSizeMake(0.0, height);
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Action
 /** 保存 */
 - (void)saveAction {
-    
+    [self.view endEditing:YES];
+    if (self.czImagePickerView.imageList.count == 0) {  // 没有添加图片
+        [MBProgressHelper showTextHUDWithMessage:@"先添加你的宝贝啊喂"];
+        return;
+    }
 }
 
 /** 加产品数量 */
