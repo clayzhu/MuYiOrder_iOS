@@ -69,6 +69,7 @@
         UIImage *image5 = [UIImage imageNamed:@"add"];
         _czImagePickerView.imageList = @[image1, image2, image3, image4, image5];
         _czImagePickerView.delegate = self;
+        _czImagePickerView.maxImageNumber = 1;
     }
     return _czImagePickerView;
 }

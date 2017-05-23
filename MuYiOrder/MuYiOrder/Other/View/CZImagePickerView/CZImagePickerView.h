@@ -31,6 +31,8 @@
 @property (assign, nonatomic) CGFloat spacingForButton;
 /** 一行的图片按钮数量 */
 @property (assign, nonatomic) NSUInteger numberOfButtonInRow;
+/** 允许添加的图片上限 */
+@property (assign, nonatomic) NSUInteger maxImageNumber;
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 

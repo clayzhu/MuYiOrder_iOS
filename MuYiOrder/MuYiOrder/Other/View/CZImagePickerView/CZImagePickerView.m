@@ -118,6 +118,7 @@ static CGFloat kDragThresholdValue = 8.0;
     
     [self addSubview:self.addButton];
     [self updateAddButtonAndSelfFrame];
+    [self limitMaxImageButtnsNumber];
 }
 
 - (CGFloat)spacingForButton {
@@ -163,6 +164,11 @@ static CGFloat kDragThresholdValue = 8.0;
     if ([self.delegate respondsToSelector:@selector(czImagePickerView:heightOfView:imageListDidPick:)]) {
         [self.delegate czImagePickerView:self heightOfView:heightOfView imageListDidPick:self.imageList];
     }
+}
+
+- (void)setMaxImageNumber:(NSUInteger)maxImageNumber {
+    _maxImageNumber = maxImageNumber;
+    [self limitMaxImageButtnsNumber];
 }
 
 #pragma mark - Public
@@ -240,6 +246,30 @@ static CGFloat kDragThresholdValue = 8.0;
         [self createButtonWithImage:image atIndex:i];
     }
     [self updateAddButtonAndSelfFrame];
+    [self limitMaxImageButtnsNumber];
+}
+
+/** 根据 maxImageNumber 限制最大可以添加的图片，隐藏 addButton 等 */
+- (void)limitMaxImageButtnsNumber {
+    if (self.maxImageNumber > 0) {
+        if (self.imageButtonList.count >= self.maxImageNumber) {    // 删除多余的图片按钮
+            NSRange willRemoveRange = NSMakeRange(self.maxImageNumber, self.imageButtonList.count - self.maxImageNumber);
+            NSArray<UIButton *> *willRemoveButtons = [self.imageButtonList objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:willRemoveRange]];
+            [self.imageListPrivate removeObjectsInRange:willRemoveRange];
+            [self.imageButtonList removeObjectsInArray:willRemoveButtons];
+            for (UIButton *button in willRemoveButtons) {
+                [button removeFromSuperview];
+            }
+            // 重新绘制 addButton 的位置，方法和上面类似
+            self.addButton.frame = [self frameOfButtonAtIndex:self.imageButtonList.count];
+            self.addButton.hidden = YES;
+            UIButton *lastButtonInView = [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
+            self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
+        } else {
+            [self updateAddButtonAndSelfFrame];
+            self.addButton.hidden = !self.isEdit;
+        }
+    }
 }
 
 #pragma mark - Action
@@ -258,10 +288,12 @@ static CGFloat kDragThresholdValue = 8.0;
         button.tag = index;
     }
     
-    [self animateForButton:self.addButton withFrame:[self frameOfButtonAtIndex:self.imageButtonList.count]];    // 更新添加按钮的位置
+    if (self.maxImageNumber == 0 || (self.maxImageNumber > 0 && self.maxImageNumber - self.imageButtonList.count > 1)) {    // 没有设置图片上限，或，删除之后图片按钮数量比上限至少少2个（即删除之前 addButton 可见，并且在最大位置）
+        [self animateForButton:self.addButton withFrame:[self frameOfButtonAtIndex:self.imageButtonList.count]];    // 动画更新添加按钮的位置
+    }
     
-    UIButton *lastButtonInView = self.isEdit ? self.addButton : [self.imageButtonList lastObject];  // 如果是编辑模式，则最后一个 button 是 addButton；否则，最后一个 button 是选择的图片按钮列表 imageButtonList 的最后一个
-    self.heightOfView = CGRectGetMaxY(lastButtonInView.frame) + self.spacingForButton;    // 重新计算 self 的高度
+    [self updateAddButtonAndSelfFrame];
+    [self limitMaxImageButtnsNumber];
 }
 
 /** 拖动某个图片按钮，改变其位置。不能放置到 addButton 的后面 */
@@ -415,8 +447,9 @@ static CGFloat kDragThresholdValue = 8.0;
     [picker dismissViewControllerAnimated:YES
                                completion:^{
                                    [self createButtonWithImage:originImage atIndex:self.imageListPrivate.count];
-                                   [self updateAddButtonAndSelfFrame];
                                    [self.imageListPrivate addObject:originImage];    // 添加图片
+                                   [self updateAddButtonAndSelfFrame];
+                                   [self limitMaxImageButtnsNumber];
                                }];
 }
 
