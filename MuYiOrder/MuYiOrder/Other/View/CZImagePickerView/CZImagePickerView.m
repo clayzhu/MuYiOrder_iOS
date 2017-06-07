@@ -298,6 +298,7 @@ static CGFloat kDragThresholdValue = 8.0;
 
 /** 拖动某个图片按钮，改变其位置。不能放置到 addButton 的后面 */
 - (void)dragImageButtonAction:(UIPanGestureRecognizer *)sender {
+#warning bug: overlap when drag from up to down to up
     CGPoint offsetPoint = [sender translationInView:self];
     UIButton *button = (UIButton *)sender.view;
     UIImage *image = self.imageListPrivate[button.tag];
