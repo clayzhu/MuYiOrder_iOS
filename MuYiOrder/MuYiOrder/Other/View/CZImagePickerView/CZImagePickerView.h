@@ -12,6 +12,7 @@
 
 @protocol CZImagePickerViewDelegate <NSObject>
 
+@optional
 - (void)czImagePickerView:(CZImagePickerView *)czImagePickerView heightOfView:(CGFloat)height imageListDidPick:(NSArray<UIImage *> *)imageList;
 
 @end
