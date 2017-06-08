@@ -27,9 +27,9 @@
 /** 设置 CZImagePickerView 是否可以编辑。YES-编辑模式，NO-查看模式 */
 @property (assign, nonatomic, getter=isEdit) BOOL edit;
 
-/** 按钮之间、按钮和边框的间距 */
+/** 按钮之间、按钮和边框的间距。默认为8.0 */
 @property (assign, nonatomic) CGFloat spacingForButton;
-/** 一行的图片按钮数量 */
+/** 一行的图片按钮数量。默认为3 */
 @property (assign, nonatomic) NSUInteger numberOfButtonInRow;
 /** 允许添加的图片上限 */
 @property (assign, nonatomic) NSUInteger maxImageNumber;
