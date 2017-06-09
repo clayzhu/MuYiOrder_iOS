@@ -411,35 +411,36 @@ static CGFloat kDragThresholdValue = 8.0;
 #pragma mark - Pick Photo
 /** 显示【拍照】【从手机相册选择】的选项 */
 - (void)showActionSheet {
+    UIViewController *vc = self.presentingViewController == nil ? [UIApplication sharedApplication].keyWindow.rootViewController : self.presentingViewController;
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [ac addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
                                              if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied) {
                                                  UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-相机”选项中，允许应用访问您的摄像头。" preferredStyle:UIAlertControllerStyleAlert];
                                                  [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
-                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 [vc presentViewController:ac animated:YES completion:nil];
                                                  return;
                                              }
                                              UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
                                              imagePicker.delegate = self;
                                              imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
+                                             [vc presentViewController:imagePicker animated:YES completion:nil];
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
                                              if ([ALAssetsLibrary authorizationStatus] == AVAuthorizationStatusDenied) {
                                                  UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"请在 iPhone 的“设置-隐私-照片”选项中，允许应用访问您的手机相册。" preferredStyle:UIAlertControllerStyleAlert];
                                                  [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
-                                                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+                                                 [vc presentViewController:ac animated:YES completion:nil];
                                                  return;
                                              }
                                              UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
                                              imagePicker.delegate = self;
                                              imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                                             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imagePicker animated:YES completion:nil];
+                                             [vc presentViewController:imagePicker animated:YES completion:nil];
                                          }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
+    [vc presentViewController:ac animated:YES completion:nil];
 }
 
 #pragma mark UIImagePickerControllerDelegate
