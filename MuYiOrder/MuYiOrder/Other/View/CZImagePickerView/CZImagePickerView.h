@@ -36,7 +36,7 @@
 @property (assign, nonatomic) NSUInteger maxImageNumber;
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
-/** 弹出 UIAlertController, UIImagePickerController 的 viewController */
+/** 弹出 UIAlertController, UIImagePickerController 的 viewController。默认为 App 的 rootViewController */
 @property (strong, nonatomic) UIViewController *presentingViewController;
 
 /** 设置添加按钮的自定义的执行方法 */
