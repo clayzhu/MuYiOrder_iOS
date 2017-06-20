@@ -184,7 +184,7 @@ static CGFloat kPickerViewHeight = 216.0, kToolbarHeight = 44.0;
 #pragma mark - Cancel and Sure Button
 - (void)toolbarButtonAction:(UIButton *)sender {
     BOOL isClickSure = NO;
-    if (sender.tag == 911) {
+    if (sender.tag == 911) {    // 点击了“确定”
         isClickSure = YES;
     }
     if ([self.delegate respondsToSelector:@selector(czPickerView:selectedRow:clickSureButton:)]) {
