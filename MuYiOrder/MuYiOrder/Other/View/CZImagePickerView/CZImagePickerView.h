@@ -38,6 +38,8 @@
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 /** 弹出 UIAlertController, UIImagePickerController 的 viewController。默认为 App 的 rootViewController */
 @property (strong, nonatomic) UIViewController *presentingViewController;
+/** 遍历 App 层级，获取当前 UIViewController */
+@property (strong, nonatomic) UIViewController *currentViewController;
 
 /** 设置添加按钮的自定义的执行方法 */
 - (void)customAddButtonTarget:(id)target action:(SEL)action;

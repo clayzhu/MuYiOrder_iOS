@@ -171,6 +171,20 @@ static CGFloat kDragThresholdValue = 8.0;
     [self limitMaxImageButtnsNumber];
 }
 
+- (UIViewController *)currentViewController {
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UIViewController *vc = keyWindow.rootViewController;
+    while (vc.presentedViewController) {
+        vc = vc.presentedViewController;
+        if ([vc isKindOfClass:[UINavigationController class]]) {
+            vc = [(UINavigationController *)vc visibleViewController];
+        } else if ([vc isKindOfClass:[UITabBarController class]]) {
+            vc = [(UITabBarController *)vc selectedViewController];
+        }
+    }
+    return vc;
+}
+
 #pragma mark - Public
 - (void)customAddButtonTarget:(id)target action:(SEL)action {
     self.addButtonTarget = target;
@@ -411,7 +425,7 @@ static CGFloat kDragThresholdValue = 8.0;
 #pragma mark - Pick Photo
 /** 显示【拍照】【从手机相册选择】的选项 */
 - (void)showActionSheet {
-    UIViewController *vc = self.presentingViewController == nil ? [UIApplication sharedApplication].keyWindow.rootViewController : self.presentingViewController;
+    UIViewController *vc = self.presentingViewController == nil ? self.currentViewController : self.presentingViewController;
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [ac addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction * _Nonnull action) {
