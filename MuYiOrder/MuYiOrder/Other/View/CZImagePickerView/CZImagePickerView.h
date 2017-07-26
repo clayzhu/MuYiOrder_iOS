@@ -25,8 +25,11 @@
 @property (strong, nonatomic) UIImage *addButtonImage;
 /** 设置每个图片按钮中删除按钮的图片 */
 @property (strong, nonatomic) UIImage *deleteButtonImage;
+#warning functions need to be developed
 /** 设置 CZImagePickerView 是否可以编辑。YES-编辑模式，NO-查看模式 */
-@property (assign, nonatomic, getter=isEdit) BOOL edit;
+@property (assign, nonatomic, getter=isEdit) BOOL edit; // editable
+/** 设置 CZImagePickerView 是否可以拖动更换图片位置。YES-可拖动模式，NO-静态模式模式 */
+@property (assign, nonatomic, getter=isPanable) BOOL panable;
 
 /** 按钮之间、按钮和边框的间距。默认为8.0 */
 @property (assign, nonatomic) CGFloat spacingForButton;
