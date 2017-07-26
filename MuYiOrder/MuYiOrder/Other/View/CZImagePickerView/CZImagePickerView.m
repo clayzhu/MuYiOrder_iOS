@@ -241,11 +241,16 @@ static CGFloat kDragThresholdValue = 8.0;
     button.imageView.contentMode = UIViewContentModeScaleAspectFill;
     button.tag = index;
     
+    // 绘制图片按钮和其视图的位置
+    CGRect buttonViewFrame = [self frameOfButtonViewAtIndex:index];
+    buttonView.frame = buttonViewFrame;
+    button.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(buttonViewFrame), CGRectGetHeight(buttonViewFrame));   // 绘制图片按钮的位置
+    
     // 创建内部删除 button
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [deleteButton setImage:(self.deleteButtonImage == nil ? [UIImage imageNamed:@"deleteImage_CZImagePickerView"] : self.deleteButtonImage) forState:UIControlStateNormal];
-    CGFloat deleteButtonWidth = 22.0;
-    deleteButton.frame = CGRectMake(self.widthForSingleButton - deleteButtonWidth, 0.0, deleteButtonWidth, deleteButtonWidth);
+    UIImage *deleteButtonImage = self.deleteButtonImage == nil ? [UIImage imageNamed:@"deleteImage_CZImagePickerView"] : self.deleteButtonImage;
+    [deleteButton setImage:deleteButtonImage forState:UIControlStateNormal];
+    deleteButton.frame = CGRectMake(CGRectGetMaxX(button.frame) - deleteButtonImage.size.width, CGRectGetMinY(button.frame) - deleteButtonImage.size.height, deleteButtonImage.size.width, deleteButtonImage.size.height);  // 删除按钮放在图片的右上角
     [deleteButton addTarget:self action:@selector(deleteImageButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     deleteButton.tag = kDeteleButtonTag;
     deleteButton.hidden = !self.isEdit;
@@ -254,11 +259,6 @@ static CGFloat kDragThresholdValue = 8.0;
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragImageButtonAction:)];
     panGesture.enabled = self.isEdit;
     [buttonView addGestureRecognizer:panGesture];
-    
-    // 绘制图片按钮和其视图的位置
-    CGRect buttonViewFrame = [self frameOfButtonViewAtIndex:index];
-    buttonView.frame = buttonViewFrame;
-    button.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(buttonViewFrame), CGRectGetHeight(buttonViewFrame));   // 绘制图片按钮的位置
     
     [buttonView addSubview:button];
     [buttonView addSubview:deleteButton];
