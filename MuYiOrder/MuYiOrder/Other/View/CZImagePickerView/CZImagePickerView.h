@@ -34,6 +34,13 @@
 @property (assign, nonatomic) NSUInteger numberOfButtonInRow;
 /** 允许添加的图片上限 */
 @property (assign, nonatomic) NSUInteger maxImageNumber;
+#warning functions need to be developed
+/** 按钮在视图中 x 的偏移 */
+@property (assign, nonatomic) CGFloat offsetXOfButtonInView;
+/** 按钮在视图中 y 的偏移 */
+@property (assign, nonatomic) CGFloat offsetYOfButtonInView;
+/** 单个按钮视图的高度 */
+@property (assign, nonatomic) CGFloat heightOfButtonView;
 
 @property (weak, nonatomic) id<CZImagePickerViewDelegate> delegate;
 /** 弹出 UIAlertController, UIImagePickerController 的 viewController。默认为 App 的 rootViewController */
