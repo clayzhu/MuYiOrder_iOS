@@ -17,10 +17,12 @@
 
 + (void)signIn {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogined];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)signOut {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kLogined];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [BmobUser logout];
 }
 
@@ -36,7 +38,8 @@
 
 + (void)saveDeviceTokenData:(NSData *)deviceToken {
 	NSString *deviceTokenStr = [AppUtility deviceTokenStringFromData:deviceToken];
-	[[NSUserDefaults standardUserDefaults] setObject:deviceTokenStr forKey:kDeviceToken];
+    [[NSUserDefaults standardUserDefaults] setObject:deviceTokenStr forKey:kDeviceToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString *)getDeviceToken {
@@ -44,7 +47,8 @@
 }
 
 + (void)removeDeviceToken {
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:kDeviceToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kDeviceToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

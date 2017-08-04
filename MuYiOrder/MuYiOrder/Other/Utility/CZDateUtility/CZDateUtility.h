@@ -27,13 +27,22 @@
  *  @return x秒钟前、x分钟前、x小时前；超过24小时，直接返回完整日期
  */
 + (NSString *)timeIntervalDescFromDateByNow:(NSString *)fromDateStr;
+/**
+ 把秒数转换成时分秒
+ 
+ @param totalSeconds 总秒数
+ @param separator 时分秒的分隔符，如：:
+ @param isStandard YES-如：01:01:01，NO-1:1:1
+ @return 使用分隔符分隔的时分秒
+ */
++ (NSString *)hmsFormatterFromSeconds:(NSInteger)totalSeconds withSeparator:(NSString *)separator usingStandardFormat:(BOOL)isStandard;
 
 #pragma mark - 时间戳
 /** 某个日期的时间戳 */
 + (NSString *)timeStampWithDate:(NSDate *)date;
 /** 当前时间的时间戳 */
 + (NSString *)timeStampWithNowDate;
-/** 根据日期格式将时间戳转换为 NSDate 日期 */
+/** 将时间戳转换为 NSDate 日期 */
 + (NSDate *)dateFromTimeStamp:(NSString *)stamp;
 /** 根据日期格式将时间戳转换为 NSString 日期字符串 */
 + (NSString *)dateStringFromTimeStamp:(NSString *)stamp withDateFormat:(NSString *)dateFormat;

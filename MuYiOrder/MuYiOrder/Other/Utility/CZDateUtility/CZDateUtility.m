@@ -37,6 +37,31 @@
 	}
 }
 
++ (NSString *)hmsFormatterFromSeconds:(NSInteger)totalSeconds withSeparator:(NSString *)separator usingStandardFormat:(BOOL)isStandard {
+    NSInteger seconds = totalSeconds % 60;
+    NSInteger minutes = (totalSeconds / 60) % 60;
+    NSInteger hours = totalSeconds / (60 * 60);
+    NSString *hmsStr;
+    if (isStandard) {   // 01:01:01
+        if (hours > 0) {
+            hmsStr = [NSString stringWithFormat:@"%02ld%@%02ld%@%02ld", (long)hours, separator, (long)minutes, separator, (long)seconds];
+        } else if (minutes > 0) {
+            hmsStr = [NSString stringWithFormat:@"%02ld%@%02ld", (long)minutes, separator, (long)seconds];
+        } else {
+            hmsStr = [NSString stringWithFormat:@"%02ld", (long)seconds];
+        }   // 1:1:1
+    } else {
+        if (hours > 0) {
+            hmsStr = [NSString stringWithFormat:@"%ld%@%ld%@%ld", (long)hours, separator, (long)minutes, separator, (long)seconds];
+        } else if (minutes > 0) {
+            hmsStr = [NSString stringWithFormat:@"%ld%@%ld", (long)minutes, separator, (long)seconds];
+        } else {
+            hmsStr = [NSString stringWithFormat:@"%ld", (long)seconds];
+        }
+    }
+    return hmsStr;
+}
+
 + (NSString *)timeStampWithDate:(NSDate *)date {
 	NSTimeInterval a = [date timeIntervalSince1970] * 1000; // *1000 是精确到毫秒，不乘就是精确到秒
 	NSString *timeString = [NSString stringWithFormat:@"%.0f", a]; //转为字符型
