@@ -51,6 +51,8 @@ FOUNDATION_EXPORT NSString *const kTCInfoCFBundleName;
 + (CGFloat)screenMaxLength;
 /** 屏幕短的一边 */
 + (CGFloat)screenMinLength;
+/** 根据开发所用的点（pt）计算屏幕上的物理像素值（px） */
++ (CGFloat)pxWithPt:(CGFloat)pt;
 
 /** current device model */
 + (NSString *)deviceModel;
