@@ -21,7 +21,7 @@
  *
  *  @param object 字符串或 NSNull 等空值
  *
- *  @return 格式化后的字符串，空时返回“暂无数据”
+ *  @return 格式化后的字符串，空时返回【@""】
  */
 + (NSString *)formatString:(id)object;
 
@@ -31,7 +31,7 @@
  *  @param string 要切割的原字符串
  *  @param limit  指定的字符数
  *
- *  @return 若原 string 字符串超过指定的字符长度 limit，则返回切割后的字符串
+ *  @return 返回一个最大长度为 limit 的字符串
  */
 + (NSString *)trimString:(NSString *)string limit:(NSInteger)limit;
 
@@ -41,7 +41,7 @@
  *  @param string 要切割的原字符串
  *  @param limit  指定的字节长度
  *
- *  @return 若原 string 字符串超过指定的字符长度 limit，则返回切割后的字符串，中文字符串比英文的少一半字符
+ *  @return 返回一个最大长度为 limit 的字符串，中文字符串比英文的少一半字符
  */
 + (NSString *)trimMixString:(NSString *)string limit:(NSInteger)limit;
 
